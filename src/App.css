@@ -6,9 +6,19 @@
 
 /* ------------- shop menu --------------*/
 
+.navbar {
+    padding: .8rem 1rem;
+}
+
 nav {
     box-shadow: 0 2px 2px -2px gray;
 }
+
+ .navbar-light .navbar-brand,
+ .navbar-light .navbar-brand:hover{
+     color:#F17E0A;
+     font-weight: bold;
+ }
 
 .nav-link .badge-light {
     color: #FFF;
@@ -37,6 +47,22 @@ nav {
 
 .bg-light {
     background-color: #FFF !important;
+}
+
+/* ------------- shop footer --------------*/
+.shop-left-column{
+    background: #FFF;
+    box-shadow: 2px 2px 2px -2px gray;
+}
+
+.shop-left-column h5{
+    color:#F17E0A;
+    font-weight: 600;
+}
+
+.shop-left-column p{
+    font-size: .92rem;
+    text-align: justify;
 }
 
 /* ------------- shop footer --------------*/

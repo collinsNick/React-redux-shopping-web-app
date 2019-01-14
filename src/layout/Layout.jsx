@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Menu from '../components/Menu'
-import Footer from '../components/Footer'
+import Menu from '../components/Menu';
+import Footer from '../components/Footer';
+import LeftColumn from '../components/LeftColumn';
 
 class Layout extends Component {
     render() {
@@ -11,10 +12,10 @@ class Layout extends Component {
                         <Menu />
                     </header>
                     <main>
-                        <div className="container">
+                        <div className="container py-4">
                             <div className="row">
                                 <div className="col-md-3">
-                                    side bar
+                                    <LeftColumn />
                                 </div>
                                 <div className="col-md-9">
                                     {this.props.children}

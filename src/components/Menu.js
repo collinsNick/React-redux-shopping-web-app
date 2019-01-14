@@ -5,7 +5,7 @@ const menu = () => {
 
     return (
 
-        <nav className="navbar navbar-expand-md navbar-light bg-light mb-2">
+        <nav className="navbar navbar-expand-md navbar-light bg-light">
             <button className="navbar-toggler" type="button">
                 <span className="navbar-toggler-icon"></span>
             </button>
