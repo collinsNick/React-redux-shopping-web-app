@@ -1,32 +1,51 @@
-.App {
-  text-align: center;
+/* ------------- app css --------------*/
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+/* ------------- shop menu --------------*/
+
+nav {
+    box-shadow: 0 2px 2px -2px gray;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-link .badge-light {
+    color: #FFF;
+    background-color: #F17E0A;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-light .navbar-nav .nav-link.active .badge-light {
+    color: #F17E0A;
+    background-color: #FFF;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-light .navbar-nav .nav-link {
+    color: #6e6e6e;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #F17E0A;
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+    background-color: #F17E0A;
+    color: #FFF;
+}
+
+.bg-light {
+    background-color: #FFF !important;
+}
+
+/* ------------- shop footer --------------*/
+.shop-footer {
+    background: #1E1E1E;
+    color: #FFF;
+}
+
+.shop-footer a {
+    color: #FFF;
+    font-weight: bold;
 }
