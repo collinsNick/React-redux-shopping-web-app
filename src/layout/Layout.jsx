@@ -9,7 +9,7 @@ class Layout extends Component {
             <React.Fragment>
                 <div className="container-fluid">
                     <header>
-                        <Menu />
+                        <Menu cartItemNumber={this.props.storeCartCount}/>
                     </header>
                     <main>
                         <div className="container py-4">

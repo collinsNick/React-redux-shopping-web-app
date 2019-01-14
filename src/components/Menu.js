@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
 class Menu extends Component {
@@ -44,10 +43,6 @@ class Menu extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        cartItemNumber: state.cartTotal
-    }
-}
 
-export default connect(mapStateToProps)(Menu);
+
+export default Menu;

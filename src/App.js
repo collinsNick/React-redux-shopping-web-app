@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Layout from './layout/Layout';
 import Homepage from './containers/pages/Index';
 import Men from './containers/pages/Men';
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Layout>
+          <Layout storeCartCount={this.props.storeCartItemsCount}>
               <Switch>
                   <Route path={'/'} exact component={Homepage}/>
                   <Route path={'/men'} component={Men}/>
@@ -30,4 +31,10 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = (state) => {
+    return{
+       storeCartItemsCount:state.cartTotal
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(App));
