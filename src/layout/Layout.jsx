@@ -12,7 +12,7 @@ class Layout extends Component {
                                 side bar
                             </div>
                             <div className="col-md-9">
-                                main content
+                                {this.props.children}
                             </div>
                         </div>
                     </div>
