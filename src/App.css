@@ -159,6 +159,11 @@ nav {
  background-color: #FFF;
 }
 
+.shop-cart-image{
+    width: 80px;
+    height: 80px;
+}
+
 /* ------------- shop footer --------------*/
 .shop-footer {
     background: #1E1E1E;
