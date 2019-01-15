@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { ADD_TO_CART } from '../../store/actions/shop';
 import ProductCard from '../../components/ProductCard';
 
 class Index extends Component {
+
+    addToCartHandler = (id) => {
+        alert(id)
+    }
+
     render() {
 
         let products = null;
@@ -18,6 +24,7 @@ class Index extends Component {
                         productSale = {product.sale}
                         productImage={product.img}
                         productCategory={product.category}
+                        addToCart={() => this.props.addProductToCartProp(product.id)}
                         />
                 )
             })
@@ -40,7 +47,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {}
+    return {
+        addProductToCartProp : (productId) => dispatch({ type: ADD_TO_CART, productId:productId })
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

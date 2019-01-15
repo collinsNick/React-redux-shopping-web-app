@@ -26,7 +26,7 @@ const productCard = (props) => {
                         <div className="shop-card-price">Ksh. {props.productPrice.toLocaleString()}
                             <span className={'shop-card-discount-price'}>Ksh.{props.productDiscountPrice.toLocaleString()}</span>
                         </div>
-                        <button type="button" className="btn btn-primary btn-sm shop-cart-button" onClick={props.addToCart}>Add To Cart</button>
+                        <button type="button" className="btn btn-primary btn-sm" onClick={props.addToCart}>Add To Cart</button>
                     </div>
                 </div>
 

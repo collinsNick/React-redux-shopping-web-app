@@ -106,12 +106,12 @@ nav {
 .shop-card .shop-card-content {
     background-color: #fff;
     text-align: center;
-    padding: 12px 0;
+    padding: 12px 5px;
     margin: 0 auto;
 }
 
 .shop-card .shop-card-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: #000;
     letter-spacing: .5px;
@@ -125,7 +125,7 @@ nav {
 }
 
 .shop-card .shop-card-price {
-    color: #202020;
+    color: rgba(32, 32, 32, 0.87);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: .6px;
@@ -142,7 +142,12 @@ nav {
     display: inline-block
 }
 
-.shop-card .shop-cart-button {
+.shop-card .btn-primary,
+.shop-card .btn-primary:focus,
+.shop-card .btn-primary.focus,
+.shop-card .btn-primary:hover,
+.shop-card .btn-primary:active,
+.shop-card .btn-primary.active{
     font-size: 13px;
     background-color: #F17E0A;
     font-weight: 600;

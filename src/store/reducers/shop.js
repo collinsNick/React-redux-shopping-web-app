@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/shop';
 
 const initialState = {
-    cart: {},
+    cart: [],
     cartTotal: 0,
     sale: false,
     products: [
@@ -24,7 +24,7 @@ const initialState = {
             discount_price: 2320,
             category: 'women',
             subcategory: '',
-            sale: true,
+            sale: false,
             article: 'handbag',
             quantity: 10,
             img: 'singedani-handbag.jpg'
@@ -60,7 +60,7 @@ const initialState = {
             discount_price: 5160,
             category: 'women',
             subcategory: '',
-            sale: false,
+            sale: true,
             article: 'dress',
             quantity: 10,
             img: 'vintage-flare-dress.jpg'
@@ -72,7 +72,7 @@ const initialState = {
             discount_price: 1650,
             category: 'kids',
             subcategory: 'girls',
-            sale: false,
+            sale: true,
             article: 'dress',
             quantity: 10,
             img: 'cotton-dress.jpg'
@@ -84,7 +84,7 @@ const initialState = {
             discount_price: 3580,
             category: 'men',
             subcategory: '',
-            sale: true,
+            sale: false,
             article: 'shoes',
             quantity: 10,
             img: 'gemch_shoes.jpg'
@@ -108,7 +108,7 @@ const initialState = {
             discount_price: 502,
             category: 'kids',
             subcategory: 'girls',
-            sale: true,
+            sale: false,
             article: 'dress',
             quantity: 10,
             img: 'leather-shoes.jpg'
@@ -144,7 +144,7 @@ const initialState = {
             discount_price: 2350,
             category: 'kids',
             subcategory: 'girls',
-            sale: false,
+            sale: true,
             article: 'dress',
             quantity: 10,
             img: 'princes-dress.jpg'
@@ -204,7 +204,7 @@ const initialState = {
             discount_price: 443,
             category: 'women',
             subcategory: '',
-            sale: false,
+            sale: true,
             article: 'watch',
             quantity: 10,
             img: 'gladiator-flat-flip.jpg'
@@ -216,7 +216,7 @@ const initialState = {
             discount_price: 1200,
             category: 'kids',
             subcategory: 'boys',
-            sale: false,
+            sale: true,
             article: 'dress',
             quantity: 10,
             img: 'crew-neck-tshirt.jpg'
@@ -226,10 +226,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-
         case actionTypes.ADD_TO_CART:
             return {
-                ...state
+                ...state,
+                cartTotal: state.cartTotal + 1,
             }
         case actionTypes.REMOVE_FROM_CART:
             return {
@@ -241,7 +241,8 @@ const reducer = (state = initialState, action) => {
             }
         default:
             return {
-                ...state
+                ...state,
+                cartTotal: 0
             }
     }
 
