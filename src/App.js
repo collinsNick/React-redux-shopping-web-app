@@ -31,7 +31,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return{
        storeCartItemsCount:state.cartTotal
     }

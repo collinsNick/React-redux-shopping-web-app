@@ -14,11 +14,11 @@ nav {
     box-shadow: 0 2px 2px -2px gray;
 }
 
- .navbar-light .navbar-brand,
- .navbar-light .navbar-brand:hover{
-     color:#F17E0A;
-     font-weight: bold;
- }
+.navbar-light .navbar-brand,
+.navbar-light .navbar-brand:hover {
+    color: #F17E0A;
+    font-weight: bold;
+}
 
 .nav-link .badge-light {
     color: #FFF;
@@ -49,20 +49,104 @@ nav {
     background-color: #FFF !important;
 }
 
-/* ------------- shop footer --------------*/
-.shop-left-column{
+/* ------------- shop left column --------------*/
+.shop-left-column {
     background: #FFF;
     box-shadow: 2px 2px 2px -2px gray;
 }
 
-.shop-left-column h5{
-    color:#F17E0A;
+.shop-left-column h5 {
+    color: #F17E0A;
     font-weight: 600;
 }
 
-.shop-left-column p{
+.shop-left-column p {
     font-size: .92rem;
     text-align: justify;
+}
+
+/* ------------- shop product cards --------------*/
+
+.shop-card {
+    text-align: center;
+}
+
+.shop-card .shop-card-image {
+    position: relative;
+}
+
+.shop-card .shop-card-image a {
+    display: block
+}
+
+.shop-card .shop-card-image img {
+    width: 100%;
+    height: auto
+}
+
+.shop-card .shop-card-discount, .shop-card .shop-card-sale {
+    color: #fff;
+    background-color: rgba(255, 0, 0, 0.77);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0
+}
+
+.shop-card .shop-card-discount {
+    background-color: #555;
+    left: auto;
+    right: 0
+}
+
+.shop-card .shop-card-content {
+    background-color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    margin: 0 auto;
+}
+
+.shop-card .shop-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: .5px;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+}
+
+.shop-card .shop-card-title a:hover, .shop-card:hover .shop-card-title a {
+    color: #F17E0A;
+    text-decoration: none;
+}
+
+.shop-card .shop-card-price {
+    color: #202020;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .6px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.shop-card .shop-card-discount-price {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-left: 3px;
+    display: inline-block
+}
+
+.shop-card .shop-cart-button {
+    font-size: 13px;
+    background-color: #F17E0A;
+    font-weight: 600;
+    border-color:#F17E0A;
 }
 
 /* ------------- shop footer --------------*/

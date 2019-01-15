@@ -14,10 +14,10 @@ class Layout extends Component {
                     <main>
                         <div className="container py-4">
                             <div className="row">
-                                <div className="col-md-3">
+                                <div className="col-md-4 col-lg-3">
                                     <LeftColumn />
                                 </div>
-                                <div className="col-md-9">
+                                <div className="col-md-8 col-lg-9">
                                     {this.props.children}
                                 </div>
                             </div>

@@ -15,7 +15,7 @@ const leftColumn = () => {
             <hr/>
             <div>
                 <h5>Contact Us</h5>
-                <p>For enquiries, reach us through, (+254)-708-080-000</p>
+                <p>For enquiries, reach us through,<br/> (+254)-708-080-000</p>
             </div>
         </div>
     )
