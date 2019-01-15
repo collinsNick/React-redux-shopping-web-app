@@ -9,7 +9,6 @@ class Men extends Component {
         let products = null;
 
         if (this.props.productsProps) {
-            console.log(this.props.productsProps)
             products = this.props.productsProps
                 .filter( product => product.category === 'men' )
                 .map( product => {
