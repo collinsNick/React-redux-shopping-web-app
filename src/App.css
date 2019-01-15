@@ -16,17 +16,17 @@ nav {
 
 .navbar-light .navbar-brand,
 .navbar-light .navbar-brand:hover {
-    color: #F17E0A;
+    color: #E40046;
     font-weight: bold;
 }
 
 .nav-link .badge-light {
     color: #FFF;
-    background-color: #F17E0A;
+    background-color: #E40046;
 }
 
 .navbar-light .navbar-nav .nav-link.active .badge-light {
-    color: #F17E0A;
+    color: #E40046;
     background-color: #FFF;
 }
 
@@ -35,13 +35,13 @@ nav {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #F17E0A;
+    color: #E40046;
 }
 
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link {
-    background-color: #F17E0A;
+    background-color: #E40046;
     color: #FFF;
 }
 
@@ -86,7 +86,7 @@ nav {
 
 .shop-card .shop-card-discount, .shop-card .shop-card-sale {
     color: #fff;
-    background-color: rgba(255, 0, 0, 0.77);
+    background-color: #E40046;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -120,7 +120,7 @@ nav {
 }
 
 .shop-card .shop-card-title a:hover, .shop-card:hover .shop-card-title a {
-    color: #F17E0A;
+    color: #E40046;
     text-decoration: none;
 }
 
@@ -160,8 +160,55 @@ nav {
 }
 
 .shop-cart-image{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn-primary,
+.btn-primary:hover{
+    color: #fff;
+    background-color: #E40046;
+    border-color: #E40046;
+}
+
+.btn-secondary,
+.btn-secondary:hover{
+    color: #fff;
+    background-color: #F17E0A;
+    border-color: #F17E0A;
+}
+
+.btn-outline-secondary:hover {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: #6c757d;
+}
+
+.shop-cart-total{
+    font-weight: 500;
+}
+
+.shop-cart-amounts{
+    font-size: .95rem;
+}
+
+.shop-cart-item-price,
+.shop-cart-item-total{
+    font-size: .95rem;
+}
+
+.shop-cart-item-total span{
+    font-weight: 600;
+}
+
+.shop-cart-category{
+    color:#777;
+    font-size: .95rem;
+}
+
+.shop-cart-name{
+    font-size:1.1rem;
+    font-weight: 500;
 }
 
 /* ------------- shop footer --------------*/

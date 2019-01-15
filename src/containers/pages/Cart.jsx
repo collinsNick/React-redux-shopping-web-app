@@ -25,16 +25,16 @@ class Cart extends Component {
                             </div>
                             <div className="col-sm-4">
                                 <h5 className="shop-cart-name ">Product name</h5>
-                                <h6 lassName="shop-cart-category ">
+                                <h6 className="shop-cart-category ">
                                     Product category
                                 </h6>
                             </div>
                             <div className="col-sm-6">
                                 <div className="row">
-                                    <div className="col-sm-6 text-right">
-                                        <h6 className={'shop-cart-price'}>Ksh. 25.00</h6>
-                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3"/>
-                                        <h6 className={'shop-cart-total'}>Item Total <strong>Ksh. 25.00</strong></h6>
+                                    <div className="col-sm-6 text-left">
+                                        <h6 className={'shop-cart-item-price'}>Ksh. 25.00</h6>
+                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3 w-50"/>
+                                        <h6 className={'shop-cart-item-total'}>Item Total <span>Ksh. 25.00</span></h6>
                                     </div>
                                     <div className="col-sm-4 offset-sm-2 text-right">
                                         <button type="button" className="btn btn-primary btn-sm">
@@ -47,6 +47,7 @@ class Cart extends Component {
                     </div>
                 </div>
                 <hr/>
+
                 <div className="row">
                     <div className="col">
                         <div className="row">
@@ -55,16 +56,16 @@ class Cart extends Component {
                             </div>
                             <div className="col-sm-4">
                                 <h5 className="shop-cart-name ">Product name</h5>
-                                <h6 lassName="shop-cart-category ">
+                                <h6 className="shop-cart-category ">
                                     Product category
                                 </h6>
                             </div>
                             <div className="col-sm-6">
                                 <div className="row">
-                                    <div className="col-sm-6 text-right">
-                                        <h6 className={'shop-cart-price'}>Ksh. 25.00</h6>
-                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3"/>
-                                        <h6 className={'shop-cart-total'}>Item Total <strong>Ksh. 25.00</strong></h6>
+                                    <div className="col-sm-6 text-left">
+                                        <h6 className={'shop-cart-item-price'}>Ksh. 25.00</h6>
+                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3 w-50"/>
+                                        <h6 className={'shop-cart-item-total'}>Item Total <span>Ksh. 25.00</span></h6>
                                     </div>
                                     <div className="col-sm-4 offset-sm-2 text-right">
                                         <button type="button" className="btn btn-primary btn-sm">
@@ -77,21 +78,22 @@ class Cart extends Component {
                     </div>
                 </div>
 
+
                 <hr/>
                 <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left">
+                    <div className="col-sm-3 offset-sm-6 text-left shop-cart-amounts">
                         Subtotal
                     </div>
-                    <div className="col-sm-3 text-right">
+                    <div className="col-sm-3 text-right shop-cart-amounts">
                         Ksh. 3786648
                     </div>
                 </div>
                 <hr/>
                 <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left">
+                    <div className="col-sm-3 offset-sm-6 text-left shop-cart-amounts">
                         Estimated shipping
                     </div>
-                    <div className="col-sm-3 text-right">
+                    <div className="col-sm-3 text-right shop-cart-amounts">
                         Ksh. 3786648
                     </div>
                 </div>
@@ -106,11 +108,9 @@ class Cart extends Component {
                 </div>
                  <hr/>
                 <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left">
-                        <a className="btn btn-outline-primary" href="#" role="button">Continue shopping</a>
-                    </div>
-                    <div className="col-sm-3 text-right">
-                        <button className="btn btn-primary" type="submit">Checkout</button>
+                    <div className="col-sm-6 offset-sm-6 text-right">
+                        <a className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue shopping</a>
+                        <button className="btn btn-secondary" type="submit">Checkout</button>
                     </div>
                 </div>
             </div>
