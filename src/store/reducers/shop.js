@@ -237,7 +237,8 @@ const reducer = (state = initialState, action) => {
             }
         case actionTypes.CLEAR_CART:
             return {
-                ...state
+                ...state,
+                cartTotal:0
             }
         default:
             return {

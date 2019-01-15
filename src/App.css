@@ -154,6 +154,11 @@ nav {
     border-color:#F17E0A;
 }
 
+/* ------------- shop cart --------------*/
+.shop-cart-div{
+ background-color: #FFF;
+}
+
 /* ------------- shop footer --------------*/
 .shop-footer {
     background: #1E1E1E;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ProductCard from '../../components/ProductCard';
 import {ADD_TO_CART} from "../../store/actions/shop";
+import ProductCard from '../../components/ProductCard';
 
 class Men extends Component {
     render() {
