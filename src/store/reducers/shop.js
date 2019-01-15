@@ -192,7 +192,7 @@ const initialState = {
             discount_price: 1800,
             category: 'men',
             subcategory: '',
-            sale: false,
+            sale: true,
             article: 'suit',
             quantity: 10,
             img: 'vest.jpg'

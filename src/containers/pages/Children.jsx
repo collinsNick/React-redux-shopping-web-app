@@ -8,7 +8,9 @@ class Children extends Component {
         let products = null;
 
         if (this.props.productsProps) {
-            products = this.props.productsProps.map(product => {
+            products = this.props.productsProps
+                .filter( product => product.category === 'kids')
+                .map(product => {
                 return (
                     <ProductCard
                         key={product.id}

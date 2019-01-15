@@ -9,8 +9,11 @@ class Men extends Component {
         let products = null;
 
         if (this.props.productsProps) {
-            products = this.props.productsProps.map(product => {
-                return (
+            console.log(this.props.productsProps)
+            products = this.props.productsProps
+                .filter( product => product.category === 'men' )
+                .map( product => {
+                    return (
                     <ProductCard
                         key={product.id}
                         productName={product.name}
@@ -21,8 +24,8 @@ class Men extends Component {
                         productCategory={product.category}
                         addToCart={() => this.props.addProductToCartProp(product.id)}
                     />
-                )
-            })
+                    )
+                })
         }
         return (
             <div className="row">

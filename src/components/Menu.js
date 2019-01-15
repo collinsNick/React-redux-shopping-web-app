@@ -24,7 +24,7 @@ class Menu extends Component {
                             <NavLink className="nav-link" to="/women" exact>Women</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/children" exact>Children</NavLink>
+                            <NavLink className="nav-link" to="/children" exact>Kids</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/sale" exact>Sale</NavLink>
