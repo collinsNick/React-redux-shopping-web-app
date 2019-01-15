@@ -227,9 +227,24 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_CART:
+            let item_to_cart = {}
+            let newCart = null
+            // check if product id already exists in cart
+            let chkProductInCart = state.cart.findIndex(product => product.product_id === action.productId)
+            if (chkProductInCart !== -1) {
+                alert('no')
+                state.cart[chkProductInCart].count += 1
+                newCart = {...state.cart}
+            } else {
+                item_to_cart.product_id = action.productId
+                item_to_cart.count = 1
+                newCart = state.cart.concat(item_to_cart)
+            }
+
             return {
                 ...state,
                 cartTotal: state.cartTotal + 1,
+                cart: newCart
             }
         case actionTypes.REMOVE_FROM_CART:
             return {
@@ -238,7 +253,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CLEAR_CART:
             return {
                 ...state,
-                cartTotal:0
+                cartTotal: 0
             }
         default:
             return {
