@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/shop';
 
 const initialState = {
     cart: [],
+    shippingPrice:200,
     cartTotal: 0,
     sale: false,
     products: [
@@ -227,18 +228,20 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_CART:
-            let newCart = null
+            let newCart = null;
             // check if product id already exists in cart
-            let chkProductInCart = state.cart.find(product => product.product_id === action.productId)
+            let chkProductInCart = state.cart.find(product => product.id === action.productId);
             if (chkProductInCart) {
+                // update product count
                 // map to make sure we update the correct product
                 newCart = state.cart.map(
-                    product => (product.product_id === action.productId ?
+                    product => (product.id === action.productId ?
                         {...product, count:product.count + 1 } : product
                     )
                 )
             } else {
-                newCart = state.cart.concat({product_id:action.productId, count:1})
+                // add ne product to cart
+                newCart = state.cart.concat({id:action.productId, count:1})
             }
 
             return {

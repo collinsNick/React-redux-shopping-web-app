@@ -1,118 +1,45 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {REMOVE_FROM_CART, CLEAR_CART} from '../../store/actions/shop';
 import photo from '../../assets/shop_images/men/slim-fit-suit.jpg';
+import CartProduct from '../../components/Cart/CartProducts'
+import CartProductTotals from '../../components/Cart/CartProductTotals'
 
 class Cart extends Component {
     render() {
 
-        let cartProduct = null;
+        let cartContent = <h5>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
 
-        if (this.props.cartProductProp.length) {
-            cartProduct = <h4>You have products in your cart</h4>
-        } else {
-            cartProduct = <h5>Your cart is empty. Please fill it up.</h5>
+        if (this.props.cartTotalProp > 0) {
+            let cartProducts = this.props.cartProductsProp
+                .map(productInCart => {
+                    let productFromState = this.props.productProps.find(product => product.id === productInCart.id)
+                    return (
+                        <CartProduct
+                            key={productInCart.id}
+                            productName={productFromState.name}
+                            productCategory={productFromState.category}
+                            productPhoto={productFromState.img}
+                            productPrice={productFromState.price}
+                            productCount={productInCart.count}
+                        />
+                    )
+                })
+
+            let cartTotals = <CartProductTotals/>
+
+            cartContent = (
+                <React.Fragment>
+                    {cartProducts}
+                    {cartTotals}
+                </React.Fragment>
+            )
         }
 
         return (
             <div className={'p-4 shop-cart-div'}>
-
-                <div className="row">
-                    <div className="col">
-                        <div className="row">
-                            <div className="col-sm-2">
-                                <img className={'shop-cart-image'} src={photo} alt={'some-photo'}/>
-                            </div>
-                            <div className="col-sm-4">
-                                <h5 className="shop-cart-name ">Product name</h5>
-                                <h6 className="shop-cart-category ">
-                                    Product category
-                                </h6>
-                            </div>
-                            <div className="col-sm-6">
-                                <div className="row">
-                                    <div className="col-sm-6 text-left">
-                                        <h6 className={'shop-cart-item-price'}>Ksh. 25.00</h6>
-                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3 w-50"/>
-                                        <h6 className={'shop-cart-item-total'}>Item Total <span>Ksh. 25.00</span></h6>
-                                    </div>
-                                    <div className="col-sm-4 offset-sm-2 text-right">
-                                        <button type="button" className="btn btn-primary btn-sm">
-                                            Remove
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr/>
-
-                <div className="row">
-                    <div className="col">
-                        <div className="row">
-                            <div className="col-sm-2">
-                                <img className={'shop-cart-image'} src={photo} alt={'some-photo'}/>
-                            </div>
-                            <div className="col-sm-4">
-                                <h5 className="shop-cart-name ">Product name</h5>
-                                <h6 className="shop-cart-category ">
-                                    Product category
-                                </h6>
-                            </div>
-                            <div className="col-sm-6">
-                                <div className="row">
-                                    <div className="col-sm-6 text-left">
-                                        <h6 className={'shop-cart-item-price'}>Ksh. 25.00</h6>
-                                        <input type="text" className="form-control input-sm shop-cart-quantity my-3 w-50"/>
-                                        <h6 className={'shop-cart-item-total'}>Item Total <span>Ksh. 25.00</span></h6>
-                                    </div>
-                                    <div className="col-sm-4 offset-sm-2 text-right">
-                                        <button type="button" className="btn btn-primary btn-sm">
-                                            Remove
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <hr/>
-                <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left shop-cart-amounts">
-                        Subtotal
-                    </div>
-                    <div className="col-sm-3 text-right shop-cart-amounts">
-                        Ksh. 3786648
-                    </div>
-                </div>
-                <hr/>
-                <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left shop-cart-amounts">
-                        Estimated shipping
-                    </div>
-                    <div className="col-sm-3 text-right shop-cart-amounts">
-                        Ksh. 3786648
-                    </div>
-                </div>
-                <hr/>
-                <div className="row">
-                    <div className="col-sm-3 offset-sm-6 text-left">
-                        <h4 className={'shop-cart-total'}>Total</h4>
-                    </div>
-                    <div className="col-sm-3 text-right">
-                        <h4 className={'shop-cart-total'}>Ksh. 345566</h4>
-                    </div>
-                </div>
-                 <hr/>
-                <div className="row">
-                    <div className="col-sm-6 offset-sm-6 text-right">
-                        <a className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue shopping</a>
-                        <button className="btn btn-secondary" type="submit">Checkout</button>
-                    </div>
-                </div>
+                {cartContent}
             </div>
         )
     }
@@ -120,7 +47,9 @@ class Cart extends Component {
 
 const mapStateToProps = state => {
     return {
-        cartProductProp: state.cart
+        productProps: state.products,
+        cartTotalProp: state.cartTotal,
+        cartProductsProp: state.cart
     }
 }
 
