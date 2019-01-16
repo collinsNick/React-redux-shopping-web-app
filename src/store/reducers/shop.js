@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/shop';
 
 const initialState = {
     cart: [],
-    shippingPrice:200,
+    shippingPrice: 200,
     cartTotal: 0,
     sale: false,
     products: [
@@ -236,12 +236,12 @@ const reducer = (state = initialState, action) => {
                 // map to make sure we update the correct product
                 newCart = state.cart.map(
                     product => (product.id === action.productId ?
-                        {...product, count:product.count + 1 } : product
+                            {...product, count: product.count + 1} : product
                     )
                 )
             } else {
                 // add ne product to cart
-                newCart = state.cart.concat({id:action.productId, count:1})
+                newCart = state.cart.concat({id: action.productId, count: 1})
             }
 
             return {
@@ -250,13 +250,28 @@ const reducer = (state = initialState, action) => {
                 cart: newCart
             }
         case actionTypes.REMOVE_FROM_CART:
+            newCart = state.cart.filter( product => product.id !== action.productId)
             return {
-                ...state
+                ...state,
+                cart:newCart,
+                cartTotal: state.cartTotal === 0 ? 0 : state.cartTotal -  action.productCount
             }
         case actionTypes.CLEAR_CART:
             return {
                 ...state,
-                cartTotal: 0
+                cartTotal: 0,
+                cart:[]
+            }
+        case actionTypes.UPDATE_CART_PRODUCT_COUNT:
+            newCart = state.cart.map(
+                product => (product.id === action.productId ?
+                        {...product, count: action.newCountValue} : product
+                )
+            )
+            console.log(newCart)
+            return {
+                ...state,
+                cart: newCart
             }
         default:
             return {

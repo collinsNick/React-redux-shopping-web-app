@@ -32,7 +32,8 @@ const cartProductTotals = (props) => {
             </div>
             <hr/>
             <div className="row">
-                <div className="col-sm-6 offset-sm-6 text-right">
+                <div className="col-sm-8 offset-sm-4 text-right">
+                    <button onClick={props.clearCart} className="btn btn btn-outline-secondary mr-4">Clear cart</button>
                     <Link to={'/'} className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue shopping</Link>
                     <button className="btn btn-secondary" type="submit">Checkout</button>
                 </div>

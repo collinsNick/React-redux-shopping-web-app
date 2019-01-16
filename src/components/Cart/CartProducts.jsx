@@ -19,11 +19,15 @@ const footer = (props) => {
                             <div className="row">
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
-                                    <input type="text" className="form-control input-sm shop-cart-quantity my-3 w-50"/>
+                                    <input
+                                        type="text"
+                                        onChange={props.updateProductCount}
+                                        value={props.productCount}
+                                        className="form-control input-sm shop-cart-quantity my-3 w-50"/>
                                     <h6 className={'shop-cart-item total'}>Item Total Ksh. <span>{props.productPrice * props.productCount}</span></h6>
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 text-right shop-cart-b-container">
-                                    <button type="button" className="btn btn-primary btn-sm">
+                                    <button type="button" onClick={props.removeCartProduct} className="btn btn-primary btn-sm">
                                         Remove
                                     </button>
                                 </div>
