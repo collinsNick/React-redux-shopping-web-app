@@ -268,7 +268,6 @@ const reducer = (state = initialState, action) => {
                         {...product, count: action.newCountValue} : product
                 )
             )
-            console.log(newCart)
             return {
                 ...state,
                 cart: newCart

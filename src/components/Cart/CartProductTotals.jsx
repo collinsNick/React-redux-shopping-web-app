@@ -27,7 +27,7 @@ const cartProductTotals = (props) => {
                     <h4 className={'shop-cart-total'}>Total</h4>
                 </div>
                 <div className="col-sm-3 text-right">
-                    <h4 className={'shop-cart-total'}>Ksh. {props.totalPrice}</h4>
+                    <h4 className={'shop-cart-total'}>Ksh. {props.shippingPrice + props.subtotal}</h4>
                 </div>
             </div>
             <hr/>

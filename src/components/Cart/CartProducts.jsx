@@ -20,7 +20,7 @@ const footer = (props) => {
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
                                     <input
-                                        type="text"
+                                        type="number"
                                         onChange={props.updateProductCount}
                                         value={props.productCount}
                                         className="form-control input-sm shop-cart-quantity my-3 w-50"/>

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as actionTypes from '../../store/actions/shop';
-import photo from '../../assets/shop_images/men/slim-fit-suit.jpg';
 import CartProduct from '../../components/Cart/CartProducts'
 import CartProductTotals from '../../components/Cart/CartProductTotals'
 
@@ -17,10 +16,13 @@ class Cart extends Component {
         let cartContent = <h5>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
 
         if (this.props.cartTotalProp > 0) {
+            let cartPriceCountArray = [];
             let cartProducts = this.props.cartProductsProp
                 .map(productInCart => {
                     // fetch product information from source based on id
-                    let productFromState = this.props.productProps.find(product => product.id === productInCart.id)
+                    // product information can also be stored in state
+                    let productFromState = this.props.productProps.find(product => product.id === productInCart.id);
+                    cartPriceCountArray.push({price:productFromState.price, count:productInCart.count})
                     return (
                         <CartProduct
                             key={productInCart.id}
@@ -37,7 +39,9 @@ class Cart extends Component {
 
             let cartTotals = <CartProductTotals
                 shippingPrice={this.props.shippingPriceProp}
-                clearCart={() => this.props.clearProductsFromCartProp()}/>
+                subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count),0)}
+                clearCart={() => this.props.clearProductsFromCartProp()}
+            />
 
             cartContent = (
                 <React.Fragment>
