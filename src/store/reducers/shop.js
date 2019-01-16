@@ -232,16 +232,15 @@ const reducer = (state = initialState, action) => {
             // check if product id already exists in cart
             let chkProductInCart = state.cart.findIndex(product => product.product_id === action.productId)
             if (chkProductInCart !== -1) {
-                newCart = {...state.cart};
-                let product = {...newCart[chkProductInCart]};
-                product.count = state.cart[chkProductInCart].count + 1
+                newCart = state.cart.map(
+                    product => product.product_id === action.productId ?
+                        {...product, count:product.count + 1 } : product
+                )
 
-                newCart[chkProductInCart] = product
             } else {
                 item_to_cart.product_id = action.productId
                 item_to_cart.count = 1
                 newCart = state.cart.concat(item_to_cart)
-                console.log('you')
             }
 
             return {
