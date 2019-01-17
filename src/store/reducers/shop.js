@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/shop';
 
 const initialState = {
     cart: [],
-    shippingPrice: 0,
+    shippingPrice: 200,
     cartTotal: 0,
     sale: false,
     products: [
