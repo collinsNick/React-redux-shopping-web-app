@@ -12,8 +12,8 @@ class Cart extends Component {
         cartProductCountsState: this.props.cartProductsProp.keys()
     }
 
-    productCountHandler = (index, event, product_in_cart_id) => {
-        this.props.updateCartProductCountProp(event.target.value, product_in_cart_id)
+    productCountHandler = (field_value, product_in_cart_id) => {
+        this.props.updateCartProductCountProp(field_value, product_in_cart_id)
     }
 
     render() {
@@ -24,11 +24,13 @@ class Cart extends Component {
             console.log(this.props.cartProductsProp)
             let cartPriceCountArray = [];
             let cartProducts = this.props.cartProductsProp
-                .map((productInCart, index) => {
+                .map((productInCart) => {
                     // fetch product information from source based on id
                     // product information can also be stored in state
                     let productFromStore = this.props.productProps.find(product => product.id === productInCart.id);
-                    cartPriceCountArray.push({price: productFromStore.price, count: productInCart.count})
+                    cartPriceCountArray.push({
+                        price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: productInCart.count}
+                        )
                     return (
                         <CartProduct
                             key={productInCart.id}
@@ -38,7 +40,7 @@ class Cart extends Component {
                             productPrice={productFromStore.price}
                             productCount={productInCart.count}
                             productQuantity={productFromStore.quantity}
-                            updateProductCount={(event) => this.productCountHandler(index, event, productInCart.id)}
+                            updateProductCount={(event) => this.productCountHandler(event.target.value, productInCart.id)}
                             removeCartProduct={() => this.props.removeProductFromCartProp(productInCart.id, productInCart.count)}
                         />
                     )

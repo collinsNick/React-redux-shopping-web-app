@@ -16,7 +16,7 @@ const cartProducts = (props) => {
                             <h6 className="shop-cart-category ">
                                 {props.productCategory}
                             </h6>
-                            <div className={'text-left'}>
+                            <div>
                                 <span className={"badge " + (props.productQuantity > 0 ? 'badge-success' : 'badge-danger')}>
                                     {props.productQuantity > 0 ? 'In Stock' : 'Out of Stock'}
                                 </span>
@@ -27,6 +27,7 @@ const cartProducts = (props) => {
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
                                     <input
+                                        disabled={props.productQuantity <= 0}
                                         type="input"
                                         value={props.productCount}
                                         onChange={props.updateProductCount}

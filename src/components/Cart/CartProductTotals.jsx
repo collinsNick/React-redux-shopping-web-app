@@ -37,7 +37,11 @@ const cartProductTotals = (props) => {
                     <button onClick={props.clearCart} className="btn btn btn-outline-secondary mr-4">Clear cart</button>
                     <Link to={'/'} className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue
                         shopping</Link>
-                    <button className="btn btn-secondary" type="submit">Checkout</button>
+                    <button className="btn btn-secondary"
+                            type="submit"
+                            disabled={props.subtotal <= 0}>
+                        Checkout
+                    </button>
                 </div>
             </div>
         </React.Fragment>
@@ -50,7 +54,7 @@ cartProductTotals.propTypes = {
     clearCart: PropTypes.func.isRequired,
 };
 
-cartProductTotals.defaultProps ={
+cartProductTotals.defaultProps = {
     shippingPrice: 0,
 };
 
