@@ -155,7 +155,7 @@ nav {
 }
 
 /* ------------- shop cart --------------*/
-.shop-cart-div{
+.shop-div{
  background-color: #FFF;
 }
 
@@ -207,7 +207,7 @@ nav {
 }
 
 .shop-cart-name{
-    font-size:1.1rem;
+    font-size:1rem;
     font-weight: 500;
 }
 

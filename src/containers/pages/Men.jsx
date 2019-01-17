@@ -1,28 +1,31 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {ADD_TO_CART} from "../../store/actions/shop";
 import ProductCard from '../../components/ProductCard';
 
 class Men extends Component {
     render() {
 
-        let products = null;
+        let products = <div className={'shop-div p-4'}>
+                            <h5>There are currently no products. Check back later</h5>
+                        </div>
 
         if (this.props.productsProps) {
             products = this.props.productsProps
-                .filter( product => product.category === 'men' )
-                .map( product => {
+                .filter(product => product.category === 'men')
+                .map(product => {
                     return (
-                    <ProductCard
-                        key={product.id}
-                        productName={product.name}
-                        productPrice={product.price}
-                        productDiscountPrice={product.discount_price}
-                        productSale={product.sale}
-                        productImage={product.img}
-                        productCategory={product.category}
-                        addToCart={() => this.props.addProductToCartProp(product.id)}
-                    />
+                        <ProductCard
+                            key={product.id}
+                            productName={product.name}
+                            productPrice={product.price}
+                            productDiscountPrice={product.discount_price}
+                            productSale={product.sale}
+                            productImage={product.img}
+                            productCategory={product.category}
+                            addToCart={() => this.props.addProductToCartProp(product.id)}
+                        />
                     )
                 })
         }
@@ -38,12 +41,16 @@ const mapStateToProps = state => {
     return {
         productsProps: state.products
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         addProductToCartProp: (productId) => dispatch({type: ADD_TO_CART, productId: productId})
     }
-}
+};
+
+Men.propTypes = {
+    productsProps: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Men);

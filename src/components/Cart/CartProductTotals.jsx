@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const cartProductTotals = (props) => {
     return (
@@ -34,12 +35,19 @@ const cartProductTotals = (props) => {
             <div className="row">
                 <div className="col-sm-8 offset-sm-4 text-right">
                     <button onClick={props.clearCart} className="btn btn btn-outline-secondary mr-4">Clear cart</button>
-                    <Link to={'/'} className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue shopping</Link>
+                    <Link to={'/'} className="btn btn btn-outline-secondary mr-4" href="#" role="button">Continue
+                        shopping</Link>
                     <button className="btn btn-secondary" type="submit">Checkout</button>
                 </div>
             </div>
         </React.Fragment>
     )
+};
+
+cartProductTotals.propTypes = {
+    subtotal: PropTypes.number.isRequired,
+    shippingPrice: PropTypes.number.isRequired,
+    clearCart: PropTypes.func.isRequired,
 }
 
 export default cartProductTotals;

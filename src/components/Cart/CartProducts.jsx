@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const footer = (props) => {
+const cartProducts = (props) => {
     return (
         <React.Fragment>
             <div className="row">
@@ -20,10 +21,9 @@ const footer = (props) => {
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
                                     <input
-                                        type="text"
-                                        min={1}
-                                        onChange={props.updateProductCount}
+                                        type="input"
                                         value={props.productCount}
+                                        onChange={props.updateProductCount}
                                         className="form-control input-sm shop-cart-quantity my-3 w-50"/>
                                     <h6 className={'shop-cart-item total'}>Item Total Ksh. <span>{props.productPrice * props.productCount}</span></h6>
                                 </div>
@@ -42,4 +42,13 @@ const footer = (props) => {
     )
 }
 
-export default footer;
+cartProducts.propTypes = {
+    productPhoto: PropTypes.string.isRequired,
+    productName : PropTypes.string.isRequired,
+    productCategory: PropTypes.string.isRequired,
+    productPrice: PropTypes.number.isRequired,
+    updateProductCount: PropTypes.func.isRequired,
+    removeCartProduct: PropTypes.func.isRequired,
+}
+
+export default cartProducts;

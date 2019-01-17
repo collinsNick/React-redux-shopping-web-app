@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import * as actionTypes from '../../store/actions/shop';
-import CartProduct from '../../components/Cart/CartProducts'
-import CartProductTotals from '../../components/Cart/CartProductTotals'
+import CartProduct from '../../components/Cart/CartProducts';
+import CartProductTotals from '../../components/Cart/CartProductTotals';
+import PropTypes from 'prop-types';
 
 class Cart extends Component {
 
-    productCountHandler = (event, product_in_cart_id) => {
+    state = {
+        cartProductCountsState: this.props.cartProductsProp.keys()
+    }
+
+    productCountHandler = (index, event, product_in_cart_id) => {
         this.props.updateCartProductCountProp(event.target.value, product_in_cart_id)
     }
 
@@ -16,22 +21,23 @@ class Cart extends Component {
         let cartContent = <h5>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
 
         if (this.props.cartTotalProp > 0) {
+            console.log(this.props.cartProductsProp)
             let cartPriceCountArray = [];
             let cartProducts = this.props.cartProductsProp
-                .map(productInCart => {
+                .map((productInCart, index) => {
                     // fetch product information from source based on id
                     // product information can also be stored in state
-                    let productFromState = this.props.productProps.find(product => product.id === productInCart.id);
-                    cartPriceCountArray.push({price:productFromState.price, count:productInCart.count})
+                    let productFromStore = this.props.productProps.find(product => product.id === productInCart.id);
+                    cartPriceCountArray.push({price: productFromStore.price, count: productInCart.count})
                     return (
                         <CartProduct
                             key={productInCart.id}
-                            productName={productFromState.name}
-                            productCategory={productFromState.category}
-                            productPhoto={productFromState.img}
-                            productPrice={productFromState.price}
+                            productName={productFromStore.name}
+                            productCategory={productFromStore.category}
+                            productPhoto={productFromStore.img}
+                            productPrice={productFromStore.price}
                             productCount={productInCart.count}
-                            updateProductCount={(event) => this.productCountHandler(event, productInCart.id)}
+                            updateProductCount={(event) => this.productCountHandler(index, event, productInCart.id)}
                             removeCartProduct={() => this.props.removeProductFromCartProp(productInCart.id, productInCart.count)}
                         />
                     )
@@ -39,7 +45,7 @@ class Cart extends Component {
 
             let cartTotals = <CartProductTotals
                 shippingPrice={this.props.shippingPriceProp}
-                subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count),0)}
+                subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count), 0)}
                 clearCart={() => this.props.clearProductsFromCartProp()}
             />
 
@@ -52,7 +58,7 @@ class Cart extends Component {
         }
 
         return (
-            <div className={'p-4 shop-cart-div'}>
+            <div className={'p-4 shop-div'}>
                 {cartContent}
             </div>
         )
@@ -84,6 +90,13 @@ const mapDispatchToProps = dispatch => {
             productId: productId
         })
     }
+};
+
+Cart.propTypes = {
+    cartTotalProp: PropTypes.number.isRequired,
+    shippingPriceProp: PropTypes.number.isRequired,
+    cartProductsProp: PropTypes.array.isRequired,
+    productProps: PropTypes.array.isRequired,
 }
 
 

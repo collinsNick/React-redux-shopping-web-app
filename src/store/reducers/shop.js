@@ -252,25 +252,24 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.REMOVE_FROM_CART:
-            newCart = state.cart.filter( product => product.id !== action.productId)
+            newCart = state.cart.filter(product => product.id !== action.productId)
             return {
                 ...state,
-                cart:newCart,
-                cartTotal: state.cartTotal -  action.productCount
+                cart: newCart,
+                cartTotal: state.cartTotal - action.productCount
             }
 
         case actionTypes.CLEAR_CART:
             return {
                 ...state,
                 cartTotal: 0,
-                cart:[]
+                cart: []
             }
 
         case actionTypes.UPDATE_CART_PRODUCT_COUNT:
             newCart = state.cart.map(
-                product => (product.id === action.productId ?
+                product => product.id === action.productId ?
                         {...product, count: action.newCountValue} : product
-                )
             )
             return {
                 ...state,
@@ -280,7 +279,6 @@ const reducer = (state = initialState, action) => {
         default:
             return {
                 ...state,
-                cartTotal: 0
             }
     }
 
