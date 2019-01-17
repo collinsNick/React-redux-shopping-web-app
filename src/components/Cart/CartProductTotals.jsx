@@ -46,8 +46,12 @@ const cartProductTotals = (props) => {
 
 cartProductTotals.propTypes = {
     subtotal: PropTypes.number.isRequired,
-    shippingPrice: PropTypes.number.isRequired,
+    shippingPrice: PropTypes.number,
     clearCart: PropTypes.func.isRequired,
-}
+};
+
+cartProductTotals.defaultProps ={
+    shippingPrice: 0,
+};
 
 export default cartProductTotals;

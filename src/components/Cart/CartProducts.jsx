@@ -49,6 +49,6 @@ cartProducts.propTypes = {
     productPrice: PropTypes.number.isRequired,
     updateProductCount: PropTypes.func.isRequired,
     removeCartProduct: PropTypes.func.isRequired,
-}
+};
 
 export default cartProducts;

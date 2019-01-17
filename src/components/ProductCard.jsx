@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const productCard = (props) => {
     return (
@@ -24,7 +25,7 @@ const productCard = (props) => {
                     <div className="shop-card-content">
                         <h3 className="shop-card-title">{props.productName}</h3>
                         <div className="shop-card-price">Ksh. {props.productPrice.toFixed(2).toLocaleString()}
-                            <span className={'shop-card-discount-price'}>Ksh.{props.productDiscountPrice.toFixed(2).toLocaleString()}</span>
+                            <span className={'shop-card-discount-price'}>{props.productDiscountPrice.toFixed(2).toLocaleString()}</span>
                         </div>
                         <button type="button" className="btn btn-primary btn-sm" onClick={props.addToCart}>Add To Cart</button>
                     </div>
@@ -33,6 +34,17 @@ const productCard = (props) => {
             </div>
         </React.Fragment>
     )
-}
+};
+
+productCard.propTypes = {
+    productCategory:PropTypes.string.isRequired,
+    productImage:PropTypes.string.isRequired,
+    productSale:PropTypes.bool.isRequired,
+    productDiscountPrice:PropTypes.number.isRequired,
+    productPrice:PropTypes.number.isRequired,
+    productName:PropTypes.string.isRequired,
+    addToCart:PropTypes.func.isRequired,
+
+};
 
 export default productCard;
