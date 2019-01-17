@@ -37,6 +37,7 @@ class Cart extends Component {
                             productPhoto={productFromStore.img}
                             productPrice={productFromStore.price}
                             productCount={productInCart.count}
+                            productQuantity={productFromStore.quantity}
                             updateProductCount={(event) => this.productCountHandler(index, event, productInCart.id)}
                             removeCartProduct={() => this.props.removeProductFromCartProp(productInCart.id, productInCart.count)}
                         />

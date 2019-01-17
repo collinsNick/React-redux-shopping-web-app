@@ -63,7 +63,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'dress',
-            quantity: 10,
+            quantity: 0,
             img: 'vintage-flare-dress.jpg'
         },
         {
@@ -123,7 +123,7 @@ const initialState = {
             subcategory: '',
             sale: false,
             article: 'shoes',
-            quantity: 10,
+            quantity: 0,
             img: 'gsoft-khaki.jpg'
         },
         {
@@ -183,7 +183,7 @@ const initialState = {
             subcategory: 'boys',
             sale: false,
             article: 'dress',
-            quantity: 10,
+            quantity: 0,
             img: 'boys-t-shirt.jpg'
         },
         {

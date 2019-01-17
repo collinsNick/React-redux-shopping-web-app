@@ -211,6 +211,20 @@ nav {
     font-weight: 500;
 }
 
+.shop-cart-product-details .badge{
+
+}
+
+.shop-cart-product-details .badge-warning {
+    color: #FFF;
+    background-color:  #E40046;
+}
+
+.shop-cart-product-details .badge-success {
+    color: #FFF;
+    background-color:  #F17E0A;
+}
+
 /* ------------- shop footer --------------*/
 .shop-footer {
     background: #1E1E1E;

@@ -16,7 +16,7 @@ const productCard = (props) => {
 
                         {props.productDiscountPrice ?
                             <span className="shop-card-discount">
-                                {`${Math.round(((props.productDiscountPrice - props.productPrice)*100)/props.productDiscountPrice)}%`}
+                                {`${Math.round(((props.productDiscountPrice - props.productPrice) * 100) / props.productDiscountPrice)}%`}
                                     </span>
                             : null
                         }
@@ -25,9 +25,17 @@ const productCard = (props) => {
                     <div className="shop-card-content">
                         <h3 className="shop-card-title">{props.productName}</h3>
                         <div className="shop-card-price">Ksh. {props.productPrice.toFixed(2).toLocaleString()}
-                            <span className={'shop-card-discount-price'}>{props.productDiscountPrice.toFixed(2).toLocaleString()}</span>
+                            <span
+                                className={'shop-card-discount-price'}>{props.productDiscountPrice.toFixed(2).toLocaleString()}</span>
                         </div>
-                        <button type="button" className="btn btn-primary btn-sm" onClick={props.addToCart}>Add To Cart</button>
+
+                        <button type="button"
+                                className="btn btn-primary btn-sm"
+                                disabled={props.productQuantity <= 0 }
+                                onClick={props.addToCart}>
+                            {props.productQuantity > 0 ? ' Add To Cart' : 'Out Of Stock'}
+                        </button>
+
                     </div>
                 </div>
 
@@ -37,13 +45,14 @@ const productCard = (props) => {
 };
 
 productCard.propTypes = {
-    productCategory:PropTypes.string.isRequired,
-    productImage:PropTypes.string.isRequired,
-    productSale:PropTypes.bool.isRequired,
-    productDiscountPrice:PropTypes.number.isRequired,
-    productPrice:PropTypes.number.isRequired,
-    productName:PropTypes.string.isRequired,
-    addToCart:PropTypes.func.isRequired,
+    productCategory: PropTypes.string.isRequired,
+    productImage: PropTypes.string.isRequired,
+    productSale: PropTypes.bool.isRequired,
+    productDiscountPrice: PropTypes.number,
+    productPrice: PropTypes.number.isRequired,
+    productName: PropTypes.string.isRequired,
+    addToCart: PropTypes.func.isRequired,
+    productQuantity: PropTypes.number.isRequired,
 
 };
 

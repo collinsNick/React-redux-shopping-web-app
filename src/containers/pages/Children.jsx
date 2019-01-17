@@ -23,6 +23,7 @@ class Children extends Component {
                         productSale={product.sale}
                         productImage={product.img}
                         productCategory={product.category}
+                        productQuantity={product.quantity}
                         addToCart={() => this.props.addProductToCartProp(product.id)}
                     />
                 )
