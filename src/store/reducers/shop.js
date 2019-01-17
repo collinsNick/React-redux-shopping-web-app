@@ -227,6 +227,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
         case actionTypes.ADD_TO_CART:
             let newCart = null;
             // check if product id already exists in cart
@@ -249,19 +250,22 @@ const reducer = (state = initialState, action) => {
                 cartTotal: state.cartTotal + 1,
                 cart: newCart
             }
+
         case actionTypes.REMOVE_FROM_CART:
             newCart = state.cart.filter( product => product.id !== action.productId)
             return {
                 ...state,
                 cart:newCart,
-                cartTotal: state.cartTotal === 0 ? 0 : state.cartTotal -  action.productCount
+                cartTotal: state.cartTotal -  action.productCount
             }
+
         case actionTypes.CLEAR_CART:
             return {
                 ...state,
                 cartTotal: 0,
                 cart:[]
             }
+
         case actionTypes.UPDATE_CART_PRODUCT_COUNT:
             newCart = state.cart.map(
                 product => (product.id === action.productId ?
@@ -272,6 +276,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: newCart
             }
+
         default:
             return {
                 ...state,
