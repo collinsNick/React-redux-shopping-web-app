@@ -230,18 +230,14 @@ const reducer = (state = initialState, action) => {
 
         case actionTypes.ADD_TO_CART:
             let newCart = null;
-            // check if product id already exists in cart
             let chkProductInCart = state.cart.find(product => product.id === action.productId);
             if (chkProductInCart) {
-                // update product count
-                // map to make sure we update the correct product
                 newCart = state.cart.map(
                     product => (product.id === action.productId ?
                             {...product, count: product.count + 1} : product
                     )
                 )
             } else {
-                // add ne product to cart
                 newCart = state.cart.concat({id: action.productId, count: 1})
             }
 
@@ -249,7 +245,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cartTotal: state.cartTotal + 1,
                 cart: newCart
-            }
+            };
 
         case actionTypes.REMOVE_FROM_CART:
             newCart = state.cart.filter(product => product.id !== action.productId)
@@ -257,24 +253,32 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: newCart,
                 cartTotal: state.cartTotal - action.productCount
-            }
+            };
 
         case actionTypes.CLEAR_CART:
             return {
                 ...state,
                 cartTotal: 0,
                 cart: []
-            }
+            };
 
         case actionTypes.UPDATE_CART_PRODUCT_COUNT:
-            newCart = state.cart.map(
-                product => product.id === action.productId ?
+            let product = state.cart.find(product => product.id === action.productId);
+            let cartTotal = state.cartTotal;
+            newCart = state.cart;
+            if (product) {
+                cartTotal = state.cartTotal - (product.count - action.newCountValue);
+                newCart = state.cart.map(
+                    product => product.id === action.productId ?
                         {...product, count: action.newCountValue} : product
-            )
+                );
+            }
+
             return {
                 ...state,
-                cart: newCart
-            }
+                cart: newCart,
+                cartTotal: cartTotal
+            };
 
         default:
             return {

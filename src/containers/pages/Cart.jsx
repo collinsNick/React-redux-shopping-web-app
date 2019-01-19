@@ -8,10 +8,6 @@ import PropTypes from 'prop-types';
 
 class Cart extends Component {
 
-    state = {
-        cartProductCountsState: this.props.cartProductsProp.keys()
-    }
-
     productCountHandler = (field_value, product_in_cart_id) => {
         this.props.updateCartProductCountProp(field_value, product_in_cart_id)
     }
@@ -21,7 +17,6 @@ class Cart extends Component {
         let cartContent = <h5>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
 
         if (this.props.cartTotalProp > 0) {
-            console.log(this.props.cartProductsProp)
             let cartPriceCountArray = [];
             let cartProducts = this.props.cartProductsProp
                 .map((productInCart) => {
@@ -82,7 +77,7 @@ const mapDispatchToProps = dispatch => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),
-        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(value, productId))
+        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId))
     }
 };
 

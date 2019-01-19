@@ -28,7 +28,8 @@ const cartProducts = (props) => {
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
                                     <input
                                         disabled={props.productQuantity <= 0}
-                                        type="input"
+                                        type="number"
+                                        min={'1'}
                                         value={props.productCount}
                                         onChange={props.updateProductCount}
                                         className="form-control input-sm shop-cart-quantity my-3 w-50"/>
