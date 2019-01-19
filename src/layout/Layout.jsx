@@ -27,7 +27,7 @@ class Layout extends Component {
                             <Modal
                                 showModal={this.props.showModal}
                                 closeModalClick={this.props.closeModalProp}>
-                                Sorry! Your order cannot excceed our stock.
+                                {this.props.modalMessage}
                             </Modal> : null
                         }
                     </main>

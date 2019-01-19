@@ -4,7 +4,8 @@ const initialState = {
     cart: [],
     shippingPrice: 200,
     cartTotal: 0,
-    productMaxShowModal:false,
+    productMaxShowModal: false,
+    modalMessage:null,
     products: [
         {
             id: 1,
@@ -232,28 +233,36 @@ const reducer = (state = initialState, action) => {
             let newCart = state.cart;
             let newCartTotal = state.cartTotal;
             let productMaxShowModal = state.productMaxShowModal;
+            let modalMessage = null;
 
-            let chkProductInCart = state.cart.find(product => product.id === action.productId);
-            if (chkProductInCart) {
-                if (chkProductInCart.count < action.productQuantity) {
-                    newCart = state.cart.map(
-                        product => (product.id === action.productId ?
-                                {...product, count: product.count + 1} : product
-                        ));
-                    newCartTotal = state.cartTotal + 1
-                } else {
-                    productMaxShowModal = !state.productMaxShowModal;
-                }
+            if (action.productQuantity <= 0) {
+                productMaxShowModal = !state.productMaxShowModal;
+                modalMessage = 'Sorry! This product is out of stock'
             } else {
-                newCart = state.cart.concat({id: action.productId, count: 1})
-                newCartTotal = state.cartTotal + 1
+                let chkProductInCart = state.cart.find(product => product.id === action.productId);
+                if (chkProductInCart) {
+                    if (chkProductInCart.count < action.productQuantity) {
+                        newCart = state.cart.map(
+                            product => (product.id === action.productId ?
+                                    {...product, count: product.count + 1} : product
+                            ));
+                        newCartTotal = state.cartTotal + 1
+                    } else {
+                        productMaxShowModal = !state.productMaxShowModal;
+                        modalMessage = 'Sorry! Your product order cannot exceed our stock.'
+                    }
+                } else {
+                    newCart = state.cart.concat({id: action.productId, count: 1});
+                    newCartTotal = state.cartTotal + 1
+                }
             }
 
             return {
                 ...state,
                 cartTotal: newCartTotal,
                 cart: newCart,
-                productMaxShowModal:productMaxShowModal
+                productMaxShowModal: productMaxShowModal,
+                modalMessage:modalMessage
             };
 
         case actionTypes.REMOVE_FROM_CART:
@@ -298,7 +307,7 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.CLOSE_MAX_PRODUCT_MODAL:
-            return{
+            return {
                 ...state,
                 productMaxShowModal: !state.productMaxShowModal
             };

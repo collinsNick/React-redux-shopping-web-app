@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { closeMaxProductModal } from './store/actions/shop'
+import {closeMaxProductModal} from './store/actions/shop'
 import Layout from './layout/Layout';
 import Homepage from './containers/pages/Index';
 import Men from './containers/pages/Men';
@@ -19,7 +19,8 @@ class App extends Component {
                 <Layout
                     storeCartCount={this.props.storeCartItemsCount}
                     showModal={this.props.showModalProp}
-                    closeModalProp={this.props.closeModalProp}>
+                    closeModalProp={this.props.closeModalProp}
+                    modalMessage={this.props.modalMessageProp}>
                     <Switch>
                         <Route path={'/'} exact component={Homepage}/>
                         <Route path={'/men'} component={Men}/>
@@ -40,13 +41,14 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         storeCartItemsCount: state.cartTotal,
-        showModalProp: state.productMaxShowModal
+        showModalProp: state.productMaxShowModal,
+        modalMessageProp: state.modalMessage
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeModalProp : () => dispatch(closeMaxProductModal())
+        closeModalProp: () => dispatch(closeMaxProductModal())
     }
 };
 
