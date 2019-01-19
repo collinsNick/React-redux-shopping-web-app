@@ -53,7 +53,7 @@ const cartProducts = (props) => {
             <hr/>
         </React.Fragment>
     )
-}
+};
 
 cartProducts.propTypes = {
     productPhoto: PropTypes.string.isRequired,

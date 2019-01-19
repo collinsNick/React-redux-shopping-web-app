@@ -1,5 +1,4 @@
 import * as actionTypes from './actionTypes';
-import { createBrowserHistory } from 'history/createHashHistory';
 
 export const addToCart = (productId, productQuantity) => {
     return {
@@ -50,5 +49,8 @@ export const shoppingCheckout = () => {
     }
 };
 
-export const redirectAfterCheckout = (ownProps) => {
+export const toogleSideBar = () => {
+    return{
+        type:actionTypes.TOGGLE_SIDE_BAR
+    }
 };

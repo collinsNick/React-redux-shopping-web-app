@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {closeMaxProductModal} from './store/actions/shop'
+import {closeMaxProductModal, toogleSideBar} from './store/actions/shop'
 import Layout from './layout/Layout';
 import Homepage from './containers/pages/Index';
 import Men from './containers/pages/Men';
@@ -20,7 +20,9 @@ class App extends Component {
                     storeCartCount={this.props.storeCartItemsCount}
                     showModal={this.props.showModalProp}
                     closeModalProp={this.props.closeModalProp}
-                    modalMessage={this.props.modalMessageProp}>
+                    modalMessage={this.props.modalMessageProp}
+                    showSideBar={this.props.showSideNavigationProp}
+                    toggleSideBar={this.props.toggleSideBarProp}>
                     <Switch>
                         <Route path={'/'} exact component={Homepage}/>
                         <Route path={'/men'} component={Men}/>
@@ -42,13 +44,15 @@ const mapStateToProps = state => {
     return {
         storeCartItemsCount: state.cartTotal,
         showModalProp: state.productMaxShowModal,
-        modalMessageProp: state.modalMessage
+        modalMessageProp: state.modalMessage,
+        showSideNavigationProp: state.showSideNavigation
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeModalProp: () => dispatch(closeMaxProductModal())
+        closeModalProp: () => dispatch(closeMaxProductModal()),
+        toggleSideBarProp: () => dispatch(toogleSideBar())
     }
 };
 

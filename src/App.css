@@ -20,12 +20,12 @@ nav {
     font-weight: bold;
 }
 
-.nav-link .badge-light {
+.badge-light {
     color: #FFF;
     background-color: #E40046;
 }
 
-.navbar-light .navbar-nav .nav-link.active .badge-light {
+.nav-link.active .badge-light {
     color: #E40046;
     background-color: #FFF;
 }
@@ -237,7 +237,66 @@ nav {
     font-weight: bold;
 }
 
+/* ------------- modal --------------*/
 .modal .shop-display {
     display: block !important
+}
+
+/* ------------- side bar --------------*/
+
+.side-menu-wrapper {
+    width: 200px;
+    position: absolute;
+    min-height: 100vh;
+    margin-left: -200px;
+    background: #FFF;
+    color: #fff;
+    box-shadow: 2px 2px 2px -2px gray;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.page-wrapper {
+    width: 100%;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.shop-sidebar .show,
+.page-wrapper .show {
+    margin-left: 0px;
+}
+
+.nav {
+    list-style-type: none;
+}
+
+.nav .nav-item .nav-link {
+    padding: 20px 20px;
+    font-size: 1.1em;
+    display: block;
+    color: #6e6e6e;
+}
+
+.nav .nav-item .nav-link:hover {
+    color: #E40046;
+}
+
+.nav .nav-item .nav-link.active {
+    background-color: #E40046;
+    color: #FFFFFF;
+}
+
+/* ------------- side bar --------------*/
+@media (max-width: 768px) {
+    .main-wrapper{
+        padding-left: 200px;
+    }
+
+    .page-wrapper {
+        position: relative;
+    }
 }
 

@@ -6,6 +6,7 @@ const initialState = {
     cartTotal: 0,
     productMaxShowModal: false,
     modalMessage:null,
+    showSideNavigation: false,
     products: [
         {
             id: 1,
@@ -303,12 +304,19 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: [],
                 cartTotal: 0
-            }
+            };
 
         case actionTypes.CLOSE_MAX_PRODUCT_MODAL:
             return {
                 ...state,
                 productMaxShowModal: !state.productMaxShowModal
+            };
+
+        case actionTypes.TOGGLE_SIDE_BAR:
+            return{
+                ...state,
+                showSideNavigation: !state.showSideNavigation
+
             };
 
         default:
