@@ -26,14 +26,16 @@ const cartProducts = (props) => {
                             <div className="row">
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
-                                    <input
+                                    <select
+                                        className="form-control input-sm my-3 w-50"
                                         disabled={props.productQuantity <= 0}
-                                        type="number"
-                                        min={'1'}
-                                        max={props.productQuantity}
                                         value={props.productCount}
                                         onChange={props.updateProductCount}
-                                        className="form-control input-sm shop-cart-quantity my-3 w-50"/>
+                                    >
+                                        {[...Array(props.productQuantity)].map( (number,index) => (
+                                            <option key={index} value={index+1}>{index+1}</option>
+                                        ))}
+                                    </select>
                                     <h6 className={'shop-cart-item total'}>Item Total
                                         Ksh. <span>{props.productPrice * props.productCount}</span></h6>
                                 </div>
