@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {ADD_TO_CART} from '../../store/actions/shop';
+import {addToCart} from '../../store/actions/shop';
 import ProductCard from '../../components/ProductCard';
 
 class Index extends Component {
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addProductToCartProp: (productId) => dispatch({type: ADD_TO_CART, productId: productId})
+        addProductToCartProp: (productId) => dispatch(addToCart(productId))
     }
 };
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import * as actionTypes from '../../store/actions/shop';
+import {removeFromCart, clearCart, updateCartProductCount} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
 import PropTypes from 'prop-types';
@@ -29,8 +29,9 @@ class Cart extends Component {
                     // product information can also be stored in state
                     let productFromStore = this.props.productProps.find(product => product.id === productInCart.id);
                     cartPriceCountArray.push({
-                        price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: productInCart.count}
-                        )
+                            price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: productInCart.count
+                        }
+                    )
                     return (
                         <CartProduct
                             key={productInCart.id}
@@ -79,19 +80,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeProductFromCartProp: (productId, count) => dispatch({
-            type: actionTypes.REMOVE_FROM_CART,
-            productId: productId,
-            productCount: count
-        }),
-
-        clearProductsFromCartProp: () => dispatch({type: actionTypes.CLEAR_CART}),
-
-        updateCartProductCountProp: (value, productId) => dispatch({
-            type: actionTypes.UPDATE_CART_PRODUCT_COUNT,
-            newCountValue: productId,
-            productId: productId
-        })
+        removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
+        clearProductsFromCartProp: () => dispatch(clearCart()),
+        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(value, productId))
     }
 };
 
