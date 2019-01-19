@@ -1,9 +1,10 @@
 import * as actionTypes from './actionTypes';
 
-export const addToCart = (productId) => {
+export const addToCart = (productId, productQuantity) => {
     return {
         type: actionTypes.ADD_TO_CART,
-        productId: productId
+        productId: productId,
+        productQuantity: productQuantity
     }
 };
 
@@ -25,6 +26,12 @@ export const updateCartProductCount = (value, productId) => {
     return {
         type: actionTypes.UPDATE_CART_PRODUCT_COUNT,
         newCountValue: value,
-        productId: productId
+        productId: productId,
     }
 };
+
+export const checkout = () => {
+    return {
+        type: actionTypes.CHECKOUT
+    }
+}

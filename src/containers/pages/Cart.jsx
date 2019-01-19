@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {removeFromCart, clearCart, updateCartProductCount} from '../../store/actions/shop';
+import {removeFromCart, clearCart, updateCartProductCount, checkout} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
 import PropTypes from 'prop-types';
 
 class Cart extends Component {
 
-    productCountHandler = (field_value, product_in_cart_id) => {
-        this.props.updateCartProductCountProp(field_value, product_in_cart_id)
+    productCountHandler = (field_value, product_id) => {
+        this.props.updateCartProductCountProp(field_value, product_id)
     }
 
     render() {
@@ -46,7 +46,8 @@ class Cart extends Component {
                 shippingPrice={this.props.shippingPriceProp}
                 subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count), 0)}
                 clearCart={() => this.props.clearProductsFromCartProp()}
-            />
+                checkout={() => this.props.checkoutProp()}
+            />;
 
             cartContent = (
                 <React.Fragment>
@@ -77,7 +78,8 @@ const mapDispatchToProps = dispatch => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),
-        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId))
+        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId)),
+        checkoutProp: () => dispatch(checkout())
     }
 };
 

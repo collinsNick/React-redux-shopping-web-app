@@ -15,7 +15,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'watch',
-            quantity: 10,
+            quantity: 5,
             img: 'analog-quartz-watch.jpg',
         },
         {
@@ -27,7 +27,7 @@ const initialState = {
             subcategory: '',
             sale: false,
             article: 'handbag',
-            quantity: 10,
+            quantity: 8,
             img: 'singedani-handbag.jpg'
         },
         {
@@ -39,7 +39,7 @@ const initialState = {
             subcategory: 'boys',
             sale: true,
             article: 'boxer',
-            quantity: 10,
+            quantity: 3,
             img: 'boy_boxers.jpg'
         },
         {
@@ -75,7 +75,7 @@ const initialState = {
             subcategory: 'girls',
             sale: true,
             article: 'dress',
-            quantity: 10,
+            quantity: 2,
             img: 'cotton-dress.jpg'
         },
         {
@@ -87,7 +87,7 @@ const initialState = {
             subcategory: '',
             sale: false,
             article: 'shoes',
-            quantity: 10,
+            quantity: 6,
             img: 'gemch_shoes.jpg'
         },
         {
@@ -111,7 +111,7 @@ const initialState = {
             subcategory: 'girls',
             sale: false,
             article: 'dress',
-            quantity: 10,
+            quantity: 9,
             img: 'leather-shoes.jpg'
         },
         {
@@ -135,7 +135,7 @@ const initialState = {
             subcategory: '',
             sale: false,
             article: 'dress',
-            quantity: 10,
+            quantity: 7,
             img: 'bodycon-dress.jpg'
         },
         {
@@ -147,7 +147,7 @@ const initialState = {
             subcategory: 'girls',
             sale: true,
             article: 'dress',
-            quantity: 10,
+            quantity: 4,
             img: 'princes-dress.jpg'
         },
         {
@@ -159,7 +159,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'suit',
-            quantity: 10,
+            quantity: 3,
             img: 'slim-fit-suit.jpg'
         },
         {
@@ -171,7 +171,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'sandals',
-            quantity: 10,
+            quantity: 2,
             img: 'gladiator-flat-flip.jpg'
         },
         {
@@ -195,7 +195,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'suit',
-            quantity: 10,
+            quantity: 8,
             img: 'vest.jpg'
         },
         {
@@ -207,7 +207,7 @@ const initialState = {
             subcategory: '',
             sale: true,
             article: 'watch',
-            quantity: 10,
+            quantity: 4,
             img: 'gladiator-flat-flip.jpg'
         },
         {
@@ -219,7 +219,7 @@ const initialState = {
             subcategory: 'boys',
             sale: true,
             article: 'dress',
-            quantity: 10,
+            quantity: 7,
             img: 'crew-neck-tshirt.jpg'
         },
     ]
@@ -229,21 +229,30 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case actionTypes.ADD_TO_CART:
-            let newCart = null;
+            let newCart = state.cart;
+            let newCartTotal = state.cartTotal;
+            // check if product is in cart
             let chkProductInCart = state.cart.find(product => product.id === action.productId);
             if (chkProductInCart) {
-                newCart = state.cart.map(
-                    product => (product.id === action.productId ?
-                            {...product, count: product.count + 1} : product
-                    )
-                )
+                // check if product count in cart is not greater than total product quantity
+                if (chkProductInCart.count <= action.productQuantity) {
+                    newCart = state.cart.map(
+                        product => (product.id === action.productId ?
+                                {...product, count: product.count + 1} : product
+                        ));
+                    newCartTotal = state.cartTotal + 1
+                } else {
+                    alert('You cannot order more than we have in stock')
+                }
+
             } else {
+                // add new product to cart
                 newCart = state.cart.concat({id: action.productId, count: 1})
             }
 
             return {
                 ...state,
-                cartTotal: state.cartTotal + 1,
+                cartTotal: newCartTotal,
                 cart: newCart
             };
 
@@ -279,6 +288,14 @@ const reducer = (state = initialState, action) => {
                 cart: newCart,
                 cartTotal: cartTotal
             };
+
+        case actionTypes.CHECKOUT:
+            alert('checked out');
+            return {
+                ...state,
+                cart: [],
+                cartTotal: 0
+            }
 
         default:
             return {

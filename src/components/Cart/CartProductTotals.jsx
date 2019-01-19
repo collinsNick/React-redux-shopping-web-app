@@ -39,7 +39,8 @@ const cartProductTotals = (props) => {
                         shopping</Link>
                     <button className="btn btn-secondary"
                             type="submit"
-                            disabled={props.subtotal <= 0}>
+                            disabled={props.subtotal <= 0}
+                            onClick={props.checkout}>
                         Checkout
                     </button>
                 </div>

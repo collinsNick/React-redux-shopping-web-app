@@ -8,6 +8,7 @@ import Women from './containers/pages/Women';
 import Children from './containers/pages/Children';
 import Sale from './containers/pages/Sale';
 import Cart from './containers/pages/Cart';
+import Checkout from './containers/pages/Checkout';
 import './App.css';
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
                   <Route path={'/children'} component={Children}/>
                   <Route path={'/sale'} component={Sale}/>
                   <Route path={'/Cart'} component={Cart}/>
+                  <Route path={'/checkout'} component={Checkout}/>
                   {/*always redirect to index*/}
                   <Redirect to={'/'}/>
               </Switch>

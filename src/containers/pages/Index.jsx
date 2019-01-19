@@ -24,7 +24,7 @@ class Index extends Component {
                         productImage={product.img}
                         productCategory={product.category}
                         productQuantity={product.quantity}
-                        addToCart={() => this.props.addProductToCartProp(product.id)}
+                        addToCart={() => this.props.addProductToCartProp(product.id, product.quantity)}
                     />
                 )
             })
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addProductToCartProp: (productId) => dispatch(addToCart(productId))
+        addProductToCartProp: (productId, productQuantity) => dispatch(addToCart(productId, productQuantity))
     }
 };
 
