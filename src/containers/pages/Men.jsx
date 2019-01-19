@@ -13,7 +13,6 @@ class Men extends Component {
 
         if (this.props.productsProps) {
             products = this.props.productsProps
-                .filter(product => product.category === 'men')
                 .map(product => {
                     return (
                         <ProductCard
@@ -40,7 +39,7 @@ class Men extends Component {
 
 const mapStateToProps = state => {
     return {
-        productsProps: state.products
+        productsProps: state.products.filter(product => product.category === 'men')
     }
 };
 

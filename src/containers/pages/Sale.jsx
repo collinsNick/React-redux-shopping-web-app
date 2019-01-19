@@ -13,7 +13,6 @@ class Sale extends Component {
 
         if (this.props.productsProps) {
             products = this.props.productsProps
-                .filter( product => product.sale === true)
                 .map(product => {
                 return (
                     <ProductCard
@@ -40,7 +39,7 @@ class Sale extends Component {
 
 const mapStateToProps = state => {
     return {
-         productsProps: state.products
+         productsProps: state.products.filter( product => product.sale === true)
     }
 };
 

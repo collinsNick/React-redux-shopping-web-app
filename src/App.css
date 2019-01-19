@@ -164,11 +164,12 @@ nav {
     height: 100px;
 }
 
-.btn-primary,
-.btn-primary:hover{
+.btn-warning,
+.btn-warning:hover{
     color: #fff;
-    background-color: #E40046;
+    background-color: transparent;
     border-color: #E40046;
+    color: #E40046;
 }
 
 .btn-secondary,

@@ -30,6 +30,7 @@ const cartProducts = (props) => {
                                         disabled={props.productQuantity <= 0}
                                         type="number"
                                         min={'1'}
+                                        max={props.productQuantity}
                                         value={props.productCount}
                                         onChange={props.updateProductCount}
                                         className="form-control input-sm shop-cart-quantity my-3 w-50"/>
@@ -38,7 +39,7 @@ const cartProducts = (props) => {
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 text-right shop-cart-b-container">
                                     <button type="button" onClick={props.removeCartProduct}
-                                            className="btn btn-primary btn-sm">
+                                            className="btn btn-warning btn-sm">
                                         Remove
                                     </button>
                                 </div>
