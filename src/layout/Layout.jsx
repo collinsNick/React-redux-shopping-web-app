@@ -7,6 +7,7 @@ import SideMenu from '../components/Menus/SideMenu';
 import Footer from '../components/Footer';
 import LeftColumn from '../components/LeftColumn';
 import Modal from '../components/UI/Modal/Modal';
+import Backdrop from '../components/UI/Backdrop/Backdrop';
 import PropTypes from 'prop-types';
 
 class Layout extends Component {
@@ -15,7 +16,10 @@ class Layout extends Component {
             <React.Fragment>
                 <MainWrapper>
                     <SideMenuWrapper showSideBar={this.props.showSideBar}>
+                        <Backdrop showBackDrop={this.props.showSideBar}
+                                  closeSomething={this.props.toggleSideBar}/>
                         <SideMenu cartItemNumber={this.props.storeCartCount}/>
+
                     </SideMenuWrapper>
                     <ContentWrapper>
                         <header>

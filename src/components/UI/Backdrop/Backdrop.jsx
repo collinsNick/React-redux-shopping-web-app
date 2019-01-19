@@ -2,7 +2,7 @@ import React from 'react';
 
 const backDrop = (props) => {
     return (
-        props.showBackDrop ? <div className={'modal-backdrop show'} onClick={props.closeModal}></div> : null
+        props.showBackDrop ? <div className={'shop-backdrop'} onClick={props.closeSomething}></div> : null
     )
 }
 

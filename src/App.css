@@ -253,7 +253,7 @@ nav {
     margin-left: -200px;
     box-shadow: 2px 2px 2px -2px gray;
     transition: all 0.3s;
-    z-index: 999;
+    z-index: 2050;
 }
 
 .page-wrapper {
@@ -289,6 +289,17 @@ nav {
     color: #FFFFFF;
 }
 
+/* ------------- backdrop --------------*/
+.shop-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0, 0.5);
+}
+
 /* ------------- side bar --------------*/
 @media (max-width: 767px) {
 
@@ -310,5 +321,6 @@ nav {
     .side-menu-wrapper.show {
         margin-left: -200px;
     }
+
 }
 

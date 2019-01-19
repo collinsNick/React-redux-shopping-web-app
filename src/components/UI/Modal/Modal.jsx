@@ -4,7 +4,7 @@ import Backdrop from '../Backdrop/Backdrop';
 const modal = (props) => {
     return(
         <React.Fragment>
-            <Backdrop showBackDrop={props.showModal} closeModal={props.closeModalClick}/>
+            <Backdrop showBackDrop={props.showModal} closeSomething={props.closeModalClick}/>
             <div className={'modal fade show'} style={{display:'block'}}>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
