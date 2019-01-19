@@ -299,7 +299,6 @@ const reducer = (state = initialState, action) => {
             };
 
         case actionTypes.CHECKOUT:
-            alert('checked out');
             return {
                 ...state,
                 cart: [],

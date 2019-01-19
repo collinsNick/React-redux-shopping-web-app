@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { createBrowserHistory } from 'history/createHashHistory';
 
 export const addToCart = (productId, productQuantity) => {
     return {
@@ -30,9 +31,10 @@ export const updateCartProductCount = (value, productId) => {
     }
 };
 
-export const checkout = () => {
-    return {
-        type: actionTypes.CHECKOUT
+export const checkout = (ownProps) => {
+    return dispatch => {
+        dispatch(shoppingCheckout());
+        ownProps.history.push('/checkout')
     }
 };
 
@@ -40,4 +42,13 @@ export const closeMaxProductModal = () => {
     return {
         type: actionTypes.CLOSE_MAX_PRODUCT_MODAL
     }
-}
+};
+
+export const shoppingCheckout = () => {
+    return {
+        type: actionTypes.CHECKOUT
+    }
+};
+
+export const redirectAfterCheckout = (ownProps) => {
+};

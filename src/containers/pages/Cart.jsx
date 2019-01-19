@@ -74,12 +74,12 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch,ownProps) => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),
         updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId)),
-        checkoutProp: () => dispatch(checkout())
+        checkoutProp: () => dispatch(checkout(ownProps))
     }
 };
 

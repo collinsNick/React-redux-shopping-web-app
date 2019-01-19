@@ -27,7 +27,7 @@ class App extends Component {
                         <Route path={'/women'} component={Women}/>
                         <Route path={'/children'} component={Children}/>
                         <Route path={'/sale'} component={Sale}/>
-                        <Route path={'/Cart'} component={Cart}/>
+                        <Route path={'/cart'} component={Cart}/>
                         <Route path={'/checkout'} component={Checkout}/>
                         {/*always redirect to index*/}
                         <Redirect to={'/'}/>

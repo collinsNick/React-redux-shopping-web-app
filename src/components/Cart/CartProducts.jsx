@@ -25,7 +25,7 @@ const cartProducts = (props) => {
                         <div className="col-sm-6">
                             <div className="row">
                                 <div className="col-sm-6 text-left">
-                                    <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice}</h6>
+                                    <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice.toLocaleString()}</h6>
                                     <select
                                         className="form-control input-sm my-3 w-50"
                                         disabled={props.productQuantity <= 0}
@@ -37,7 +37,7 @@ const cartProducts = (props) => {
                                         ))}
                                     </select>
                                     <h6 className={'shop-cart-item total'}>Item Total
-                                        Ksh. <span>{props.productPrice * props.productCount}</span></h6>
+                                        Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span></h6>
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 text-right shop-cart-b-container">
                                     <button type="button" onClick={props.removeCartProduct}

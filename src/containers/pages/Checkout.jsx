@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 
-class Checkout extends Component{
-    render(){
-        return(
-            <h3>
-                Thank you for shopping with us
-            </h3>
+class Checkout extends Component {
+    render() {
+        return (
+            <div className={'p-4 shop-div'}>
+                <h5>
+                    Thank you for shopping with us. Comeback again soon.
+                </h5>
+            </div>
+
         )
     }
 }

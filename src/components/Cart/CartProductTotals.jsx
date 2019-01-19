@@ -10,7 +10,7 @@ const cartProductTotals = (props) => {
                     Subtotal
                 </div>
                 <div className="col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {props.subtotal}
+                    Ksh. {props.subtotal.toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -19,7 +19,7 @@ const cartProductTotals = (props) => {
                     Estimated shipping
                 </div>
                 <div className="col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {props.shippingPrice}
+                    Ksh. {props.shippingPrice.toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -28,7 +28,7 @@ const cartProductTotals = (props) => {
                     <h4 className={'shop-cart-total'}>Total</h4>
                 </div>
                 <div className="col-sm-3 text-right">
-                    <h4 className={'shop-cart-total'}>Ksh. {props.shippingPrice + props.subtotal}</h4>
+                    <h4 className={'shop-cart-total'}>Ksh. {(props.shippingPrice + props.subtotal).toLocaleString()}</h4>
                 </div>
             </div>
             <hr/>
