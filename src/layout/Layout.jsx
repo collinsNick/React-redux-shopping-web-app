@@ -26,7 +26,7 @@ class Layout extends Component {
                         <main>
                             <div className="container py-4">
                                 <div className="row">
-                                    <div className="col-md-4 col-lg-3">
+                                    <div className="col-md-4 col-lg-3 shop-hide">
                                         <LeftColumn/>
                                     </div>
                                     <div className="col-md-8 col-lg-9">

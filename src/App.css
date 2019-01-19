@@ -246,11 +246,11 @@ nav {
 
 .side-menu-wrapper {
     width: 200px;
-    position: absolute;
     min-height: 100vh;
-    margin-left: -200px;
     background: #FFF;
     color: #fff;
+    position: fixed;
+    margin-left: -200px;
     box-shadow: 2px 2px 2px -2px gray;
     transition: all 0.3s;
     z-index: 999;
@@ -264,10 +264,10 @@ nav {
     right: 0;
 }
 
-.shop-sidebar .show,
-.page-wrapper .show {
+.side-menu-wrapper.show {
     margin-left: 0px;
 }
+
 
 .nav {
     list-style-type: none;
@@ -290,13 +290,25 @@ nav {
 }
 
 /* ------------- side bar --------------*/
-@media (max-width: 768px) {
-    .main-wrapper{
-        padding-left: 200px;
+@media (max-width: 767px) {
+
+    .shop-hide {
+        display: none;
     }
 
-    .page-wrapper {
-        position: relative;
+    .page-wrapper{
+        position:relative;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .side-menu-wrapper {
+        margin-left: -200px;
+    }
+
+    .side-menu-wrapper.show {
+        margin-left: -200px;
     }
 }
 
