@@ -34,4 +34,10 @@ export const checkout = () => {
     return {
         type: actionTypes.CHECKOUT
     }
+};
+
+export const closeMaxProductModal = () => {
+    return {
+        type: actionTypes.CLOSE_MAX_PRODUCT_MODAL
+    }
 }

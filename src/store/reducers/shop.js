@@ -4,7 +4,7 @@ const initialState = {
     cart: [],
     shippingPrice: 200,
     cartTotal: 0,
-    sale: false,
+    productMaxShowModal:false,
     products: [
         {
             id: 1,
@@ -231,29 +231,29 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_TO_CART:
             let newCart = state.cart;
             let newCartTotal = state.cartTotal;
-            // check if product is in cart
+            let productMaxShowModal = state.productMaxShowModal;
+
             let chkProductInCart = state.cart.find(product => product.id === action.productId);
             if (chkProductInCart) {
-                // check if product count in cart is not greater than total product quantity
-                if (chkProductInCart.count <= action.productQuantity) {
+                if (chkProductInCart.count < action.productQuantity) {
                     newCart = state.cart.map(
                         product => (product.id === action.productId ?
                                 {...product, count: product.count + 1} : product
                         ));
                     newCartTotal = state.cartTotal + 1
                 } else {
-                    alert('You cannot order more than we have in stock')
+                    productMaxShowModal = !state.productMaxShowModal;
                 }
-
             } else {
-                // add new product to cart
                 newCart = state.cart.concat({id: action.productId, count: 1})
+                newCartTotal = state.cartTotal + 1
             }
 
             return {
                 ...state,
                 cartTotal: newCartTotal,
-                cart: newCart
+                cart: newCart,
+                productMaxShowModal:productMaxShowModal
             };
 
         case actionTypes.REMOVE_FROM_CART:
@@ -296,6 +296,12 @@ const reducer = (state = initialState, action) => {
                 cart: [],
                 cartTotal: 0
             }
+
+        case actionTypes.CLOSE_MAX_PRODUCT_MODAL:
+            return{
+                ...state,
+                productMaxShowModal: !state.productMaxShowModal
+            };
 
         default:
             return {

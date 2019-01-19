@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import LeftColumn from '../components/LeftColumn';
+import Modal from '../components/UI/Modal/Modal';
 
 class Layout extends Component {
     render() {
@@ -15,18 +16,24 @@ class Layout extends Component {
                         <div className="container py-4">
                             <div className="row">
                                 <div className="col-md-4 col-lg-3">
-                                    <LeftColumn />
+                                    <LeftColumn/>
                                 </div>
                                 <div className="col-md-8 col-lg-9">
                                     {this.props.children}
                                 </div>
                             </div>
                         </div>
-
+                        {this.props.showModal ?
+                            <Modal
+                                showModal={this.props.showModal}
+                                closeModalClick={this.props.closeModalProp}>
+                                Sorry! You cannot order more of this product.
+                            </Modal> : null
+                        }
                     </main>
 
                     <footer>
-                        <Footer />
+                        <Footer/>
                     </footer>
                 </div>
             </React.Fragment>
