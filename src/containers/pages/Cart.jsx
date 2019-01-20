@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {removeFromCart, clearCart, updateCartProductCount, checkout} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
+import SubsidiaryLayout from '../../Layouts/SubsidiaryLayout';
 import PropTypes from 'prop-types';
 
 class Cart extends Component {
@@ -14,7 +15,8 @@ class Cart extends Component {
 
     render() {
 
-        let cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
+        let cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link>
+        </h5>;
 
         if (this.props.cartTotalProp > 0) {
             let cartPriceCountArray = [];
@@ -58,9 +60,9 @@ class Cart extends Component {
         }
 
         return (
-            <div className={'p-4 shop-div'}>
+            <SubsidiaryLayout>
                 {cartContent}
-            </div>
+            </SubsidiaryLayout>
         )
     }
 }
@@ -74,7 +76,7 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = (dispatch,ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),

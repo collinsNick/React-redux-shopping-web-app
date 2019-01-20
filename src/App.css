@@ -316,11 +316,6 @@ nav {
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 
-    /* ------------- general --------------*/
-    .shop-hide {
-        display: none;
-    }
-
     /* ------------- footer --------------*/
     .shop-footer {
         font-size: .9rem;
@@ -385,6 +380,13 @@ nav {
 
     .side-menu-wrapper.show {
         margin-left: -200px;
+    }
+
+}
+
+@media (max-width: 900px){
+    .shop-hide {
+        display: none;
     }
 
 }

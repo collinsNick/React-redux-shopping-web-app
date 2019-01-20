@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {closeMaxProductModal, toogleSideBar} from './store/actions/shop'
-import Layout from './layout/Layout';
+import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/pages/Index';
 import Men from './containers/pages/Men';
 import Women from './containers/pages/Women';
@@ -16,7 +16,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Layout
+                <MainLayout
                     storeCartCount={this.props.storeCartItemsCount}
                     showModal={this.props.showModalProp}
                     closeModalProp={this.props.closeModalProp}
@@ -34,7 +34,8 @@ class App extends Component {
                         {/*always redirect to index*/}
                         <Redirect to={'/'}/>
                     </Switch>
-                </Layout>
+                </MainLayout>
+
             </div>
         );
     }

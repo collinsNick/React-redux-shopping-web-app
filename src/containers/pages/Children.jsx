@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {addToCart} from "../../store/actions/shop";
 import ProductCard from "../../components/ProductCard";
+import SecondaryLayout from "../../Layouts/SecondaryLayout";
 
 class Children extends Component {
     render() {
@@ -29,9 +30,9 @@ class Children extends Component {
             })
         }
         return (
-            <div className="row">
+            <SecondaryLayout>
                 {products}
-            </div>
+            </SecondaryLayout>
         )
     }
 }
