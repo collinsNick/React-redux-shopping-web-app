@@ -4,6 +4,10 @@
     padding-left: 0;
 }
 
+.shop-container {
+    width: 75%;
+}
+
 /* ------------- shop menu --------------*/
 
 .navbar {
@@ -316,6 +320,15 @@ nav {
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 
+    /* ------------- general --------------*/
+    .shop-container {
+        width: 100%;
+    }
+
+    .shop-hide{
+        display:none;
+    }
+
     /* ------------- footer --------------*/
     .shop-footer {
         font-size: .9rem;
@@ -367,9 +380,32 @@ nav {
         margin-bottom: .9rem;
     }
 
-    .checkout{
+    .checkout {
         margin-right: .5rem;
     }
+
+}
+
+@media (min-width: 767.99px) and (max-width: 991.98px) {
+
+    .shop-container {
+        width: 100%;
+    }
+
+    /* ------------- product card --------------*/
+    .shop-card .shop-card-discount,
+    .shop-card .shop-card-sale {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+       .shop-card .shop-card-title {
+        font-size: 14px;
+    }
+
+       
+
+
 
 }
 
@@ -384,10 +420,7 @@ nav {
 
 }
 
-@media (max-width: 900px){
-    .shop-hide {
-        display: none;
-    }
+@media (max-width: 900px) {
 
 }
 
