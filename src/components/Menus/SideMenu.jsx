@@ -3,13 +3,17 @@ import Menu from '../UI/Menu/Menu';
 import MenuComponent from '../Menus/MenuComponent';
 import PropTypes from 'prop-types';
 import mainMenu from "./MainMenu";
+import Backdrop from '../UI/Backdrop/Backdrop';
 
 const sideMenu = (props) => {
-        return (
+    return (
+        <React.Fragment>
             <Menu menuClasses="nav flex-column">
                 <MenuComponent cartCount={props.cartItemNumber}/>
             </Menu>
-        )
+            {/*<Backdrop showBackDrop={props.showBackDrop}/>*/}
+        </React.Fragment>
+    )
 };
 
 mainMenu.propTypes = {

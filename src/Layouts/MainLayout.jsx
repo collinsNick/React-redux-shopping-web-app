@@ -13,11 +13,11 @@ class MainLayout extends Component {
         return (
             <React.Fragment>
                 <MainWrapper>
-                    <SideMenuWrapper showSideBar={this.props.showSideBar}>
-                        {/*<Backdrop showBackDrop={this.props.showSideBar}*/}
-                        {/*closeSomething={this.props.toggleSideBar}/>*/}
-                        <SideMenu cartItemNumber={this.props.storeCartCount}/>
-
+                    <SideMenuWrapper
+                        showSideBar={this.props.showSideBar}
+                        toggleSideMenu={this.props.toggleSideBar}>
+                        <SideMenu cartItemNumber={this.props.storeCartCount}
+                                  showBackDrop={this.props.showSideBar}/>
                     </SideMenuWrapper>
                     <ContentWrapper>
                         <header>
@@ -50,7 +50,8 @@ MainLayout.propTpes = {
     showModal: PropTypes.bool,
     closeModalClick: PropTypes.func,
     modalMessage: PropTypes.string,
-    showSideBar: PropTypes.bool
+    showSideBar: PropTypes.bool,
+    toggleSideBar: PropTypes.func.isRequired
 };
 
 export default MainLayout;

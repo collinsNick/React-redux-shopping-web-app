@@ -9,7 +9,7 @@ const backDrop = (props) => {
 
 backDrop.propTypes = {
     showBackDrop : PropTypes.bool.isRequired,
-    closeSomething : PropTypes.func.isRequired,
+    closeSomething : PropTypes.func,
 };
 
 export default backDrop;
