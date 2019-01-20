@@ -90,6 +90,7 @@ nav {
 .shop-card .shop-card-image {
     background-color: #FFFFFF;
     position: relative;
+    padding-top: .5rem;
 }
 
 .shop-card .shop-card-image a {
