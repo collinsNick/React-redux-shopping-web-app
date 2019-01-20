@@ -3,7 +3,6 @@ import Menu from '../UI/Menu/Menu';
 import MenuComponent from '../Menus/MenuComponent';
 import PropTypes from 'prop-types';
 import mainMenu from "./MainMenu";
-import Backdrop from '../UI/Backdrop/Backdrop';
 
 const sideMenu = (props) => {
     return (
