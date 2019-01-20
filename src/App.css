@@ -159,6 +159,16 @@ nav {
     background-color: #FFF;
 }
 
+.shop-cart-b-container {
+    text-align: right !important;
+}
+
+.shop-empty-cart a,
+.shop-empty-cart a .hover {
+    color: #F17E0A;
+    text-decoration: none;
+}
+
 .shop-cart-image {
     width: 100px;
     height: 100px;
@@ -177,6 +187,10 @@ nav {
     color: #fff;
     background-color: #F17E0A;
     border-color: #F17E0A;
+}
+
+.btn-outline-secondary {
+    margin-right: 1rem;
 }
 
 .btn-outline-secondary:hover {
@@ -268,14 +282,13 @@ nav {
     margin-left: 0px;
 }
 
-
 .nav {
     list-style-type: none;
 }
 
 .nav .nav-item .nav-link {
-    padding: 20px 20px;
-    font-size: 1.1em;
+    padding: 15px 20px;
+    font-size: 1em;
     display: block;
     color: #6e6e6e;
 }
@@ -291,29 +304,81 @@ nav {
 
 /* ------------- backdrop --------------*/
 .shop-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1040;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* ------------- side bar --------------*/
-@media (max-width: 767px) {
+@media (max-width: 767.98px) {
 
+    /* ------------- general --------------*/
     .shop-hide {
         display: none;
     }
 
-    .page-wrapper{
-        position:relative;
+    /* ------------- footer --------------*/
+    .shop-footer {
+        font-size: .9rem;
+    }
+
+    /* ------------- product card --------------*/
+    .shop-card .shop-card-discount,
+    .shop-card .shop-card-sale {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .shop-card .shop-card-title {
+        font-size: 14px;
+    }
+
+    /* ------------- cart page --------------*/
+    .shop-empty-cart,
+    .shop-checkout {
+        font-size: 1rem !important;
+    }
+
+    .shop-cart-name {
+        font-size: .95rem;
+        font-weight: 500;
+        margin-top: .5rem;
+    }
+
+    .shop-cart-category {
+        font-size: .9rem;
+    }
+
+    .shop-cart-item-price {
+        margin-top: .5rem;
+        font-size: .9rem
+    }
+
+    .shop-cart-item-total {
+        font-size: .9rem;
+    }
+
+    .shop-cart-b-container {
+        text-align: left !important;
+        margin-top: .5rem;
+    }
+
+    .btn-outline-secondary {
+        margin-right: .5rem;
+        margin-bottom: .9rem;
+    }
+
+    .checkout{
+        margin-right: .5rem;
     }
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767.99px) {
     .side-menu-wrapper {
         margin-left: -200px;
     }

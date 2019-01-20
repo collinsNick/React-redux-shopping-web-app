@@ -39,7 +39,7 @@ const cartProducts = (props) => {
                                     <h6 className={'shop-cart-item total'}>Item Total
                                         Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span></h6>
                                 </div>
-                                <div className="col-sm-4 offset-sm-2 text-right shop-cart-b-container">
+                                <div className="col-sm-4 offset-sm-2 shop-cart-b-container">
                                     <button type="button" onClick={props.removeCartProduct}
                                             className="btn btn-warning btn-sm">
                                         Remove

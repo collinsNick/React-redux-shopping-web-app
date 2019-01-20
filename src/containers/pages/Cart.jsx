@@ -14,7 +14,7 @@ class Cart extends Component {
 
     render() {
 
-        let cartContent = <h5>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
+        let cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link></h5>;
 
         if (this.props.cartTotalProp > 0) {
             let cartPriceCountArray = [];

@@ -16,8 +16,8 @@ class Layout extends Component {
             <React.Fragment>
                 <MainWrapper>
                     <SideMenuWrapper showSideBar={this.props.showSideBar}>
-                        <Backdrop showBackDrop={this.props.showSideBar}
-                                  closeSomething={this.props.toggleSideBar}/>
+                        {/*<Backdrop showBackDrop={this.props.showSideBar}*/}
+                                  {/*closeSomething={this.props.toggleSideBar}/>*/}
                         <SideMenu cartItemNumber={this.props.storeCartCount}/>
 
                     </SideMenuWrapper>
