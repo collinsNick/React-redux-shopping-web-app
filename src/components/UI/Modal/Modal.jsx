@@ -1,11 +1,12 @@
 import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
+import PropTypes from 'prop-types';
 
 const modal = (props) => {
-    return(
+    return (
         <React.Fragment>
             <Backdrop showBackDrop={props.showModal} closeSomething={props.closeModalClick}/>
-            <div className={'modal fade show'} style={{display:'block'}}>
+            <div className={'modal fade show'} style={{display: 'block'}}>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-body">
@@ -14,7 +15,8 @@ const modal = (props) => {
                         <div className="modal-footer">
                             <button type="button"
                                     className="btn btn-secondary"
-                            onClick={props.closeModalClick}>Continue Shopping</button>
+                                    onClick={props.closeModalClick}>Continue Shopping
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -22,6 +24,11 @@ const modal = (props) => {
         </React.Fragment>
 
     )
-}
+};
+
+modal.propTypes = {
+    closeModalClick: PropTypes.func.isRequired,
+    showModal: PropTypes.bool.isRequired
+};
 
 export default modal;

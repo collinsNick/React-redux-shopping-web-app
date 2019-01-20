@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const sideMenuWrapper = (props) => {
     return (
@@ -6,6 +7,10 @@ const sideMenuWrapper = (props) => {
             {props.children}
         </div>
     )
-}
+};
+
+sideMenuWrapper.propTypes = {
+    showSideBar: PropTypes.bool.isRequired
+};
 
 export default sideMenuWrapper;

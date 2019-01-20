@@ -13,7 +13,6 @@ const sideMenu = (props) => {
 };
 
 mainMenu.propTypes = {
-    toggleSideBar: PropTypes.func.isRequired,
     cartItemNumber: PropTypes.number.isRequired
 };
 
