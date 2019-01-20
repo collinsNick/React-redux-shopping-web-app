@@ -1,7 +1,7 @@
 ## React-Redux ecommerce web application
 this is a sample ecommerce web app made using react, redux and react router.
 
-live demo can be found at [https://github.com/facebook/create-react-app](https://github.com/facebook/create-react-app).
+live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
 
 ## Build Setup
 
