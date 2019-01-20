@@ -1,4 +1,4 @@
-/* ------------- app css --------------*/
+/* ------------- general --------------*/
 .container-fluid {
     padding-right: 0;
     padding-left: 0;
@@ -146,12 +146,14 @@ nav {
     display: inline-block
 }
 
-.shop-card .btn-primary,
-.shop-card .btn-primary:focus,
-.shop-card .btn-primary.focus,
-.shop-card .btn-primary:hover,
-.shop-card .btn-primary:active,
-.shop-card .btn-primary.active {
+.shop-btn-primary,
+.shop-btn-primary:focus,
+.shop-btn-primary.focus,
+.shop-btn-primary:hover,
+.shop-btn-primary:active,
+.shop-btn-primary:active:focus,
+.shop-btn-primary.active {
+    color:#FFF;
     font-size: 13px;
     background-color: #F17E0A;
     font-weight: 600;
@@ -178,29 +180,29 @@ nav {
     height: 100px;
 }
 
-.btn-warning,
-.btn-warning:hover {
-    color: #fff;
+.shop-btn-warning,
+.shop-btn-warning:focus,
+.shop-btn-warning.focus,
+.shop-btn-warning:hover,
+.shop-btn-warning:active,
+.shop-btn-warning:active:focus,
+.shop-btn-warning.active {
     background-color: transparent;
     border-color: #E40046;
     color: #E40046;
 }
 
-.btn-secondary,
-.btn-secondary:hover {
-    color: #fff;
-    background-color: #F17E0A;
-    border-color: #F17E0A;
-}
-
-.btn-outline-secondary {
-    margin-right: 1rem;
-}
-
-.btn-outline-secondary:hover {
-    color: #6c757d;
+.shop-btn-outline,
+.shop-btn-outline:focus,
+.shop-btn-outline.focus,
+.shop-btn-outline:hover,
+.shop-btn-outline:active,
+.shop-btn-outline:active:focus,
+.shop-btn-outline.active {
     background-color: transparent;
     border-color: #6c757d;
+    color: #6c757d;
+    margin-right: 1rem;
 }
 
 .shop-cart-total {
@@ -377,6 +379,10 @@ nav {
         font-size: 1.2rem;
     }
 
+    .shop-btn-outline{
+        margin-bottom: .5rem;
+    }
+
 }
 
 @media (max-width: 991.98px) {
@@ -403,6 +409,10 @@ nav {
 
     .shop-left-column p {
         font-size: .8rem;
+    }
+
+    .shop-btn-outline{
+       margin-bottom: .5rem;
     }
 
 }

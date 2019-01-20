@@ -34,10 +34,10 @@ const cartProductTotals = (props) => {
             <hr/>
             <div className="row">
                 <div className="col-sm-12 col-lg-8 offset-lg-4 text-right">
-                    <button onClick={props.clearCart} className="btn btn btn-outline-secondary">Clear cart</button>
-                    <Link to={'/'} className="btn btn btn-outline-secondary" href="#" role="button">Continue
+                    <button onClick={props.clearCart} className="btn shop-btn-outline">Clear cart</button>
+                    <Link to={'/'} className="btn shop-btn-outline" href="#" role="button">Continue
                         shopping</Link>
-                    <button className="btn btn-secondary checkout"
+                    <button className="btn btn-lg shop-btn-primary checkout"
                             type="submit"
                             disabled={props.subtotal <= 0}
                             onClick={props.checkout}>

@@ -41,7 +41,7 @@ const cartProducts = (props) => {
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 shop-cart-b-container">
                                     <button type="button" onClick={props.removeCartProduct}
-                                            className="btn btn-warning btn-sm">
+                                            className="btn shop-btn-warning btn-sm">
                                         Remove
                                     </button>
                                 </div>
