@@ -69,6 +69,18 @@ nav {
     text-align: justify;
 }
 
+/* ------------- modal --------------*/
+.shop-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+
 /* ------------- shop product cards --------------*/
 
 .shop-card {
@@ -154,7 +166,7 @@ nav {
 .shop-btn-primary:active,
 .shop-btn-primary:active:focus,
 .shop-btn-primary.active {
-    color:#FFF;
+    color: #FFF;
     font-size: 13px;
     background-color: #F17E0A;
     font-weight: 600;
@@ -345,8 +357,8 @@ nav {
     }
 
     .shop-card .shop-card-image img {
-    width: 50%;
-}
+        width: 50%;
+    }
 
     .shop-card .shop-card-title {
         font-size: 14px;
@@ -384,7 +396,7 @@ nav {
         font-size: 1.2rem;
     }
 
-    .shop-btn-outline{
+    .shop-btn-outline {
         margin-bottom: .5rem;
     }
 
@@ -416,8 +428,8 @@ nav {
         font-size: .8rem;
     }
 
-    .shop-btn-outline{
-       margin-bottom: .5rem;
+    .shop-btn-outline {
+        margin-bottom: .5rem;
     }
 
 }
