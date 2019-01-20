@@ -6,34 +6,34 @@ const cartProductTotals = (props) => {
     return (
         <React.Fragment>
             <div className="row">
-                <div className="col-sm offset-md-6 text-left shop-cart-amounts">
+                <div className="col-6 col-sm-4  offset-sm-5 text-left shop-cart-amounts">
                     Subtotal
                 </div>
-                <div className="col-sm text-right shop-cart-amounts">
+                <div className="col-6 col-sm-3 text-right shop-cart-amounts">
                     Ksh. {props.subtotal.toLocaleString()}
                 </div>
             </div>
             <hr/>
             <div className="row">
-                <div className="col-sm offset-md-6 text-left shop-cart-amounts">
+                <div className="col-6 col-sm-4 offset-sm-5 text-left shop-cart-amounts">
                     Estimated shipping
                 </div>
-                <div className="col-sm text-right shop-cart-amounts">
+                <div className="col-6 col-sm-3 text-right shop-cart-amounts">
                     Ksh. {props.shippingPrice.toLocaleString()}
                 </div>
             </div>
             <hr/>
             <div className="row">
-                <div className="col-sm offset-md-6 text-left">
+                <div className="col-6 col-sm-4 offset-sm-5 text-left">
                     <h4 className={'shop-cart-total'}>Total</h4>
                 </div>
-                <div className="col-sm text-right">
+                <div className="col-6 col-sm-3 text-right">
                     <h4 className={'shop-cart-total'}>Ksh. {(props.shippingPrice + props.subtotal).toLocaleString()}</h4>
                 </div>
             </div>
             <hr/>
             <div className="row">
-                <div className="col-sm-8 offset-sm-4 text-right">
+                <div className="col-sm-12 col-lg-8 offset-lg-4 text-right">
                     <button onClick={props.clearCart} className="btn btn btn-outline-secondary">Clear cart</button>
                     <Link to={'/'} className="btn btn btn-outline-secondary" href="#" role="button">Continue
                         shopping</Link>

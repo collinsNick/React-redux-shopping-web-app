@@ -7,11 +7,11 @@ const cartProducts = (props) => {
             <div className="row">
                 <div className="col">
                     <div className="row">
-                        <div className="col-sm-2">
+                        <div className="col-md-2 shop-cart-image-div">
                             <img className={'shop-cart-image'} src={`../../assets/images/${props.productPhoto}`}
                                  alt={props.productPhoto.split('.')[0]}/>
                         </div>
-                        <div className="col-sm-4 shop-cart-product-details">
+                        <div className="col-sm-5 col-md-4 shop-cart-product-details">
                             <h5 className="shop-cart-name text-capitalize">{props.productName}</h5>
                             <h6 className="shop-cart-category ">
                                 {props.productCategory}
@@ -22,7 +22,7 @@ const cartProducts = (props) => {
                                 </span>
                             </div>
                         </div>
-                        <div className="col-sm-6">
+                        <div className="col-sm-7 col-md-6">
                             <div className="row">
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice.toLocaleString()}</h6>
@@ -36,7 +36,7 @@ const cartProducts = (props) => {
                                             <option key={index} value={index+1}>{index+1}</option>
                                         ))}
                                     </select>
-                                    <h6 className={'shop-cart-item total'}>Item Total
+                                    <h6 className={'shop-cart-item-total'}>Total
                                         Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span></h6>
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 shop-cart-b-container">
