@@ -1,4 +1,4 @@
-## React-Redux ecommerce web application
+## React-Redux Ecommerce web application(Front end)
 this is a sample ecommerce web app made using react, redux and react router.
 
 live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
