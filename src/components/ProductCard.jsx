@@ -9,7 +9,7 @@ const productCard = (props) => {
                 <div className="shop-card">
                     <div className="shop-card-image">
                         <img
-                            src={props.productImage}
+                            src={require(`../assets/images/shop_images/${props.productImage}`)}
                             alt={props.productImage.split('.')[0]}
                         />
                         {props.productSale ? <span className="shop-card-sale">Sale</span> : null}

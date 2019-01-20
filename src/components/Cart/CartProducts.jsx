@@ -8,7 +8,8 @@ const cartProducts = (props) => {
                 <div className="col">
                     <div className="row">
                         <div className="col-md-2 shop-cart-image-div">
-                            <img className={'shop-cart-image'} src={`../../assets/images/${props.productPhoto}`}
+                            <img className={'shop-cart-image'}
+                                 src={require(`../../assets/images/shop_images/${props.productPhoto}`)}
                                  alt={props.productPhoto.split('.')[0]}/>
                         </div>
                         <div className="col-sm-5 col-md-4 shop-cart-product-details">
