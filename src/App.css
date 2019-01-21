@@ -433,6 +433,10 @@ nav {
         margin-bottom: .5rem;
     }
 
+    .shop-div h5 {
+        font-size: 1rem;
+    }
+
 }
 
 @media (min-width: 767.99px) {

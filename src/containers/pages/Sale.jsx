@@ -4,15 +4,14 @@ import PropTypes from 'prop-types';
 import {addToCart} from "../../store/actions/shop";
 import ProductCard from "../../components/ProductCard";
 import SecondaryLayout from "../../Layouts/SecondaryLayout";
+import EmptyCategoryPageContent from  '../../components/EmptyCategoryPageContent';
 
 class Sale extends Component {
     render() {
 
-        let products = <div className={'shop-div p-4'}>
-                            <h5>There are currently no products. Check back later</h5>
-                        </div>
+        let products = <EmptyCategoryPageContent />;
 
-        if (this.props.productsProps) {
+        if (this.props.productsProps.length > 0) {
             products = this.props.productsProps
                 .map(product => {
                 return (
