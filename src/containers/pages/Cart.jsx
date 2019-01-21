@@ -27,7 +27,7 @@ class Cart extends Component {
                     cartPriceCountArray.push({
                             price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: productInCart.count
                         }
-                    )
+                    );
                     return (
                         <CartProduct
                             key={productInCart.id}
@@ -41,7 +41,7 @@ class Cart extends Component {
                             removeCartProduct={() => this.props.removeProductFromCartProp(productInCart.id, productInCart.count)}
                         />
                     )
-                })
+                });
 
             let cartTotals = <CartProductTotals
                 shippingPrice={this.props.shippingPriceProp}

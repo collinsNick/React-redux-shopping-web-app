@@ -7,7 +7,8 @@
 .shop-container {
     width: 75%;
 }
-.shop-bg-white{
+
+.shop-bg-white {
     background-color: #FFF;
 }
 
@@ -352,6 +353,13 @@ nav {
     background-color: rgba(0, 0, 0, 0.5)
 }
 
+/* ------------- checkout page --------------*/
+.badge-secondary {
+    color: #fff;
+    background-color: #F17E0A;
+
+}
+
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 
@@ -389,7 +397,7 @@ nav {
         display: none;
     }
 
-    .shop-empty-cart{
+    .shop-empty-cart {
         font-size: 1rem !important;
     }
 

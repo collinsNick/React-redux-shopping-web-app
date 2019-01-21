@@ -1,12 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {confirmOrder} from '../../store/actions/shop';
+import CheckoutCartProduct from '../../components/CheckoutCartProduct';
 
 class Checkout extends Component {
 
     render() {
 
-         let order = null;
+        let order = null;
+        let productsPrices = [];
+
+        const cartProducts = this.props.cartProductsProps.map(cartProduct => {
+            // fetch product information from source based on id
+            let productFromStore = this.props.productsProps.find(product => product.id === cartProduct.id);
+            productsPrices.push({
+                price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: cartProduct.count
+            });
+            return (
+                <CheckoutCartProduct
+                checkoutProductName={productFromStore.name}
+                checkoutProductCategory={productFromStore.category}
+                checkoutProductPrice={productFromStore.price}/>
+            )
+        });
 
         return (
             <div className="container py-4">
@@ -15,31 +31,11 @@ class Checkout extends Component {
 
                         <h4 className="d-flex justify-content-between align-items-center mb-3">
                             <span className="text-muted">Your cart</span>
-                            <span className="badge badge-secondary badge-pill">3</span>
+                            <span className="badge badge-secondary badge-pill">{this.props.cartTotalProps}</span>
                         </h4>
 
                         <ul className="list-group mb-3">
-                            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 className="my-0">Product name</h6>
-                                    <small className="text-muted">Brief description</small>
-                                </div>
-                                <span className="text-muted">$12</span>
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 className="my-0">Second product</h6>
-                                    <small className="text-muted">Brief description</small>
-                                </div>
-                                <span className="text-muted">$8</span>
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 className="my-0">Third item</h6>
-                                    <small className="text-muted">Brief description</small>
-                                </div>
-                                <span className="text-muted">$5</span>
-                            </li>
+                            {cartProducts}
                             <li className="list-group-item d-flex justify-content-between bg-light">
                                 <div className="text-success">
                                     <h6 className="my-0">Promo code</h6>
@@ -48,8 +44,10 @@ class Checkout extends Component {
                                 <span className="text-success">-$5</span>
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
-                                <span>Total (USD)</span>
-                                <strong>$20</strong>
+                                <span>Total (Ksh)</span>
+                                <strong>Ksh.
+                                    {productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0)}
+                                    </strong>
                             </li>
                         </ul>
 
@@ -158,7 +156,6 @@ class Checkout extends Component {
                 </div>
 
             </div>
-
         )
     }
 }
@@ -166,13 +163,14 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         productsProps: state.products,
-        cartProductsProps: state.products
+        cartProductsProps: state.cart,
+        cartTotalProps: state.cartTotal
     }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        confirmOrderProps: (order) => dispatch(confirmOrder(order,ownProps))
+        confirmOrderProps: (order) => dispatch(confirmOrder(order, ownProps))
     }
 };
 
