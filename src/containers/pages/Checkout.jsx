@@ -75,8 +75,8 @@ class Checkout extends Component {
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
-        let discountAmout = productTotals * percentageDiscount ;
-        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmout): 0;
+        let discountAmount = productTotals * percentageDiscount ;
+        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmount): 0;
 
         return (
             <div className="container py-4">
@@ -104,7 +104,7 @@ class Checkout extends Component {
                                     <h6 className="my-0">Promo code</h6>
                                     <small className={'font-weight-bold'}>{this.props.usedPromoCodeProp.code}</small>
                                 </div>
-                                <span className="text-success">-Ksh {discountAmout.toLocaleString()}</span>
+                                <span className="text-success">-Ksh {discountAmount.toLocaleString()}</span>
                             </li> : null}
                             <li className="list-group-item ">
                                 <div className={'d-flex justify-content-between shop-checkout-prices'}>
@@ -148,8 +148,10 @@ class Checkout extends Component {
                             </div>
                         </form>
                     </div>
+
+
                     <div className="col-md-8 order-md-1 ">
-                        <h4 className="mb-3">Billing address</h4>
+                        <h4 className="mb-3">Billing Information</h4>
                         <form className="needs-validation shop-bg-white p-3" novalidate>
                             <div className="row">
                                 <div className="col-md-6 mb-3">
@@ -189,12 +191,12 @@ class Checkout extends Component {
                                 <div className="custom-control custom-radio">
                                     <input id="debit" name="paymentMethod" className="custom-control-input"
                                            required/>
-                                    <label className="custom-control-label">Debit card</label>
+                                    <label className="custom-control-label">PayPal</label>
                                 </div>
                                 <div className="custom-control custom-radio">
                                     <input id="paypal" name="paymentMethod" className="custom-control-input"
                                            required/>
-                                    <label className="custom-control-label">Paypal</label>
+                                    <label className="custom-control-label">Mobile Money</label>
                                 </div>
                             </div>
                             <div className="row">
@@ -234,7 +236,7 @@ class Checkout extends Component {
                             <hr className="mb-4"/>
                             <button
                                 className="btn shop-btn-secondary btn-lg btn-block"
-                                onClick={() => this.props.confirmOrderProps(order)}>
+                                onClick={() => this.props.confirmOrderProp(order)}>
                                 Confirm Order
                             </button>
                         </form>
