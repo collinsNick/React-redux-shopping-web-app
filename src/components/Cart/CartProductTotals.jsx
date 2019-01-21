@@ -3,6 +3,12 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const cartProductTotals = (props) => {
+
+    let subtotal = props.subtotal;
+    let vatPercentage = props.vat > 0 ? props.vat/100 : 0;
+    let vat = subtotal > 0 ? (subtotal * vatPercentage) : 0;
+    let totalCost = subtotal > 0 ? (subtotal + vat) : 0;
+
     return (
         <React.Fragment>
             <div className="row">
@@ -10,16 +16,16 @@ const cartProductTotals = (props) => {
                     Subtotal
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {props.subtotal.toLocaleString()}
+                    Ksh. {subtotal.toFixed(2).toLocaleString()}
                 </div>
             </div>
             <hr/>
             <div className="row">
                 <div className="col-6 col-sm-4 offset-sm-5 text-left shop-cart-amounts">
-                    Estimated shipping
+                    VAT
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {props.shippingPrice.toLocaleString()}
+                    Ksh. {vat.toFixed(2).toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -28,7 +34,9 @@ const cartProductTotals = (props) => {
                     <h4 className={'shop-cart-total'}>Total</h4>
                 </div>
                 <div className="col-6 col-sm-3 text-right">
-                    <h4 className={'shop-cart-total'}>Ksh. {(props.shippingPrice + props.subtotal).toLocaleString()}</h4>
+                    <h4 className={'shop-cart-total'}>
+                        Ksh. {totalCost.toFixed(2).toLocaleString()}
+                    </h4>
                 </div>
             </div>
             <hr/>
@@ -50,6 +58,7 @@ cartProductTotals.propTypes = {
     subtotal: PropTypes.number.isRequired,
     shippingPrice: PropTypes.number,
     clearCart: PropTypes.func.isRequired,
+    vat: PropTypes.number,
 };
 
 cartProductTotals.defaultProps = {

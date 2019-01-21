@@ -18,11 +18,16 @@ class Checkout extends Component {
             });
             return (
                 <CheckoutCartProduct
-                checkoutProductName={productFromStore.name}
-                checkoutProductCategory={productFromStore.category}
-                checkoutProductPrice={productFromStore.price}/>
+                    checkoutProductName={productFromStore.name}
+                    checkoutProductCategory={productFromStore.category}
+                    checkoutProductPrice={productFromStore.price}/>
             )
         });
+
+        let productTotals = productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0);
+        let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
+        let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
+        let shoppingTotal = productTotals > 0 ? (productTotals + vat + this.props.shippingPriceProp) : 0;
 
         return (
             <div className="container py-4">
@@ -44,10 +49,20 @@ class Checkout extends Component {
                                 <span className="text-success">-$5</span>
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
+                                <span>Sub Total</span>
+                                Ksh. {productTotals.toLocaleString()}
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                                <span>VAT</span>
+                                Ksh. {vat}
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                                <span>Shipping amount</span>
+                                Ksh. {this.props.shippingPriceProp.toFixed(2).toLocaleString()}
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
                                 <span>Total (Ksh)</span>
-                                <strong>Ksh.
-                                    {productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0)}
-                                    </strong>
+                                <strong>Ksh. {shoppingTotal.toFixed(2).toLocaleString()}</strong>
                             </li>
                         </ul>
 
@@ -164,7 +179,9 @@ const mapStateToProps = state => {
     return {
         productsProps: state.products,
         cartProductsProps: state.cart,
-        cartTotalProps: state.cartTotal
+        cartTotalProps: state.cartTotal,
+        vatProps: state.vat,
+        shippingPriceProp: state.shippingPrice
     }
 };
 

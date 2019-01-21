@@ -10,7 +10,7 @@ class Cart extends Component {
 
     productCountHandler = (field_value, product_id) => {
         this.props.updateCartProductCountProp(field_value, product_id)
-    }
+    };
 
     render() {
 
@@ -46,6 +46,7 @@ class Cart extends Component {
             let cartTotals = <CartProductTotals
                 shippingPrice={this.props.shippingPriceProp}
                 subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count), 0)}
+                vat={this.props.vatProp}
                 clearCart={() => this.props.clearProductsFromCartProp()}
             />;
 
@@ -72,11 +73,11 @@ const mapStateToProps = state => {
         productProps: state.products,
         cartTotalProp: state.cartTotal,
         cartProductsProp: state.cart,
-        shippingPriceProp: state.shippingPrice
+        vatProp: state.vat
     }
-}
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),
@@ -86,10 +87,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 Cart.propTypes = {
     cartTotalProp: PropTypes.number.isRequired,
-    shippingPriceProp: PropTypes.number.isRequired,
     cartProductsProp: PropTypes.array.isRequired,
     productProps: PropTypes.array.isRequired,
-}
+    vatProp: PropTypes.number,
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

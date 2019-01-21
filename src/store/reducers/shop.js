@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     cart: [],
+    vat:16,
     shippingPrice: 200,
     cartTotal: 0,
     productMaxShowModal: false,
@@ -330,6 +331,6 @@ const reducer = (state = initialState, action) => {
             }
     }
 
-}
+};
 
 export default reducer;
