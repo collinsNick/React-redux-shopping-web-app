@@ -50,19 +50,19 @@ class Checkout extends Component {
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
                                 <span>Sub Total</span>
-                                Ksh. {productTotals.toLocaleString()}
+                                Ksh. {Math.round(productTotals).toLocaleString()}
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
                                 <span>VAT</span>
-                                Ksh. {vat}
+                                Ksh. {Math.round(vat).toLocaleString()}
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
                                 <span>Shipping amount</span>
-                                Ksh. {this.props.shippingPriceProp.toFixed(2).toLocaleString()}
+                                Ksh. {Math.round(this.props.shippingPriceProp).toLocaleString()}
                             </li>
                             <li className="list-group-item d-flex justify-content-between">
-                                <span>Total (Ksh)</span>
-                                <strong>Ksh. {shoppingTotal.toFixed(2).toLocaleString()}</strong>
+                                <span>Total</span>
+                                <strong>Ksh. {Math.round(shoppingTotal).toLocaleString()}</strong>
                             </li>
                         </ul>
 

@@ -16,7 +16,7 @@ const cartProductTotals = (props) => {
                     Subtotal
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {subtotal.toFixed(2).toLocaleString()}
+                    Ksh. {Math.round(subtotal).toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -25,7 +25,7 @@ const cartProductTotals = (props) => {
                     VAT
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    Ksh. {vat.toFixed(2).toLocaleString()}
+                    Ksh. {Math.round(vat).toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -35,7 +35,7 @@ const cartProductTotals = (props) => {
                 </div>
                 <div className="col-6 col-sm-3 text-right">
                     <h4 className={'shop-cart-total'}>
-                        Ksh. {totalCost.toFixed(2).toLocaleString()}
+                        Ksh. {Math.round(totalCost).toLocaleString()}
                     </h4>
                 </div>
             </div>

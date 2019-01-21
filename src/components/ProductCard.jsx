@@ -24,9 +24,9 @@ const productCard = (props) => {
 
                     <div className="shop-card-content">
                         <h3 className="shop-card-title">{props.productName}</h3>
-                        <div className="shop-card-price">Ksh. {props.productPrice.toFixed(2).toLocaleString()}
+                        <div className="shop-card-price">Ksh. {Math.round(props.productPrice).toLocaleString()}
                             <span
-                                className={'shop-card-discount-price'}>{props.productDiscountPrice.toFixed(2).toLocaleString()}</span>
+                                className={'shop-card-discount-price'}>{Math.round(props.productDiscountPrice).toLocaleString()}</span>
                         </div>
 
                         <button type="button"
