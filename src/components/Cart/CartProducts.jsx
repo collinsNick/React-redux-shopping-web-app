@@ -18,7 +18,8 @@ const cartProducts = (props) => {
                                 {props.productCategory}
                             </h6>
                             <div>
-                                <span className={"badge " + (props.productQuantity > 0 ? 'badge-success' : 'badge-danger')}>
+                                <span
+                                    className={"badge " + (props.productQuantity > 0 ? 'badge-success' : 'badge-danger')}>
                                     {props.productQuantity > 0 ? 'In Stock' : 'Out of Stock'}
                                 </span>
                             </div>
@@ -33,12 +34,13 @@ const cartProducts = (props) => {
                                         value={props.productCount}
                                         onChange={props.updateProductCount}
                                     >
-                                        {[...Array(props.productQuantity)].map( (number,index) => (
-                                            <option key={index} value={index+1}>{index+1}</option>
+                                        {[...Array(props.productQuantity)].map((number, index) => (
+                                            <option key={index} value={index + 1}>{index + 1}</option>
                                         ))}
                                     </select>
                                     <h6 className={'shop-cart-item-total'}>Total
-                                        Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span></h6>
+                                        Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span>
+                                    </h6>
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 shop-cart-b-container">
                                     <button type="button" onClick={props.removeCartProduct}

@@ -20,7 +20,10 @@ class Checkout extends Component {
                 <CheckoutCartProduct
                     checkoutProductName={productFromStore.name}
                     checkoutProductCategory={productFromStore.category}
-                    checkoutProductPrice={productFromStore.price}/>
+                    checkoutProductPrice={productFromStore.price}
+                    checkoutProductImage={productFromStore.img}
+                    checkoutCartCount={cartProduct.count}
+                />
             )
         });
 

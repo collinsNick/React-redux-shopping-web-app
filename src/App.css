@@ -357,7 +357,33 @@ nav {
 .badge-secondary {
     color: #fff;
     background-color: #F17E0A;
+}
 
+.shop-checkout-image {
+    width: 60px;
+    margin-top: 5px;
+}
+
+.list-group-item {
+    padding: .75rem .75rem;
+}
+
+.checkout-product-info h6 {
+    font-size: .95rem;
+    color: #000;
+}
+
+.checkout-product-info p {
+    margin-top: .2rem;
+    margin-bottom: 0;
+    font-size: .9rem;
+    color:#F17E0A;
+    font-weight: 600;
+}
+
+.checkout-product-info small {
+    color: #000;
+    font-weight: 600;
 }
 
 /* ------------- side bar --------------*/
