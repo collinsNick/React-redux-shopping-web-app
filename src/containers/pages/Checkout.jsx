@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {confirmOrder, propCodeFailure, propCodeSuccess, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/CheckoutCartProduct';
+import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 
 class Checkout extends Component {
 
     state = {
-        promoCode: ''
+        promoCode: '',
+        showAlert: false,
+        alertType: '',
+        alertMessage: ''
     };
 
     promoCodeChangeHandler = (event) => {
@@ -22,10 +26,27 @@ class Checkout extends Component {
         ));
 
         if (checkPromoCode.length > 0) {
-            this.props.setPromoCodeProp(this.state.promoCode)
+            this.props.setPromoCodeProp(this.state.promoCode);
+            this.setState({
+                showAlert: !this.state.showAlert,
+                alertType: 'alert-success',
+                alertMessage: `The promo code you entered has given you a ${checkPromoCode[0].percentage}% discount on the total price.`,
+            })
         } else {
-            alert('failure')
+            this.setState({
+                showAlert: !this.state.showAlert,
+                alertType: 'alert alert-danger',
+                alertMessage: 'The Promo code you entered does not have discounts',
+            })
         }
+    };
+
+    closeAlertHandler = () => {
+        this.setState({
+            showAlert: !this.state.showAlert,
+            alertType: '',
+            alertMessage: '',
+        })
     };
 
     render() {
@@ -57,6 +78,15 @@ class Checkout extends Component {
 
         return (
             <div className="container py-4">
+
+                {this.state.showAlert ? <Alert
+                        alertType={this.state.alertType}
+                        closeAlert={this.closeAlertHandler}>
+                        {this.state.alertMessage}
+                    </Alert>
+                    : null
+                }
+
                 <div className="row">
                     <div className="col-md-4 order-md-2 mb-4">
 
