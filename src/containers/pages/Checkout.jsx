@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {confirmOrder} from '../../store/actions/shop';
+import {confirmOrder, propCodeFailure, propCodeSuccess, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/CheckoutCartProduct';
+import PropTypes from 'prop-types';
 
 class Checkout extends Component {
 
@@ -15,7 +16,16 @@ class Checkout extends Component {
 
     submitPromoCode = (event) => {
         event.preventDefault();
-        alert('code time');
+        // check promo code in state
+        let checkPromoCode = this.props.promoCodeProp.filter(codeName => (
+            codeName.code === this.state.promoCode
+        ));
+
+        if (checkPromoCode.length > 0) {
+            this.props.setPromoCodeProp(this.state.promoCode)
+        } else {
+            alert('failure')
+        }
     };
 
     render() {
@@ -105,8 +115,6 @@ class Checkout extends Component {
                             </div>
                         </form>
                     </div>
-
-
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing address</h4>
                         <form className="needs-validation shop-bg-white p-3" novalidate>
@@ -199,11 +207,23 @@ class Checkout extends Component {
                         </form>
                     </div>
                 </div>
-
             </div>
         )
     }
 }
+
+Checkout.propTypes = {
+    productsProps: PropTypes.array.isRequired,
+    cartProductsProps: PropTypes.array.isRequired,
+    cartTotalProps: PropTypes.number.isRequired,
+    shippingPriceProp: PropTypes.number,
+    promoCodeProp: PropTypes.array,
+    usedPromoCodeProp: PropTypes.string,
+};
+
+Checkout.defaultProps = {
+    shippingPriceProp: 0
+};
 
 const mapStateToProps = state => {
     return {
@@ -211,13 +231,16 @@ const mapStateToProps = state => {
         cartProductsProps: state.cart,
         cartTotalProps: state.cartTotal,
         vatProps: state.vat,
-        shippingPriceProp: state.shippingPrice
+        shippingPriceProp: state.shippingPrice,
+        promoCodeProp: state.promoCode,
+        usedPromoCodeProp: state.usedPromoCode
     }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        confirmOrderProps: (order) => dispatch(confirmOrder(order, ownProps))
+        confirmOrderProp: (order) => dispatch(confirmOrder(order, ownProps)),
+        setPromoCodeProp: (promoCode) => dispatch(setPromoCode(promoCode)),
     }
 };
 

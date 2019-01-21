@@ -19,7 +19,7 @@ const initialState = {
             percentage: 5
         }
     ],
-    usedPromoCode:null,
+    usedPromoCode: null,
     productMaxShowModal: false,
     modalMessage: null,
     showSideNavigation: false,
@@ -338,6 +338,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 showSideNavigation: !state.showSideNavigation
 
+            };
+
+        case actionTypes.SET_PROMO_CODE:
+            return {
+                ...state,
+                usedPromoCode:action.promoCode
             };
 
         case actionTypes.PROMO_CODE_SUCCESS:

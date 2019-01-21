@@ -66,6 +66,13 @@ export const toogleSideBar = () => {
     }
 };
 
+export const setPromoCode = (promoCode) =>{
+    return{
+        type:actionTypes.SET_PROMO_CODE,
+        promoCode: promoCode
+    }
+};
+
 export const propCodeSuccess = () => {
     return{
         type: actionTypes.PROMO_CODE_SUCCESS
