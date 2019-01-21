@@ -177,6 +177,22 @@ nav {
     border-color: #F17E0A;
 }
 
+/*cart and checkout buttons*/
+
+.shop-btn-secondary,
+.shop-btn-secondary:focus,
+.shop-btn-secondary.focus,
+.shop-btn-secondary:hover,
+.shop-btn-secondary:active,
+.shop-btn-secondary:active:focus,
+.shop-btn-secondary.active {
+    color: #FFF;
+    font-size: 1rem;
+    background-color: #F17E0A;
+    font-weight: 600;
+    border-color: #F17E0A;
+}
+
 /* ------------- shop cart --------------*/
 .shop-div {
     background-color: #FFF;

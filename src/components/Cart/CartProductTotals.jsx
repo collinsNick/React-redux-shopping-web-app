@@ -37,7 +37,7 @@ const cartProductTotals = (props) => {
                     <button onClick={props.clearCart} className="btn shop-btn-outline">Clear cart</button>
                     <Link to={'/'} className="btn shop-btn-outline">Continue
                         shopping</Link>
-                    <Link className="btn btn-lg shop-btn-primary checkout" to={'/checkout'}>
+                    <Link className="btn btn-lg shop-btn-secondary checkout" to={'/checkout'}>
                         Checkout
                     </Link>
                 </div>

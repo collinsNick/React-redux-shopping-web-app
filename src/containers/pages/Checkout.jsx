@@ -141,14 +141,13 @@ class Checkout extends Component {
                                 </div>
                             </div>
                             <hr className="mb-4"/>
-                            <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                            <button className="btn shop-btn-secondary btn-lg btn-block" type="submit">Confirm Order</button>
                         </form>
                     </div>
                 </div>
 
             </div>
-
-
+            
         )
     }
 }
