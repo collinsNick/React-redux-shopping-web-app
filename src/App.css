@@ -7,6 +7,9 @@
 .shop-container {
     width: 75%;
 }
+.shop-bg-white{
+    background-color: #FFF;
+}
 
 /* ------------- shop menu --------------*/
 
@@ -370,8 +373,7 @@ nav {
         display: none;
     }
 
-    .shop-empty-cart,
-    .shop-checkout {
+    .shop-empty-cart{
         font-size: 1rem !important;
     }
 

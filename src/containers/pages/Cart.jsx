@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {removeFromCart, clearCart, updateCartProductCount, checkout} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
-import SubsidiaryLayout from '../../Layouts/SubsidiaryLayout';
 import PropTypes from 'prop-types';
 
 class Cart extends Component {
@@ -59,9 +58,11 @@ class Cart extends Component {
         }
 
         return (
-            <SubsidiaryLayout>
+            <div className="container shop-container py-4">
+                <div className={'p-4 shop-div'}>
                 {cartContent}
-            </SubsidiaryLayout>
+                 </div>
+            </div>
         )
     }
 }
