@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {confirmOrder, propCodeFailure, propCodeSuccess, setPromoCode} from '../../store/actions/shop';
+import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/CheckoutCartProduct';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';

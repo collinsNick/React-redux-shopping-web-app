@@ -346,16 +346,6 @@ const reducer = (state = initialState, action) => {
                 usedPromoCode: action.promoCode
             };
 
-        case actionTypes.PROMO_CODE_SUCCESS:
-            return {
-                ...state
-            };
-
-        case actionTypes.PROMO_CODE_FAILURE:
-            return {
-                ...state
-            };
-
         default:
             return {
                 ...state,
