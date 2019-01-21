@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {confirmOrder} from '../../store/actions/shop';
 
 class Checkout extends Component {
+
     render() {
+
+         let order = null;
+
         return (
             <div className="container py-4">
                 <div className="row">
@@ -69,7 +75,7 @@ class Checkout extends Component {
                                     </div>
                                 </div>
                                 <div className="col-md-6 mb-3">
-                                    <label >Last name</label>
+                                    <label>Last name</label>
                                     <input type="text" className="form-control" id="lastName" placeholder="" value=""
                                            required/>
                                     <div className="invalid-feedback">
@@ -79,7 +85,7 @@ class Checkout extends Component {
                             </div>
 
                             <div className="mb-3">
-                                <label >Email</label>
+                                <label>Email</label>
                                 <input type="email" className="form-control" id="email" placeholder="you@example.com"/>
                                 <div className="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
@@ -92,19 +98,19 @@ class Checkout extends Component {
 
                             <div className="d-block my-3">
                                 <div className="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod"  className="custom-control-input"
+                                    <input id="credit" name="paymentMethod" className="custom-control-input"
                                            checked required/>
-                                    <label className="custom-control-label" >Credit card</label>
+                                    <label className="custom-control-label">Credit card</label>
                                 </div>
                                 <div className="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod"  className="custom-control-input"
+                                    <input id="debit" name="paymentMethod" className="custom-control-input"
                                            required/>
-                                    <label className="custom-control-label" >Debit card</label>
+                                    <label className="custom-control-label">Debit card</label>
                                 </div>
                                 <div className="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod"  className="custom-control-input"
+                                    <input id="paypal" name="paymentMethod" className="custom-control-input"
                                            required/>
-                                    <label className="custom-control-label" >Paypal</label>
+                                    <label className="custom-control-label">Paypal</label>
                                 </div>
                             </div>
                             <div className="row">
@@ -127,7 +133,8 @@ class Checkout extends Component {
                             <div className="row">
                                 <div className="col-md-3 mb-3">
                                     <label for="cc-expiration">Expiration</label>
-                                    <input type="text" className="form-control" id="cc-expiration" placeholder="" required/>
+                                    <input type="text" className="form-control" id="cc-expiration" placeholder=""
+                                           required/>
                                     <div className="invalid-feedback">
                                         Expiration date required
                                     </div>
@@ -141,15 +148,32 @@ class Checkout extends Component {
                                 </div>
                             </div>
                             <hr className="mb-4"/>
-                            <button className="btn shop-btn-secondary btn-lg btn-block" type="submit">Confirm Order</button>
+                            <button
+                                className="btn shop-btn-secondary btn-lg btn-block"
+                                onClick={() => this.props.confirmOrderProps(order)}>
+                                Confirm Order
+                            </button>
                         </form>
                     </div>
                 </div>
 
             </div>
-            
+
         )
     }
 }
 
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        productsProps: state.products,
+        cartProductsProps: state.products
+    }
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        confirmOrderProps: (order) => dispatch(confirmOrder(order,ownProps))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

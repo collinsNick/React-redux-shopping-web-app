@@ -225,7 +225,7 @@ const initialState = {
             img: 'crew-neck-tshirt.jpg'
         },
     ]
-}
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
