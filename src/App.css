@@ -386,6 +386,25 @@ nav {
     font-weight: 600;
 }
 
+.shop-checkout-prices{
+    color:#000;
+    font-size: .9rem;
+}
+
+.shop-checkout-prices span{
+    font-weight: 600;
+}
+
+.shop-checkout-total{
+    color: #000;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.shop-checkout-total .shop-total{
+    color: #F17E0A;
+}
+
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 

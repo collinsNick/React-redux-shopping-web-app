@@ -51,21 +51,24 @@ class Checkout extends Component {
                                 </div>
                                 <span className="text-success">-$5</span>
                             </li>
-                            <li className="list-group-item d-flex justify-content-between">
-                                <span>Sub Total</span>
-                                Ksh. {Math.round(productTotals).toLocaleString()}
+                            <li className="list-group-item ">
+                                <div className={'d-flex justify-content-between shop-checkout-prices'}>
+                                    Sub Total
+                                    <span> Ksh. {Math.round(productTotals).toLocaleString()}</span>
+                                </div>
+                                <div className={'d-flex justify-content-between py-1 shop-checkout-prices'}>
+                                    VAT
+                                    <span>Ksh. {Math.round(vat).toLocaleString()}</span>
+                                </div>
+                                <div className={'d-flex justify-content-between shop-checkout-prices'}>
+                                    Shipping amount
+                                    <span>Ksh. {Math.round(this.props.shippingPriceProp).toLocaleString()}</span>
+                                </div>
                             </li>
-                            <li className="list-group-item d-flex justify-content-between">
-                                <span>VAT</span>
-                                Ksh. {Math.round(vat).toLocaleString()}
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between">
-                                <span>Shipping amount</span>
-                                Ksh. {Math.round(this.props.shippingPriceProp).toLocaleString()}
-                            </li>
-                            <li className="list-group-item d-flex justify-content-between">
+
+                            <li className="list-group-item d-flex justify-content-between shop-checkout-total">
                                 <span>Total</span>
-                                <strong>Ksh. {Math.round(shoppingTotal).toLocaleString()}</strong>
+                                <span className={'shop-total'}>Ksh. {Math.round(shoppingTotal).toLocaleString()}</span>
                             </li>
                         </ul>
 
@@ -107,8 +110,6 @@ class Checkout extends Component {
                                     Please enter a valid email address for shipping updates.
                                 </div>
                             </div>
-
-                            <hr className="mb-4"/>
 
                             <h4 className="mb-3">Payment</h4>
 
