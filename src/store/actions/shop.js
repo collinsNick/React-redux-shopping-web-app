@@ -66,10 +66,10 @@ export const toogleSideBar = () => {
     }
 };
 
-export const setPromoCode = (promoCode) =>{
+export const setPromoCode = (promoCodeObject) =>{
     return{
         type:actionTypes.SET_PROMO_CODE,
-        promoCode: promoCode
+        promoCode: promoCodeObject,
     }
 };
 

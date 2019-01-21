@@ -18,23 +18,23 @@ class Checkout extends Component {
         this.setState({promoCode: event.target.value})
     };
 
-    submitPromoCode = (event) => {
+    setPromoCode = (event) => {
         event.preventDefault();
         // check promo code in state
-        let checkPromoCode = this.props.promoCodeProp.filter(codeName => (
+        let getPromoCode = this.props.promoCodeProp.filter(codeName => (
             codeName.code === this.state.promoCode
         ));
 
-        if (checkPromoCode.length > 0) {
-            this.props.setPromoCodeProp(this.state.promoCode);
+        if (getPromoCode.length > 0) {
+            this.props.setPromoCodeProp(getPromoCode[0]);
             this.setState({
-                showAlert: !this.state.showAlert,
+                showAlert: true,
                 alertType: 'alert-success',
-                alertMessage: `The promo code you entered has given you a ${checkPromoCode[0].percentage}% discount on the total price.`,
+                alertMessage: `The promo code you entered has given you a ${getPromoCode[0].percentage}% discount on the total price.`,
             })
         } else {
             this.setState({
-                showAlert: !this.state.showAlert,
+                showAlert: true,
                 alertType: 'alert alert-danger',
                 alertMessage: 'The Promo code you entered does not have discounts',
             })
@@ -74,7 +74,9 @@ class Checkout extends Component {
         let productTotals = productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0);
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
-        let shoppingTotal = productTotals > 0 ? (productTotals + vat + this.props.shippingPriceProp) : 0;
+        let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
+        let discountAmout = productTotals * percentageDiscount ;
+        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmout): 0;
 
         return (
             <div className="container py-4">
@@ -97,13 +99,13 @@ class Checkout extends Component {
 
                         <ul className="list-group mb-3">
                             {cartProducts}
-                            <li className="list-group-item d-flex justify-content-between bg-light">
+                            { this.props.usedPromoCodeProp ? <li className="list-group-item d-flex justify-content-between">
                                 <div className="text-success">
                                     <h6 className="my-0">Promo code</h6>
-                                    <small>EXAMPLECODE</small>
+                                    <small className={'font-weight-bold'}>{this.props.usedPromoCodeProp.code}</small>
                                 </div>
-                                <span className="text-success">-$5</span>
-                            </li>
+                                <span className="text-success">-Ksh {discountAmout.toLocaleString()}</span>
+                            </li> : null}
                             <li className="list-group-item ">
                                 <div className={'d-flex justify-content-between shop-checkout-prices'}>
                                     Sub Total
@@ -126,7 +128,8 @@ class Checkout extends Component {
 
                         </ul>
 
-                        <form className="card p-2" onSubmit={this.submitPromoCode}>
+                        {/*promo code form */}
+                        <form className="card p-2" onSubmit={this.setPromoCode}>
 
                             <div className="input-group">
                                 <input
@@ -270,7 +273,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         confirmOrderProp: (order) => dispatch(confirmOrder(order, ownProps)),
-        setPromoCodeProp: (promoCode) => dispatch(setPromoCode(promoCode)),
+        setPromoCodeProp: (promoCode, percentage) => dispatch(setPromoCode(promoCode, percentage)),
     }
 };
 

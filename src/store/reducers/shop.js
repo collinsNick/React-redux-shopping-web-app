@@ -7,7 +7,7 @@ const initialState = {
     cartTotal: 0,
     promoCode: [
         {
-            code: 'IDONTNEEDIT',
+            code: 'IHAVEMONEY',
             percentage: 2
         },
         {
@@ -343,7 +343,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_PROMO_CODE:
             return {
                 ...state,
-                usedPromoCode:action.promoCode
+                usedPromoCode: action.promoCode
             };
 
         case actionTypes.PROMO_CODE_SUCCESS:
