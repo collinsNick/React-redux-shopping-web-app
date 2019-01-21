@@ -4,6 +4,7 @@ import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/CheckoutCartProduct';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
+import formValidator from '../../Utility/formValidation';
 
 class Checkout extends Component {
 
@@ -11,7 +12,26 @@ class Checkout extends Component {
         promoCode: '',
         showAlert: false,
         alertType: '',
-        alertMessage: ''
+        alertMessage: '',
+        billingInfoForm: {
+            firstName: {
+                value: '',
+                valid: false,
+                touched: false,
+            },
+
+            secondName: {
+                value: '',
+                valid: false,
+                touched: false,
+            },
+
+            email: {
+                value: '',
+                valid: false,
+                touched: false,
+            }
+        }
     };
 
     promoCodeChangeHandler = (event) => {
@@ -75,8 +95,8 @@ class Checkout extends Component {
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
-        let discountAmount = productTotals * percentageDiscount ;
-        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmount): 0;
+        let discountAmount = productTotals * percentageDiscount;
+        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmount) : 0;
 
         return (
             <div className="container py-4">
@@ -99,13 +119,15 @@ class Checkout extends Component {
 
                         <ul className="list-group mb-3">
                             {cartProducts}
-                            { this.props.usedPromoCodeProp ? <li className="list-group-item d-flex justify-content-between">
-                                <div className="text-success">
-                                    <h6 className="my-0">Promo code</h6>
-                                    <small className={'font-weight-bold'}>{this.props.usedPromoCodeProp.code}</small>
-                                </div>
-                                <span className="text-success">-Ksh {discountAmount.toLocaleString()}</span>
-                            </li> : null}
+                            {this.props.usedPromoCodeProp ?
+                                <li className="list-group-item d-flex justify-content-between">
+                                    <div className="text-success">
+                                        <h6 className="my-0">Promo code</h6>
+                                        <small
+                                            className={'font-weight-bold'}>{this.props.usedPromoCodeProp.code}</small>
+                                    </div>
+                                    <span className="text-success">-Ksh {discountAmount.toLocaleString()}</span>
+                                </li> : null}
                             <li className="list-group-item ">
                                 <div className={'d-flex justify-content-between shop-checkout-prices'}>
                                     Sub Total
