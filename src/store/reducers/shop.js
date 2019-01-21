@@ -299,11 +299,16 @@ const reducer = (state = initialState, action) => {
                 cartTotal: cartTotal
             };
 
-        case actionTypes.CHECKOUT:
+        case actionTypes.CONFIRM_ORDER_SUCCESS:
             return {
                 ...state,
                 cart: [],
                 cartTotal: 0
+            };
+
+            case actionTypes.CONFIRM_ORDER_FAILURE:
+            return {
+                ...state,
             };
 
         case actionTypes.CLOSE_MAX_PRODUCT_MODAL:

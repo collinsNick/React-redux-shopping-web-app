@@ -35,14 +35,11 @@ const cartProductTotals = (props) => {
             <div className="row">
                 <div className="col-sm-12 col-lg-8 offset-lg-4 text-right">
                     <button onClick={props.clearCart} className="btn shop-btn-outline">Clear cart</button>
-                    <Link to={'/'} className="btn shop-btn-outline" href="#" role="button">Continue
+                    <Link to={'/'} className="btn shop-btn-outline">Continue
                         shopping</Link>
-                    <button className="btn btn-lg shop-btn-primary checkout"
-                            type="submit"
-                            disabled={props.subtotal <= 0}
-                            onClick={props.checkout}>
+                    <Link className="btn btn-lg shop-btn-primary checkout" to={'/checkout'}>
                         Checkout
-                    </button>
+                    </Link>
                 </div>
             </div>
         </React.Fragment>

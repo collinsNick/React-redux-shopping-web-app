@@ -30,9 +30,14 @@ export const updateCartProductCount = (value, productId) => {
     }
 };
 
-export const checkout = (ownProps) => {
+export const confirmOrder = (order, ownProps) => {
     return dispatch => {
-        dispatch(shoppingCheckout());
+        // place holder
+        if(order){
+            dispatch(confirmOrderSuccess());
+        }else{
+           dispatch(confirmOrderFailure());
+        }
         ownProps.history.push('/checkout')
     }
 };
@@ -43,9 +48,15 @@ export const closeMaxProductModal = () => {
     }
 };
 
-export const shoppingCheckout = () => {
+export const confirmOrderSuccess = () => {
     return {
-        type: actionTypes.CHECKOUT
+        type: actionTypes.CONFIRM_ORDER_SUCCESS
+    }
+};
+
+export const confirmOrderFailure = () => {
+    return {
+        type: actionTypes.CONFIRM_ORDER_FAILURE
     }
 };
 

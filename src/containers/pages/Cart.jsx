@@ -48,7 +48,6 @@ class Cart extends Component {
                 shippingPrice={this.props.shippingPriceProp}
                 subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count), 0)}
                 clearCart={() => this.props.clearProductsFromCartProp()}
-                checkout={() => this.props.checkoutProp()}
             />;
 
             cartContent = (
@@ -80,8 +79,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         removeProductFromCartProp: (productId, count) => dispatch(removeFromCart(productId, count)),
         clearProductsFromCartProp: () => dispatch(clearCart()),
-        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId)),
-        checkoutProp: () => dispatch(checkout(ownProps))
+        updateCartProductCountProp: (value, productId) => dispatch(updateCartProductCount(Number(value), productId))
     }
 };
 
