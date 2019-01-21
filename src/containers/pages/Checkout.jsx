@@ -5,6 +5,19 @@ import CheckoutCartProduct from '../../components/CheckoutCartProduct';
 
 class Checkout extends Component {
 
+    state = {
+        promoCode: ''
+    };
+
+    promoCodeChangeHandler = (event) => {
+        this.setState({promoCode: event.target.value})
+    };
+
+    submitPromoCode = (event) => {
+        event.preventDefault();
+        alert('code time');
+    };
+
     render() {
 
         let order = null;
@@ -70,17 +83,30 @@ class Checkout extends Component {
                                 <span>Total</span>
                                 <span className={'shop-total'}>Ksh. {Math.round(shoppingTotal).toLocaleString()}</span>
                             </li>
+
                         </ul>
 
-                        <form className="card p-2">
+                        <form className="card p-2" onSubmit={this.submitPromoCode}>
+
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Promo code"/>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Promo code"
+                                    value={this.state.promoCode}
+                                    onChange={(event) => this.promoCodeChangeHandler(event)}
+                                />
                                 <div className="input-group-append">
-                                    <button type="submit" className="btn btn-secondary">Redeem</button>
+                                    <button
+                                        className="btn shop-btn-secondary">
+                                        Redeem
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
+
+
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing address</h4>
                         <form className="needs-validation shop-bg-white p-3" novalidate>

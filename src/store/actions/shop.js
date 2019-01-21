@@ -65,3 +65,15 @@ export const toogleSideBar = () => {
         type:actionTypes.TOGGLE_SIDE_BAR
     }
 };
+
+export const propCodeSuccess = () => {
+    return{
+        type: actionTypes.PROMO_CODE_SUCCESS
+    }
+};
+
+export const propCodeFailure = () => {
+    return{
+        type: actionTypes.PROMO_CODE_FAILURE
+    }
+};

@@ -2,11 +2,26 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     cart: [],
-    vat:16,
+    vat: 16,
     shippingPrice: 200,
     cartTotal: 0,
+    promoCode: [
+        {
+            code: 'IDONTNEEDIT',
+            percentage: 2
+        },
+        {
+            code: 'IAMBROKE',
+            percentage: 10
+        },
+        {
+            code: 'INEEDHELP',
+            percentage: 5
+        }
+    ],
+    usedPromoCode:null,
     productMaxShowModal: false,
-    modalMessage:null,
+    modalMessage: null,
     showSideNavigation: false,
     products: [
         {
@@ -264,7 +279,7 @@ const reducer = (state = initialState, action) => {
                 cartTotal: newCartTotal,
                 cart: newCart,
                 productMaxShowModal: productMaxShowModal,
-                modalMessage:modalMessage
+                modalMessage: modalMessage
             };
 
         case actionTypes.REMOVE_FROM_CART:
@@ -307,7 +322,7 @@ const reducer = (state = initialState, action) => {
                 cartTotal: 0
             };
 
-            case actionTypes.CONFIRM_ORDER_FAILURE:
+        case actionTypes.CONFIRM_ORDER_FAILURE:
             return {
                 ...state,
             };
@@ -319,10 +334,20 @@ const reducer = (state = initialState, action) => {
             };
 
         case actionTypes.TOGGLE_SIDE_BAR:
-            return{
+            return {
                 ...state,
                 showSideNavigation: !state.showSideNavigation
 
+            };
+
+        case actionTypes.PROMO_CODE_SUCCESS:
+            return {
+                ...state
+            };
+
+        case actionTypes.PROMO_CODE_FAILURE:
+            return {
+                ...state
             };
 
         default:

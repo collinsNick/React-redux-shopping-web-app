@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {removeFromCart, clearCart, updateCartProductCount, checkout} from '../../store/actions/shop';
+import {removeFromCart, clearCart, updateCartProductCount} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
 import PropTypes from 'prop-types';
