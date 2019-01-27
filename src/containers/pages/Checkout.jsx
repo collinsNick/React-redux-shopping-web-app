@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
-import Alert from '../../components/UI/Alert/Alert';
 import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
+import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
+import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
 
@@ -93,12 +94,13 @@ class Checkout extends Component {
             )
         });
 
+        let shippingPrice = this.props.shippingPriceProp ? this.props.shippingPriceProp : 0;
         let productTotals = productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0);
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
         let discountAmount = productTotals * percentageDiscount;
-        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + this.props.shippingPriceProp) - discountAmount) : 0;
+        let shoppingTotal = productTotals > 0 ? ((productTotals + vat + shippingPrice) - discountAmount) : 0;
 
         return (
             <div className="container py-4">
@@ -120,32 +122,22 @@ class Checkout extends Component {
                         </h4>
 
                         <ul className="list-group mb-3">
+
+                            {/* items in cart */}
                             {cartProducts}
+
+                            {/* used promo codes */}
                             {this.props.usedPromoCodeProp ?
                                 <PromoCodeValue
                                     usedPromoCode={this.props.usedPromoCodeProp}
                                     discountAmount={discountAmount}/> : null}
 
-                            <li className="list-group-item ">
-                                <div className={'d-flex justify-content-between shop-checkout-prices'}>
-                                    Sub Total
-                                    <span> Ksh. {Math.round(productTotals).toLocaleString()}</span>
-                                </div>
-                                <div className={'d-flex justify-content-between py-1 shop-checkout-prices'}>
-                                    VAT
-                                    <span>Ksh. {Math.round(vat).toLocaleString()}</span>
-                                </div>
-                                <div className={'d-flex justify-content-between shop-checkout-prices'}>
-                                    Shipping amount
-                                    <span>Ksh. {Math.round(this.props.shippingPriceProp).toLocaleString()}</span>
-                                </div>
-                            </li>
-
-                            <li className="list-group-item d-flex justify-content-between shop-checkout-total">
-                                <span>Total</span>
-                                <span className={'shop-total'}>Ksh. {Math.round(shoppingTotal).toLocaleString()}</span>
-                            </li>
-
+                            {/* checkout totals */}
+                            <CheckoutCartTotals
+                                productTotals={productTotals}
+                                vat={vat}
+                                shippingPrice={shippingPrice}
+                                shoppingTotal={shoppingTotal}/>
                         </ul>
 
                         {/*promo code form */}
