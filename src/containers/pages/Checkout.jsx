@@ -65,8 +65,13 @@ class Checkout extends Component {
 
     };
 
-    inputChangeHandler = (event, identifier) => {
-
+    customerInfoChangeHandler = (event,identifier) => {
+        // use deep cloning to be able to get the values of nested objects
+        const customerInfo = {...this.state.customerInfo};
+        const customerInfoField = {...customerInfo[identifier]};
+        customerInfoField.value = event.target.value;
+        customerInfo[identifier] = customerInfoField;
+        this.setState({ customerInfo:customerInfo})
     };
 
     promoCodeChangeHandler = (event) => {
@@ -196,7 +201,7 @@ class Checkout extends Component {
                             {/* customer details form fields */}
                             <CustomerInputs
                                 customerInfo={this.state.customerInfo}
-                                inputChanged={(event, identifier) => this.inputChangeHandler(event, identifier)}/>
+                                inputChanged={(event,identifier) => this.customerInfoChangeHandler(event,identifier)}/>
                             <h4 className="mb-3">Payment</h4>
                             {/* payment option selection field */}
                             <PaymentOptions

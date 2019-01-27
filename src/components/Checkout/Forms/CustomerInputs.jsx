@@ -11,7 +11,8 @@ const customerInputs = (props) => {
                            className="form-control"
                            placeholder="First name"
                            value={props.customerInfo.firstName.value}
-                           onChange={props.inputChanged}/>
+                           // pass first name identifier to parent component
+                           onChange={(event) => props.inputChanged(event,'firstName')}/>
                     <div className="invalid-feedback">
                         Valid first name is required.
                     </div>
@@ -23,7 +24,7 @@ const customerInputs = (props) => {
                         className="form-control"
                         placeholder="Last name"
                         value={props.customerInfo.secondName.value}
-                        onChange={props.inputChanged}/>
+                        onChange={(event) => props.inputChanged(event,'secondName')}/>
                     <div className="invalid-feedback">
                         Valid last name is required.
                     </div>
@@ -37,7 +38,7 @@ const customerInputs = (props) => {
                     className="form-control"
                     placeholder="you@example.com"
                     value={props.customerInfo.email.value}
-                    onChange={props.inputChanged}/>
+                    onChange={(event) =>  props.inputChanged(event,'email')}/>
                 <div className="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                 </div>
