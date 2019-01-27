@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/CheckoutCartProduct';
 import Alert from '../../components/UI/Alert/Alert';
+import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
 
@@ -151,27 +152,13 @@ class Checkout extends Component {
                         </ul>
 
                         {/*promo code form */}
-                        <form className="card p-2" onSubmit={this.setPromoCode}>
+                        <PromoCodeForm
+                            setPromoCode={this.setPromoCode}
+                            promoCodeChangeHandler={(event) => this.promoCodeChangeHandler(event)}
+                            promoCode={this.state.promoCode}
+                        />
 
-                            <div className="input-group">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Promo code"
-                                    value={this.state.promoCode}
-                                    onChange={(event) => this.promoCodeChangeHandler(event)}
-                                />
-                                <div className="input-group-append">
-                                    <button
-                                        className="btn shop-btn-secondary">
-                                        Redeem
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
-
-
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing Information</h4>
                         <form className="needs-validation shop-bg-white p-3" novalidate>
@@ -223,16 +210,16 @@ class Checkout extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-6 mb-3">
-                                    <label for="cc-name">Name on card</label>
-                                    <input type="text" className="form-control" id="cc-name" placeholder="" required/>
+                                    <label>Name on card</label>
+                                    <input type="text" className="form-control" placeholder="" required/>
                                     <small className="text-muted">Full name as displayed on card</small>
                                     <div className="invalid-feedback">
                                         Name on card is required
                                     </div>
                                 </div>
                                 <div className="col-md-6 mb-3">
-                                    <label for="cc-number">Credit card number</label>
-                                    <input type="text" className="form-control" id="cc-number" placeholder="" required/>
+                                    <label>Credit card number</label>
+                                    <input type="text" className="form-control" placeholder="" required/>
                                     <div className="invalid-feedback">
                                         Credit card number is required
                                     </div>
@@ -240,16 +227,16 @@ class Checkout extends Component {
                             </div>
                             <div className="row">
                                 <div className="col-md-3 mb-3">
-                                    <label for="cc-expiration">Expiration</label>
-                                    <input type="text" className="form-control" id="cc-expiration" placeholder=""
+                                    <label>Expiration</label>
+                                    <input type="text" className="form-control" placeholder=""
                                            required/>
                                     <div className="invalid-feedback">
                                         Expiration date required
                                     </div>
                                 </div>
                                 <div className="col-md-3 mb-3">
-                                    <label for="cc-expiration">CVV</label>
-                                    <input type="text" className="form-control" id="cc-cvv" placeholder="" required/>
+                                    <label>CVV</label>
+                                    <input type="text" className="form-control" placeholder="" required/>
                                     <div className="invalid-feedback">
                                         Security code required
                                     </div>

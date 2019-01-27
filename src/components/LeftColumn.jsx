@@ -1,7 +1,7 @@
 import React from 'react';
 import PromoCodes from './PromoCodes';
 
-const leftColumn = props => {
+const leftColumn = () => {
     return (
         <div className={'container shop-left-column py-2'}>
             <PromoCodes showText>
