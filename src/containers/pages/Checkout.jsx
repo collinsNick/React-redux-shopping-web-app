@@ -132,6 +132,7 @@ class Checkout extends Component {
 
         let order = null;
         let productsPrices = [];
+        let chosenPaymentMethod = null;
 
         const cartProducts = this.props.cartProductsProps.map(cartProduct => {
             // fetch product information from source based on id
@@ -157,6 +158,19 @@ class Checkout extends Component {
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
         let discountAmount = productTotals * percentageDiscount;
         let shoppingTotal = productTotals > 0 ? ((productTotals + vat + shippingPrice) - discountAmount) : 0;
+
+        if (this.state.paymentMethod === "creditCard") {
+            chosenPaymentMethod = (
+                <CreditCardInputs
+                    creditCardInfo={this.state.creditCardInfo}
+                    inputChanged={(event, identifier) => this.creditCardInputChangeHandler(event, identifier)}/>
+            )
+        } else if (this.state.paymentMethod === "payPal") {
+            chosenPaymentMethod = ("Paypal Form")
+
+        } else if (this.state.paymentMethod === "mobileMoney") {
+            chosenPaymentMethod = ("Mpesa, Airtel Money, Equitel")
+        }
 
         return (
             <div className="container py-4">
@@ -216,10 +230,11 @@ class Checkout extends Component {
                             <PaymentOptions
                                 paymentMethod={this.state.paymentMethod}
                                 paymentOptionChanged={this.paymentOptionChangeHandler}/>
-                            {/* Credit card payment form fields */}
-                            <CreditCardInputs
-                                creditCardInfo={this.state.creditCardInfo}
-                                inputChanged={(event, identifier) => this.creditCardInputChangeHandler(event, identifier)}/>
+                            {/* payment section */}
+                            <div>
+                                {chosenPaymentMethod}
+                            </div>
+
                             <hr className="mb-4"/>
                             <button
                                 className="btn shop-btn-secondary btn-lg btn-block"
