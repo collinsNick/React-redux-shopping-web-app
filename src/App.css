@@ -12,7 +12,7 @@
     background-color: #FFF;
 }
 
-.text-success{
+.text-success {
     color: #F17E0A !important;
 }
 
@@ -75,6 +75,10 @@ nav {
 .shop-left-column p {
     font-size: .92rem;
     text-align: justify;
+}
+
+.shop-text-red{
+    color:#E40046;
 }
 
 /* ------------- modal --------------*/
@@ -381,7 +385,7 @@ nav {
     margin-top: .2rem;
     margin-bottom: 0;
     font-size: .9rem;
-    color:#F17E0A;
+    color: #F17E0A;
     font-weight: 600;
 }
 
@@ -390,22 +394,22 @@ nav {
     font-weight: 600;
 }
 
-.shop-checkout-prices{
-    color:#000;
+.shop-checkout-prices {
+    color: #000;
     font-size: .9rem;
 }
 
-.shop-checkout-prices span{
+.shop-checkout-prices span {
     font-weight: 600;
 }
 
-.shop-checkout-total{
+.shop-checkout-total {
     color: #000;
     font-weight: 600;
     font-size: 1.2rem;
 }
 
-.shop-checkout-total .shop-total{
+.shop-checkout-total .shop-total {
     color: #F17E0A;
 }
 

@@ -15,7 +15,7 @@ const initialState = {
             percentage: 10
         },
         {
-            code: 'INEEDHELP',
+            code: 'PLEASEHELP',
             percentage: 5
         }
     ],
@@ -226,7 +226,7 @@ const initialState = {
             sale: true,
             article: 'watch',
             quantity: 4,
-            img: 'gladiator-flat-flip.jpg'
+            img: 'quartz-wrist-watch.jpg'
         },
         {
             id: 18,
