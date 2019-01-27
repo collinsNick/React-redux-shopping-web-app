@@ -55,7 +55,7 @@ class Checkout extends Component {
                 valid: false,
                 touched: false,
             },
-            CreditCardCvv: {
+            creditCardCvv: {
                 value: '',
                 valid: false,
                 touched: false,
@@ -65,13 +65,21 @@ class Checkout extends Component {
 
     };
 
-    customerInfoChangeHandler = (event,identifier) => {
+    customerInfoChangeHandler = (event, identifier) => {
         // use deep cloning to be able to get the values of nested objects
         const customerInfo = {...this.state.customerInfo};
         const customerInfoField = {...customerInfo[identifier]};
         customerInfoField.value = event.target.value;
         customerInfo[identifier] = customerInfoField;
-        this.setState({ customerInfo:customerInfo})
+        this.setState({customerInfo: customerInfo});
+    };
+
+    creditCardInputChangeHandler = (event, identifier) => {
+        const creditCardInfo = {...this.state.creditCardInfo};
+        const CcInfoField = {...creditCardInfo[identifier]};
+        CcInfoField.value = event.target.value;
+        creditCardInfo[identifier] = CcInfoField;
+        this.setState({creditCardInfo: creditCardInfo});
     };
 
     promoCodeChangeHandler = (event) => {
@@ -79,6 +87,7 @@ class Checkout extends Component {
     };
 
     paymentOptionChangeHandler = (event) => {
+        console.log(event.target.value);
         this.setState({paymentMethod: event.target.value})
     };
 
@@ -201,16 +210,16 @@ class Checkout extends Component {
                             {/* customer details form fields */}
                             <CustomerInputs
                                 customerInfo={this.state.customerInfo}
-                                inputChanged={(event,identifier) => this.customerInfoChangeHandler(event,identifier)}/>
+                                inputChanged={(event, identifier) => this.customerInfoChangeHandler(event, identifier)}/>
                             <h4 className="mb-3">Payment</h4>
                             {/* payment option selection field */}
                             <PaymentOptions
                                 paymentMethod={this.state.paymentMethod}
-                                paymentOptionChanged={this.paymentOptionChangeHandler}/>
+                                paymentOptionChanged={(event) => this.paymentOptionChangeHandler(event)}/>
                             {/* Credit card payment form fields */}
                             <CreditCardInputs
                                 creditCardInfo={this.state.creditCardInfo}
-                                inputChanged={(event, identifier) => this.inputChangeHandler(event, identifier)}/>
+                                inputChanged={(event, identifier) => this.creditCardInputChangeHandler(event, identifier)}/>
                             <hr className="mb-4"/>
                             <button
                                 className="btn shop-btn-secondary btn-lg btn-block"

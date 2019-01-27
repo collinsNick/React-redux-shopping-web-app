@@ -11,7 +11,7 @@ const paymentOptions = props => {
                     className="custom-control-input"
                     value="creditCard"
                     checked={props.paymentMethod === "creditCard"}
-                    onChange={props.paymentOptionChanged}
+                    onChange={(event) => props.paymentOptionChanged(event)}
                     />
                 <label className="custom-control-label">Credit card</label>
             </div>
@@ -21,7 +21,7 @@ const paymentOptions = props => {
                     className="custom-control-input"
                     value="payPal"
                     checked={props.paymentMethod === "payPal"}
-                    onChange={props.paymentOptionChanged}
+                    onChange={(event) => props.paymentOptionChanged(event)}
                 />
                 <label className="custom-control-label">PayPal</label>
             </div>

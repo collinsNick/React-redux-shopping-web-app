@@ -12,7 +12,7 @@ const creditCardInputs = (props) => {
                         className="form-control"
                         placeholder="Full names on card"
                         value={props.creditCardInfo.creditCardName.value}
-                        onChange={props.inputChanged}/>
+                        onChange={(event) => props.inputChanged(event,'creditCardName')}/>
                     <div className="invalid-feedback">
                         Name on card is required
                     </div>
@@ -24,7 +24,7 @@ const creditCardInputs = (props) => {
                         className="form-control"
                         placeholder="Credit card number"
                         value={props.creditCardInfo.creditCardNumber.value}
-                        onChange={props.inputChanged}/>
+                        onChange={(event) => props.inputChanged(event,'creditCardNumber')}/>
                     <div className="invalid-feedback">
                         Credit card number is required
                     </div>
@@ -34,11 +34,11 @@ const creditCardInputs = (props) => {
                 <div className="col-md-3 mb-3">
                     <label>Expiration</label>
                     <input
-                        type="text"
+                        type="date"
                         className="form-control"
                         placeholder=""
                         value={props.creditCardInfo.creditCardExpiration.value}
-                        onChange={props.inputChanged}/>
+                        onChange={(event) => props.inputChanged(event,'creditCardExpiration')}/>
                     <div className="invalid-feedback">
                         Expiration date required
                     </div>
@@ -49,8 +49,8 @@ const creditCardInputs = (props) => {
                         type="text"
                         className="form-control"
                         placeholder=""
-                        value={props.creditCardInfo.creditCardCvv}
-                        onChange={props.inputChanged}/>
+                        value={props.creditCardInfo.creditCardCvv.value}
+                        onChange={(event) => props.inputChanged(event,'creditCardCvv')}/>
                     <div className="invalid-feedback">
                         Security code required
                     </div>
