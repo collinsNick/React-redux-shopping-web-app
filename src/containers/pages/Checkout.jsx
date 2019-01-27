@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {confirmOrder, setPromoCode} from '../../store/actions/shop';
-import CheckoutCartProduct from '../../components/CheckoutCartProduct';
+import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
 import Alert from '../../components/UI/Alert/Alert';
 import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
+import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
 
@@ -121,14 +122,10 @@ class Checkout extends Component {
                         <ul className="list-group mb-3">
                             {cartProducts}
                             {this.props.usedPromoCodeProp ?
-                                <li className="list-group-item d-flex justify-content-between">
-                                    <div className="text-success">
-                                        <h6 className="my-0">Promo code</h6>
-                                        <small
-                                            className={'font-weight-bold'}>{this.props.usedPromoCodeProp.code}</small>
-                                    </div>
-                                    <span className="text-success">-Ksh {discountAmount.toLocaleString()}</span>
-                                </li> : null}
+                                <PromoCodeValue
+                                    usedPromoCode={this.props.usedPromoCodeProp}
+                                    discountAmount={discountAmount}/> : null}
+
                             <li className="list-group-item ">
                                 <div className={'d-flex justify-content-between shop-checkout-prices'}>
                                     Sub Total
@@ -262,7 +259,7 @@ Checkout.propTypes = {
     cartTotalProps: PropTypes.number.isRequired,
     shippingPriceProp: PropTypes.number,
     promoCodeProp: PropTypes.array,
-    usedPromoCodeProp: PropTypes.string,
+    usedPromoCodeProp: PropTypes.object,
 };
 
 Checkout.defaultProps = {

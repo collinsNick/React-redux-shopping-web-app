@@ -8,7 +8,7 @@ const checkoutCartProduct = (props) => {
                 <div className={'d-flex flex-row'}>
                     <div>
                         <img className={'shop-checkout-image'}
-                             src={require(`../assets/images/shop_images/${props.checkoutProductImage}`)}
+                             src={require(`../../assets/images/shop_images/${props.checkoutProductImage}`)}
                              alt={props.checkoutProductImage.split('.')[0]}/>
                     </div>
                     <div className="pl-3 checkout-product-info">
