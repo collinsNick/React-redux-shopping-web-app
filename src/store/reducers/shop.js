@@ -7,15 +7,15 @@ const initialState = {
     cartTotal: 0,
     promoCode: [
         {
-            code: 'IHAVEMONEY',
+            code: 'TWOPERCENT',
             percentage: 2
         },
         {
-            code: 'IAMBROKE',
+            code: 'TENPERCENT',
             percentage: 10
         },
         {
-            code: 'PLEASEHELP',
+            code: 'FIVEPERCENT',
             percentage: 5
         }
     ],

@@ -5,8 +5,8 @@ import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
 import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
 import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
-import CustomerForm from '../../components/Checkout/Forms/CustomerForm';
-import CardForm from '../../components/Checkout/Forms/Payments/CardForm';
+import CustomerInputs from '../../components/Checkout/Forms/CustomerInputs';
+import CreditCardInputs from '../../components/Checkout/Forms/Payments/CreditCardInputs';
 import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOptions';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
@@ -19,7 +19,8 @@ class Checkout extends Component {
         showAlert: false,
         alertType: '',
         alertMessage: '',
-        billingInfoForm: {
+        paymentMethod: "creditCard",
+        customerInfo: {
             firstName: {
                 value: '',
                 valid: false,
@@ -37,11 +38,49 @@ class Checkout extends Component {
                 valid: false,
                 touched: false,
             }
+        },
+        creditCardInfo: {
+            creditCardName: {
+                value: '',
+                valid: false,
+                touched: false,
+            },
+            creditCardNumber: {
+                value: '',
+                valid: false,
+                touched: false,
+            },
+            creditCardExpiration: {
+                value: '',
+                valid: false,
+                touched: false,
+            },
+            CreditCardCvv: {
+                value: '',
+                valid: false,
+                touched: false,
+            }
+
         }
+
+    };
+
+    inputChangeHandler = (event, identifier) => {
+
     };
 
     promoCodeChangeHandler = (event) => {
         this.setState({promoCode: event.target.value})
+    };
+
+    paymentOptionChangeHandler = (event) => {
+        this.setState({paymentMethod: event.target.value})
+    };
+
+    confirmOrderHandler = (event, order) => {
+        event.preventDefault();
+        alert(' you have ordered');
+        // this.props.confirmOrderProp(order)
     };
 
     setPromoCode = (event) => {
@@ -153,15 +192,24 @@ class Checkout extends Component {
                     </div>
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing Information</h4>
-                        <form className="needs-validation shop-bg-white p-3">
-                            <CustomerForm/>
+                        <form className="needs-validation shop-bg-white p-3" noValidate>
+                            {/* customer details form fields */}
+                            <CustomerInputs
+                                customerInfo={this.state.customerInfo}
+                                inputChanged={(event, identifier) => this.inputChangeHandler(event, identifier)}/>
                             <h4 className="mb-3">Payment</h4>
-                            <PaymentOptions/>
-                            <CardForm/>
+                            {/* payment option selection field */}
+                            <PaymentOptions
+                                paymentMethod={this.state.paymentMethod}
+                                paymentOptionChanged={this.paymentOptionChangeHandler}/>
+                            {/* Credit card payment form fields */}
+                            <CreditCardInputs
+                                creditCardInfo={this.state.creditCardInfo}
+                                inputChanged={(event, identifier) => this.inputChangeHandler(event, identifier)}/>
                             <hr className="mb-4"/>
                             <button
                                 className="btn shop-btn-secondary btn-lg btn-block"
-                                onClick={() => this.props.confirmOrderProp(order)}>
+                                onClick={(event) => this.confirmOrderHandler(event, order)}>
                                 Confirm Order
                             </button>
                         </form>
