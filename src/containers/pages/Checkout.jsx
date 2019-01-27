@@ -206,16 +206,16 @@ class Checkout extends Component {
                     </div>
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing Information</h4>
-                        <form className="needs-validation shop-bg-white p-3" noValidate>
+                        <form className="shop-form shop-bg-white p-3" noValidate>
                             {/* customer details form fields */}
                             <CustomerInputs
                                 customerInfo={this.state.customerInfo}
                                 inputChanged={(event, identifier) => this.customerInfoChangeHandler(event, identifier)}/>
-                            <h4 className="mb-3">Payment</h4>
+                            <h4 className="mb-3">Payment Method</h4>
                             {/* payment option selection field */}
                             <PaymentOptions
                                 paymentMethod={this.state.paymentMethod}
-                                paymentOptionChanged={(event) => this.paymentOptionChangeHandler(event)}/>
+                                paymentOptionChanged={this.paymentOptionChangeHandler}/>
                             {/* Credit card payment form fields */}
                             <CreditCardInputs
                                 creditCardInfo={this.state.creditCardInfo}

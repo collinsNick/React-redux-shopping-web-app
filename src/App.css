@@ -413,6 +413,16 @@ nav {
     color: #F17E0A;
 }
 
+.shop-form ul{
+    list-style-type: none;
+    font-size: 1.1rem;
+    padding-left: 2rem;
+}
+
+input[type="radio"] {
+    margin-right: 1rem;
+}
+
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 
