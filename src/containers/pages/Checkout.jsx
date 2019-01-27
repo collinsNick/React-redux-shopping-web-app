@@ -5,6 +5,9 @@ import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
 import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
 import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
+import CustomerForm from '../../components/Checkout/Forms/CustomerForm';
+import CardForm from '../../components/Checkout/Forms/Payments/CardForm';
+import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOptions';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
@@ -150,87 +153,11 @@ class Checkout extends Component {
                     </div>
                     <div className="col-md-8 order-md-1 ">
                         <h4 className="mb-3">Billing Information</h4>
-                        <form className="needs-validation shop-bg-white p-3" novalidate>
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <label>First name</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value=""
-                                           required/>
-                                    <div className="invalid-feedback">
-                                        Valid first name is required.
-                                    </div>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label>Last name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value=""
-                                           required/>
-                                    <div className="invalid-feedback">
-                                        Valid last name is required.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mb-3">
-                                <label>Email</label>
-                                <input type="email" className="form-control" id="email" placeholder="you@example.com"/>
-                                <div className="invalid-feedback">
-                                    Please enter a valid email address for shipping updates.
-                                </div>
-                            </div>
-
+                        <form className="needs-validation shop-bg-white p-3">
+                            <CustomerForm/>
                             <h4 className="mb-3">Payment</h4>
-
-                            <div className="d-block my-3">
-                                <div className="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" className="custom-control-input"
-                                           checked required/>
-                                    <label className="custom-control-label">Credit card</label>
-                                </div>
-                                <div className="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod" className="custom-control-input"
-                                           required/>
-                                    <label className="custom-control-label">PayPal</label>
-                                </div>
-                                <div className="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" className="custom-control-input"
-                                           required/>
-                                    <label className="custom-control-label">Mobile Money</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <label>Name on card</label>
-                                    <input type="text" className="form-control" placeholder="" required/>
-                                    <small className="text-muted">Full name as displayed on card</small>
-                                    <div className="invalid-feedback">
-                                        Name on card is required
-                                    </div>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label>Credit card number</label>
-                                    <input type="text" className="form-control" placeholder="" required/>
-                                    <div className="invalid-feedback">
-                                        Credit card number is required
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-md-3 mb-3">
-                                    <label>Expiration</label>
-                                    <input type="text" className="form-control" placeholder=""
-                                           required/>
-                                    <div className="invalid-feedback">
-                                        Expiration date required
-                                    </div>
-                                </div>
-                                <div className="col-md-3 mb-3">
-                                    <label>CVV</label>
-                                    <input type="text" className="form-control" placeholder="" required/>
-                                    <div className="invalid-feedback">
-                                        Security code required
-                                    </div>
-                                </div>
-                            </div>
+                            <PaymentOptions/>
+                            <CardForm/>
                             <hr className="mb-4"/>
                             <button
                                 className="btn shop-btn-secondary btn-lg btn-block"
