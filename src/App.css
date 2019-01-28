@@ -423,6 +423,11 @@ input[type="radio"] {
     margin-right: 1rem;
 }
 
+.shop-card-field{
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+}
+
 /* ------------- side bar --------------*/
 @media (max-width: 767.98px) {
 

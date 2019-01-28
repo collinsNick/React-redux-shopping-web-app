@@ -31,7 +31,7 @@ const productCard = (props) => {
 
                         <button type="button"
                                 className="btn shop-btn-primary btn-sm"
-                                disabled={props.productQuantity <= 0 }
+                                //disabled={props.productQuantity <= 0 }
                                 onClick={props.addToCart}>
                             {props.productQuantity > 0 ? ' Add To Cart' : 'Out Of Stock'}
                         </button>

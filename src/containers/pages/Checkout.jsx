@@ -11,6 +11,7 @@ import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOpti
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
+import {Elements, CardElement, injectStripe} from 'react-stripe-elements';
 
 class Checkout extends Component {
 
@@ -161,9 +162,7 @@ class Checkout extends Component {
 
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod = (
-                <CreditCardInputs
-                    creditCardInfo={this.state.creditCardInfo}
-                    inputChanged={(event, identifier) => this.creditCardInputChangeHandler(event, identifier)}/>
+                <div className={'w-75 ml-4 p-3 shop-card-field'}><CardElement /></div>
             )
         } else if (this.state.paymentMethod === "payPal") {
             chosenPaymentMethod = ("Paypal Form")
@@ -187,7 +186,7 @@ class Checkout extends Component {
                     <div className="col-md-4 order-md-2 mb-4">
 
                         <h4 className="d-flex justify-content-between align-items-center mb-3">
-                            <span className="text-muted">Your cart</span>
+                            <span className="text-muted">Order Review</span>
                             <span className="badge badge-secondary badge-pill">{this.props.cartTotalProps}</span>
                         </h4>
 
@@ -281,4 +280,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+// inject stripe prop into the component
+export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Checkout));

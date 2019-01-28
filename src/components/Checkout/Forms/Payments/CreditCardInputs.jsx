@@ -34,9 +34,9 @@ const creditCardInputs = (props) => {
                 <div className="col-md-3 mb-3">
                     <label>Expiration</label>
                     <input
-                        type="date"
+                        type="text"
                         className="form-control"
-                        placeholder=""
+                        placeholder="MM/YY"
                         value={props.creditCardInfo.creditCardExpiration.value}
                         onChange={(event) => props.inputChanged(event,'creditCardExpiration')}/>
                     <div className="invalid-feedback">
@@ -48,7 +48,7 @@ const creditCardInputs = (props) => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder=""
+                        placeholder="CVV"
                         value={props.creditCardInfo.creditCardCvv.value}
                         onChange={(event) => props.inputChanged(event,'creditCardCvv')}/>
                     <div className="invalid-feedback">
