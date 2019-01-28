@@ -21,18 +21,6 @@ const paymentOptions = props => {
                 <label>
                     <input
                         type="radio"
-                        value="payPal"
-                        checked={props.paymentMethod === "payPal"}
-                        onChange={props.paymentOptionChanged}
-                    />
-                    PayPal
-                </label>
-            </li>
-
-            <li>
-                <label>
-                    <input
-                        type="radio"
                         value="mobileMoney"
                         checked={props.paymentMethod === "mobileMoney"}
                         onChange={props.paymentOptionChanged}

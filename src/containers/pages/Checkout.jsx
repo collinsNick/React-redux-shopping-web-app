@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
@@ -6,12 +7,11 @@ import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
 import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
 import CustomerInputs from '../../components/Checkout/Forms/CustomerInputs';
-import CreditCardInputs from '../../components/Checkout/Forms/Payments/CreditCardInputs';
 import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOptions';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
-import {Elements, CardElement, injectStripe} from 'react-stripe-elements';
+import {CardElement, injectStripe} from 'react-stripe-elements';
 
 class Checkout extends Component {
 
@@ -40,30 +40,6 @@ class Checkout extends Component {
                 touched: false,
             }
         },
-        creditCardInfo: {
-            creditCardName: {
-                value: '',
-                valid: false,
-                touched: false,
-            },
-            creditCardNumber: {
-                value: '',
-                valid: false,
-                touched: false,
-            },
-            creditCardExpiration: {
-                value: '',
-                valid: false,
-                touched: false,
-            },
-            creditCardCvv: {
-                value: '',
-                valid: false,
-                touched: false,
-            }
-
-        }
-
     };
 
     customerInfoChangeHandler = (event, identifier) => {
@@ -73,14 +49,6 @@ class Checkout extends Component {
         customerInfoField.value = event.target.value;
         customerInfo[identifier] = customerInfoField;
         this.setState({customerInfo: customerInfo});
-    };
-
-    creditCardInputChangeHandler = (event, identifier) => {
-        const creditCardInfo = {...this.state.creditCardInfo};
-        const CcInfoField = {...creditCardInfo[identifier]};
-        CcInfoField.value = event.target.value;
-        creditCardInfo[identifier] = CcInfoField;
-        this.setState({creditCardInfo: creditCardInfo});
     };
 
     promoCodeChangeHandler = (event) => {
@@ -161,18 +129,18 @@ class Checkout extends Component {
         let shoppingTotal = productTotals > 0 ? ((productTotals + vat + shippingPrice) - discountAmount) : 0;
 
         if (this.state.paymentMethod === "creditCard") {
-            chosenPaymentMethod = (
+            chosenPaymentMethod =
                 <div className={'w-75 ml-4 p-3 shop-card-field'}><CardElement /></div>
-            )
-        } else if (this.state.paymentMethod === "payPal") {
-            chosenPaymentMethod = ("Paypal Form")
-
         } else if (this.state.paymentMethod === "mobileMoney") {
-            chosenPaymentMethod = ("Mpesa, Airtel Money, Equitel")
+            chosenPaymentMethod =
+                <div className={'w-75 ml-4 p-3'}>Mpesa, Airtel Money, Equitel</div>
         }
 
         return (
+
             <div className="container py-4">
+
+                { this.props.cartTotalProps <= 0 ? <Redirect to="/" /> : null }
 
                 {this.state.showAlert ? <Alert
                         alertType={this.state.alertType}
