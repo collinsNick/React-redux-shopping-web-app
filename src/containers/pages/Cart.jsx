@@ -15,8 +15,7 @@ class Cart extends Component {
 
     render() {
 
-        let cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link>
-        </h5>;
+        let cartContent = null;
 
         if (this.props.cartTotalProp > 0) {
             let cartPriceCountArray = [];
@@ -58,8 +57,11 @@ class Cart extends Component {
                 </React.Fragment>
             )
         }
-        if(this.props.cartTotalProp === 0 && this.props.orderSuccessProp){
+        else if(this.props.cartTotalProp === 0 && this.props.orderSuccessProp){
             cartContent = <OrderSuccess />
+        }else{
+            cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link>
+        </h5>;
         }
 
         return (
@@ -96,7 +98,6 @@ Cart.propTypes = {
     productProps: PropTypes.array.isRequired,
     orderSuccessProp: PropTypes.bool.isRequired,
     vatProp: PropTypes.number,
-
 };
 
 

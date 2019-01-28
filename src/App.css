@@ -97,10 +97,10 @@ nav {
 
 .shop-card {
     text-align: center;
+    background-color: #fff;
 }
 
 .shop-card .shop-card-image {
-    background-color: #FFFFFF;
     position: relative;
     padding-top: .5rem;
 }
@@ -134,7 +134,6 @@ nav {
 }
 
 .shop-card .shop-card-content {
-    background-color: #fff;
     text-align: center;
     padding: 12px 5px;
     margin: 0 auto;
@@ -142,6 +141,7 @@ nav {
 
 .shop-card .shop-card-title {
     font-size: 14px;
+    overflow: hidden;
     font-weight: 600;
     color: #000;
     letter-spacing: .5px;

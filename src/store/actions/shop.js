@@ -33,12 +33,11 @@ export const updateCartProductCount = (value, productId) => {
 export const confirmOrder = (order, ownProps) => {
     return dispatch => {
         // place holder
-        if(order){
-            dispatch(confirmOrderSuccess());
-        }else{
-           dispatch(confirmOrderFailure());
-        }
-        ownProps.history.push('/cart')
+        dispatch(confirmOrderSuccess());
+        ownProps.history.push('/cart');
+        setTimeout(() => {
+            dispatch(resetOrderSuccess())
+        }, 3000)
     }
 };
 
@@ -54,6 +53,12 @@ export const confirmOrderSuccess = () => {
     }
 };
 
+export const resetOrderSuccess = () => {
+    return {
+        type: actionTypes.RESET_ORDER_SUCCESS
+    }
+};
+
 export const confirmOrderFailure = () => {
     return {
         type: actionTypes.CONFIRM_ORDER_FAILURE
@@ -61,14 +66,14 @@ export const confirmOrderFailure = () => {
 };
 
 export const toogleSideBar = () => {
-    return{
-        type:actionTypes.TOGGLE_SIDE_BAR
+    return {
+        type: actionTypes.TOGGLE_SIDE_BAR
     }
 };
 
-export const setPromoCode = (promoCodeObject) =>{
-    return{
-        type:actionTypes.SET_PROMO_CODE,
+export const setPromoCode = (promoCodeObject) => {
+    return {
+        type: actionTypes.SET_PROMO_CODE,
         promoCode: promoCodeObject,
     }
 };

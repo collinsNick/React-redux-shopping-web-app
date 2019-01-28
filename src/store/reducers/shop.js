@@ -295,7 +295,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cartTotal: 0,
-                cart: []
+                cart: [],
             };
 
         case actionTypes.UPDATE_CART_PRODUCT_COUNT:
@@ -320,7 +320,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: [],
-                cartTotal: 0
+                cartTotal: 0,
+                orderSuccess:true
+            };
+
+        case actionTypes.RESET_ORDER_SUCCESS:
+            return{
+                ...state,
+                orderSuccess:false
             };
 
         case actionTypes.CONFIRM_ORDER_FAILURE:
