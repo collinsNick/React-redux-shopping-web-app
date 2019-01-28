@@ -29,14 +29,12 @@ class Checkout extends Component {
                 touched: false,
                 errorsMsg: '',
             },
-
             secondName: {
                 value: '',
                 valid: false,
                 touched: false,
                 errorsMsg: '',
             },
-
             email: {
                 value: '',
                 valid: false,

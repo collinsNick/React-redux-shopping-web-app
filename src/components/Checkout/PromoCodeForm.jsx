@@ -15,6 +15,7 @@ const promoCodeForm = props => {
                     />
                     <div className="input-group-append">
                         <button
+                            disabled={props.promoCode.length < 5}
                             className="btn shop-btn-secondary">
                             Redeem
                         </button>
