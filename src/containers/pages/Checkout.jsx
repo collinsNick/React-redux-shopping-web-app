@@ -56,14 +56,12 @@ class Checkout extends Component {
     };
 
     paymentOptionChangeHandler = (event) => {
-        console.log(event.target.value);
         this.setState({paymentMethod: event.target.value})
     };
 
     confirmOrderHandler = (event, order) => {
         event.preventDefault();
-        alert(' you have ordered');
-        // this.props.confirmOrderProp(order)
+        this.props.confirmOrderProp(order)
     };
 
     setPromoCode = (event) => {
@@ -103,7 +101,7 @@ class Checkout extends Component {
         let productsPrices = [];
         let chosenPaymentMethod = null;
 
-        const cartProducts = this.props.cartProductsProps.map(cartProduct => {
+        const cartProducts = this.props.cartProductsProps.map((cartProduct, index) => {
             // fetch product information from source based on id
             let productFromStore = this.props.productsProps.find(product => product.id === cartProduct.id);
             productsPrices.push({
@@ -111,6 +109,7 @@ class Checkout extends Component {
             });
             return (
                 <CheckoutCartProduct
+                    key={index}
                     checkoutProductName={productFromStore.name}
                     checkoutProductCategory={productFromStore.category}
                     checkoutProductPrice={productFromStore.price}
@@ -131,16 +130,16 @@ class Checkout extends Component {
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod =
                 <div className={'w-75 ml-4 p-3 shop-card-field'}><CardElement /></div>
-        } else if (this.state.paymentMethod === "mobileMoney") {
+        }else if (this.state.paymentMethod === "onDelivery") {
             chosenPaymentMethod =
-                <div className={'w-75 ml-4 p-3'}>Mpesa, Airtel Money, Equitel</div>
+                <div className={'w-75 ml-4 p-3'}>You will pay when the product is delivered to you.</div>
         }
 
         return (
 
             <div className="container py-4">
 
-                { this.props.cartTotalProps <= 0 ? <Redirect to="/" /> : null }
+                { this.props.cartTotalProps <= 0 ? <Redirect to="/cart" /> : null }
 
                 {this.state.showAlert ? <Alert
                         alertType={this.state.alertType}

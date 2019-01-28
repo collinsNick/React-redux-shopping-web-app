@@ -1,0 +1,18 @@
+import React, {Component} from 'react';
+import {Link} from "react-router-dom";
+
+const orderSuccess = () => {
+        return (
+            <React.Fragment>
+                    <div className={'text-center'}>
+                        <h3 className={'text-success'}>Success!</h3>
+                        <h5 className={'py-4'}>Your order is successful. Thank you for shopping with us.</h5>
+                        <Link className="btn btn-lg shop-btn-secondary checkout" to={'/'}>
+                            Continue Shopping
+                        </Link>
+                    </div>
+            </React.Fragment>
+        )
+    };
+
+export default orderSuccess;

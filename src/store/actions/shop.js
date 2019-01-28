@@ -38,7 +38,7 @@ export const confirmOrder = (order, ownProps) => {
         }else{
            dispatch(confirmOrderFailure());
         }
-        ownProps.history.push('/checkout')
+        ownProps.history.push('/cart')
     }
 };
 

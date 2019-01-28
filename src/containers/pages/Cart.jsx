@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {removeFromCart, clearCart, updateCartProductCount} from '../../store/actions/shop';
 import CartProduct from '../../components/Cart/CartProducts';
 import CartProductTotals from '../../components/Cart/CartProductTotals';
+import OrderSuccess from '../../components/OrderSuccess';
 import PropTypes from 'prop-types';
 
 class Cart extends Component {
@@ -57,6 +58,9 @@ class Cart extends Component {
                 </React.Fragment>
             )
         }
+        if(this.props.cartTotalProp === 0 && this.props.orderSuccessProp){
+            cartContent = <OrderSuccess />
+        }
 
         return (
             <div className="container shop-container py-4">
@@ -73,7 +77,8 @@ const mapStateToProps = state => {
         productProps: state.products,
         cartTotalProp: state.cartTotal,
         cartProductsProp: state.cart,
-        vatProp: state.vat
+        vatProp: state.vat,
+        orderSuccessProp: state.orderSuccess
     }
 };
 
@@ -89,7 +94,9 @@ Cart.propTypes = {
     cartTotalProp: PropTypes.number.isRequired,
     cartProductsProp: PropTypes.array.isRequired,
     productProps: PropTypes.array.isRequired,
+    orderSuccessProp: PropTypes.bool.isRequired,
     vatProp: PropTypes.number,
+
 };
 
 

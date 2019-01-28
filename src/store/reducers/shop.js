@@ -5,6 +5,7 @@ const initialState = {
     vat: 16,
     shippingPrice: 200,
     cartTotal: 0,
+    orderSuccess: false,
     promoCode: [
         {
             code: 'TWOPERCENT',

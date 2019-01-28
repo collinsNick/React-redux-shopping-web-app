@@ -21,11 +21,11 @@ const paymentOptions = props => {
                 <label>
                     <input
                         type="radio"
-                        value="mobileMoney"
-                        checked={props.paymentMethod === "mobileMoney"}
+                        value="onDelivery"
+                        checked={props.paymentMethod === "onDelivery"}
                         onChange={props.paymentOptionChanged}
                     />
-                    Mobile Money
+                    Pay on Delivery
                 </label>
             </li>
         </ul>

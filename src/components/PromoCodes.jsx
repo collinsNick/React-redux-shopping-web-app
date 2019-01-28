@@ -15,8 +15,10 @@ class PromoCodes extends Component {
                     </span> : null }
                     <ul className="list-group list-group-flush">
                         {
-                            this.props.promoCodeProps.map(promoCode => (
-                                <li className="list-group-item d-flex justify-content-between align-items-center">
+                            this.props.promoCodeProps.map( (promoCode, index) => (
+                                <li
+                                    className="list-group-item d-flex justify-content-between align-items-center"
+                                key={index}>
                                     <span className={'shop-text-red'}>{promoCode.code}</span>
                                     <span className="badge badge-light badge-pill">
                                     {promoCode.percentage}%
