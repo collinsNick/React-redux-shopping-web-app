@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {confirmOrder, setPromoCode} from '../../store/actions/shop';
 import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
@@ -21,7 +21,8 @@ class Checkout extends Component {
         alertType: '',
         alertMessage: '',
         paymentMethod: "creditCard",
-        makeOrder:false,
+        makeOrder: false,
+        correctCardInfo: false,
         customerInfo: {
             firstName: {
                 value: '',
@@ -40,6 +41,9 @@ class Checkout extends Component {
                 valid: false,
                 touched: false,
                 errorsMsg: '',
+            },
+            correctCardInfo: {
+                valid: false,
             }
         },
     };
@@ -49,7 +53,7 @@ class Checkout extends Component {
         const customerInfo = {...this.state.customerInfo};
         const customerInfoField = {...customerInfo[identifier]};
         customerInfoField.value = event.target.value;
-        const validationResults = formValidator(identifier,customerInfoField.value);
+        const validationResults = formValidator(identifier, customerInfoField.value);
         customerInfoField.valid = validationResults.isValid;
         customerInfoField.errorsMsg = validationResults.errorsMsg;
         customerInfoField.touched = true;
@@ -59,7 +63,7 @@ class Checkout extends Component {
         for (let identifier in customerInfo) {
             makeOrder = customerInfo[identifier].valid && makeOrder;
         }
-        this.setState({customerInfo: customerInfo, makeOrder:makeOrder});
+        this.setState({customerInfo: customerInfo, makeOrder: makeOrder});
     };
 
     promoCodeChangeHandler = (event) => {
@@ -73,6 +77,17 @@ class Checkout extends Component {
     confirmOrderHandler = (event, order) => {
         event.preventDefault();
         this.props.confirmOrderProp(order)
+    };
+
+    //handle card element events
+    creditCardHandler = element => {
+        if (element.complete) {
+            const customerInfo = {...this.state.customerInfo};
+            const customerInfoField = {...customerInfo['correctCardInfo']};
+            customerInfoField.valid = true;
+            customerInfo['correctCardInfo'] = customerInfoField;
+            this.setState({customerInfo:customerInfo})
+        }
     };
 
     setPromoCode = (event) => {
@@ -140,8 +155,11 @@ class Checkout extends Component {
 
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod =
-                <div className={'w-75 ml-4 p-3 shop-card-field'}><CardElement /></div>
-        }else if (this.state.paymentMethod === "onDelivery") {
+                <div className={'w-75 ml-4 p-3 shop-card-field'}>
+                    <CardElement
+                        onChange={(element) => this.creditCardHandler(element)}/>
+                </div>
+        } else if (this.state.paymentMethod === "onDelivery") {
             chosenPaymentMethod =
                 <div className={'w-75 ml-4 p-3'}>You will pay when the product is delivered to you.</div>
         }
@@ -150,7 +168,7 @@ class Checkout extends Component {
 
             <div className="container py-4">
 
-                { this.props.cartTotalProps <= 0 ? <Redirect to="/cart" /> : null }
+                {this.props.cartTotalProps <= 0 ? <Redirect to="/cart"/> : null}
 
                 {this.state.showAlert ? <Alert
                         alertType={this.state.alertType}
