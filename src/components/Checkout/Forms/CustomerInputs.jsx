@@ -8,26 +8,36 @@ const customerInputs = (props) => {
                 <div className="col-md-6 mb-3">
                     <label>First name</label>
                     <input type="text"
-                           className="form-control"
+                           className={['form-control',
+                               props.customerInfo.firstName.touched &&
+                               !props.customerInfo.firstName.valid ?
+                                   'shop-input-error' : ''
+                           ].join(' ')}
                            placeholder="First name"
                            value={props.customerInfo.firstName.value}
-                           // pass first name identifier to parent component
-                           onChange={(event) => props.inputChanged(event,'firstName')}/>
-                    <div className="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                        // pass first name identifier to parent component
+                           onChange={(event) => props.inputChanged(event, 'firstName')}/>
+                    {!props.customerInfo.firstName.valid ?
+                        <div className="shop-input-errors">
+                            {props.customerInfo.firstName.errorsMsg}
+                        </div> : null}
                 </div>
                 <div className="col-md-6 mb-3">
-                    <label>Last name</label>
+                    <label>Second name</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className={['form-control',
+                        props.customerInfo.secondName.touched &&
+                               !props.customerInfo.secondName.valid ?
+                                   'shop-input-error' : ''
+                           ].join(' ')}
                         placeholder="Last name"
                         value={props.customerInfo.secondName.value}
-                        onChange={(event) => props.inputChanged(event,'secondName')}/>
-                    <div className="invalid-feedback">
-                        Valid last name is required.
-                    </div>
+                        onChange={(event) => props.inputChanged(event, 'secondName')}/>
+                    {!props.customerInfo.secondName.valid ?
+                        <div className="shop-input-errors">
+                            {props.customerInfo.secondName.errorsMsg}
+                        </div> : null}
                 </div>
             </div>
 
@@ -35,13 +45,18 @@ const customerInputs = (props) => {
                 <label>Email</label>
                 <input
                     type="email"
-                    className="form-control"
+                    className={['form-control',
+                    props.customerInfo.email.touched &&
+                               !props.customerInfo.email.valid ?
+                                   'shop-input-error' : ''
+                           ].join(' ')}
                     placeholder="you@example.com"
                     value={props.customerInfo.email.value}
-                    onChange={(event) =>  props.inputChanged(event,'email')}/>
-                <div className="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
-                </div>
+                    onChange={(event) => props.inputChanged(event, 'email')}/>
+                {!props.customerInfo.email.valid ?
+                    <div className="shop-input-errors">
+                        {props.customerInfo.email.errorsMsg}
+                    </div> : null}
             </div>
         </React.Fragment>
     )

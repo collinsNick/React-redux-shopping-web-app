@@ -21,23 +21,27 @@ class Checkout extends Component {
         alertType: '',
         alertMessage: '',
         paymentMethod: "creditCard",
+        makeOrder:false,
         customerInfo: {
             firstName: {
                 value: '',
                 valid: false,
                 touched: false,
+                errorsMsg: '',
             },
 
             secondName: {
                 value: '',
                 valid: false,
                 touched: false,
+                errorsMsg: '',
             },
 
             email: {
                 value: '',
                 valid: false,
                 touched: false,
+                errorsMsg: '',
             }
         },
     };
@@ -47,8 +51,17 @@ class Checkout extends Component {
         const customerInfo = {...this.state.customerInfo};
         const customerInfoField = {...customerInfo[identifier]};
         customerInfoField.value = event.target.value;
+        const validationResults = formValidator(identifier,customerInfoField.value);
+        customerInfoField.valid = validationResults.isValid;
+        customerInfoField.errorsMsg = validationResults.errorsMsg;
+        customerInfoField.touched = true;
         customerInfo[identifier] = customerInfoField;
-        this.setState({customerInfo: customerInfo});
+
+        let makeOrder = true;
+        for (let identifier in customerInfo) {
+            makeOrder = customerInfo[identifier].valid && makeOrder;
+        }
+        this.setState({customerInfo: customerInfo, makeOrder:makeOrder});
     };
 
     promoCodeChangeHandler = (event) => {
@@ -203,6 +216,7 @@ class Checkout extends Component {
 
                             <hr className="mb-4"/>
                             <button
+                                disabled={!this.state.makeOrder}
                                 className="btn shop-btn-secondary btn-lg btn-block"
                                 onClick={(event) => this.confirmOrderHandler(event, order)}>
                                 Confirm Order
