@@ -12,6 +12,6 @@ const footer = () => {
             </div>
         </React.Fragment>
     )
-}
+};
 
 export default footer;
