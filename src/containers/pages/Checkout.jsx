@@ -41,9 +41,6 @@ class Checkout extends Component {
                 valid: false,
                 touched: false,
                 errorsMsg: '',
-            },
-            correctCardInfo: {
-                valid: false,
             }
         },
     };
@@ -71,6 +68,11 @@ class Checkout extends Component {
     };
 
     paymentOptionChangeHandler = (event) => {
+        if (event.target.value === 'creditCard') {
+            this.setState({correctCardInfo: false});
+        }else{
+            this.setState({correctCardInfo: true});
+        }
         this.setState({paymentMethod: event.target.value})
     };
 
@@ -82,11 +84,7 @@ class Checkout extends Component {
     //handle card element events
     creditCardHandler = element => {
         if (element.complete) {
-            const customerInfo = {...this.state.customerInfo};
-            const customerInfoField = {...customerInfo['correctCardInfo']};
-            customerInfoField.valid = true;
-            customerInfo['correctCardInfo'] = customerInfoField;
-            this.setState({customerInfo:customerInfo})
+            this.setState({correctCardInfo: true});
         }
     };
 
@@ -155,13 +153,13 @@ class Checkout extends Component {
 
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod =
-                <div className={'w-75 ml-4 p-3 shop-card-field'}>
+                <div className={'ml-4 p-3 shop-card-field'}>
                     <CardElement
                         onChange={(element) => this.creditCardHandler(element)}/>
                 </div>
         } else if (this.state.paymentMethod === "onDelivery") {
             chosenPaymentMethod =
-                <div className={'w-75 ml-4 p-3'}>You will pay when the product is delivered to you.</div>
+                <div className={'ml-4 p-3'}>You will pay when the product is delivered to you.</div>
         }
 
         return (
@@ -232,7 +230,7 @@ class Checkout extends Component {
 
                             <hr className="mb-4"/>
                             <button
-                                disabled={!this.state.makeOrder}
+                                disabled={!(this.state.makeOrder && this.state.correctCardInfo)}
                                 className="btn shop-btn-secondary btn-lg btn-block"
                                 onClick={(event) => this.confirmOrderHandler(event, order)}>
                                 Confirm Order
