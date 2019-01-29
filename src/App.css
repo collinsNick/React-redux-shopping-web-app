@@ -434,7 +434,7 @@ nav {
 
 .shop-form ul {
     list-style-type: none;
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding-left: 2rem;
 }
 
@@ -452,6 +452,13 @@ input[type="radio"] {
     margin-top: 0.25rem;
     font-size: 80%;
     color: #dc3545;
+}
+
+.shop-delivery-options{
+    background-color: #fff;
+    border-radius:5px;
+    box-shadow: 2px 2px 2px -2px gray;
+    font-size: .95rem;
 }
 
 /* ------------- side bar --------------*/

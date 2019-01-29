@@ -9,7 +9,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import shopReducer from './store/reducers/shop';
-import {Elements, StripeProvider} from 'react-stripe-elements';
+//import {Elements, StripeProvider} from 'react-stripe-elements';
 
 // setup redux dev tools to use our app state
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
@@ -20,11 +20,11 @@ const app = (
     <Provider store={store}>
         <BrowserRouter>
             {/*StripeProvider initializes the stripe and passes in the publishable key*/}
-            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-                <Elements>
+            {/*<StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">*/}
+                {/*<Elements>*/}
                     <App/>
-                </Elements>
-            </StripeProvider>
+                {/*</Elements>*/}
+            {/*</StripeProvider>*/}
         </BrowserRouter>
     </Provider>
 

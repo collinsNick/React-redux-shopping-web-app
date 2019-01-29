@@ -7,11 +7,13 @@ import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
 import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
 import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
 import CustomerInputs from '../../components/Checkout/Forms/CustomerInputs';
+import DeliveryOptions from '../../components/Checkout/Forms/DeliveryOptions'
 import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOptions';
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+
+//import {CardElement, injectStripe} from 'react-stripe-elements';
 
 class Checkout extends Component {
 
@@ -21,6 +23,8 @@ class Checkout extends Component {
         alertType: '',
         alertMessage: '',
         paymentMethod: "creditCard",
+        usedDeliveryOption: 1,
+        shippingPrice: 300,
         makeOrder: false,
         correctCardInfo: false,
         customerInfo: {
@@ -70,7 +74,7 @@ class Checkout extends Component {
     paymentOptionChangeHandler = (event) => {
         if (event.target.value === 'creditCard') {
             this.setState({correctCardInfo: false});
-        }else{
+        } else {
             this.setState({correctCardInfo: true});
         }
         this.setState({paymentMethod: event.target.value})
@@ -79,13 +83,6 @@ class Checkout extends Component {
     confirmOrderHandler = (event, order) => {
         event.preventDefault();
         this.props.confirmOrderProp(order)
-    };
-
-    //handle card element events
-    creditCardHandler = element => {
-        if (element.complete) {
-            this.setState({correctCardInfo: true});
-        }
     };
 
     setPromoCode = (event) => {
@@ -119,6 +116,20 @@ class Checkout extends Component {
         })
     };
 
+    deliveryOptionChangeHandler = (event) => {
+        //get used delivery option from the state
+        let deliveryOption = this.props.deliveryOptions.find(option => (
+            option.id === parseInt(event.target.value)
+        ));
+        if(deliveryOption){
+            this.setState({
+                usedDeliveryOption: parseInt(event.target.value),
+                shippingPrice: deliveryOption.cost
+            })
+        }
+
+    };
+
     render() {
 
         let order = null;
@@ -143,7 +154,7 @@ class Checkout extends Component {
             )
         });
 
-        let shippingPrice = this.props.shippingPriceProp ? this.props.shippingPriceProp : 0;
+        let shippingPrice = this.state.shippingPrice ? this.state.shippingPrice : 0;
         let productTotals = productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0);
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
@@ -154,8 +165,8 @@ class Checkout extends Component {
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod =
                 <div className={'ml-4 p-3 shop-card-field'}>
-                    <CardElement
-                        onChange={(element) => this.creditCardHandler(element)}/>
+                    "card"
+                    {/*<CardElement onChange={(element) => this.creditCardHandler(element)}/>*/}
                 </div>
         } else if (this.state.paymentMethod === "onDelivery") {
             chosenPaymentMethod =
@@ -218,6 +229,13 @@ class Checkout extends Component {
                             <CustomerInputs
                                 customerInfo={this.state.customerInfo}
                                 inputChanged={(event, identifier) => this.customerInfoChangeHandler(event, identifier)}/>
+                            {/* delivery options selection fields */}
+                            <h4 className="mb-3">Delivery Options</h4>
+                            <DeliveryOptions
+                                deliveryOptions={this.props.deliveryOptions}
+                                usedDeliveryOption={this.state.usedDeliveryOption}
+                                deliveryOptionChanged={this.deliveryOptionChangeHandler}/>
+
                             <h4 className="mb-3">Payment Method</h4>
                             {/* payment option selection field */}
                             <PaymentOptions
@@ -247,9 +265,9 @@ Checkout.propTypes = {
     productsProps: PropTypes.array.isRequired,
     cartProductsProps: PropTypes.array.isRequired,
     cartTotalProps: PropTypes.number.isRequired,
-    shippingPriceProp: PropTypes.number,
     promoCodeProp: PropTypes.array,
     usedPromoCodeProp: PropTypes.object,
+    deliveryOptions: PropTypes.array.isRequired
 };
 
 Checkout.defaultProps = {
@@ -262,9 +280,9 @@ const mapStateToProps = state => {
         cartProductsProps: state.cart,
         cartTotalProps: state.cartTotal,
         vatProps: state.vat,
-        shippingPriceProp: state.shippingPrice,
         promoCodeProp: state.promoCode,
-        usedPromoCodeProp: state.usedPromoCode
+        usedPromoCodeProp: state.usedPromoCode,
+        deliveryOptions: state.deliveryOptions
     }
 };
 
@@ -276,4 +294,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 // inject stripe prop into the component
-export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Checkout));
+//export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Checkout));
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

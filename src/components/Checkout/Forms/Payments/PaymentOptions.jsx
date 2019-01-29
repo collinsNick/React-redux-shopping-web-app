@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const paymentOptions = props => {
 
     return (
-        <ul>
+        <ul className={'shop-payment-methods'}>
             <li>
                 <label>
                     <input

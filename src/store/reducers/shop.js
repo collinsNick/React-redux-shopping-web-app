@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     cart: [],
-    vat: 16,
+    vat: 16, //vat in percentage
     shippingPrice: 200,
     cartTotal: 0,
     orderSuccess: false,
@@ -21,6 +21,20 @@ const initialState = {
         }
     ],
     usedPromoCode: null,
+    deliveryOptions: [
+        {
+            id:1,
+            name: 'standard',
+            duration: '24 - 72 hours',
+            cost: 300
+        },
+        {
+            id:2,
+            name: 'fastest',
+            duration: '1 - 24 hours',
+            cost: 1000
+        }
+    ],
     productMaxShowModal: false,
     modalMessage: null,
     showSideNavigation: false,
@@ -321,13 +335,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: [],
                 cartTotal: 0,
-                orderSuccess:true
+                orderSuccess: true
             };
 
         case actionTypes.RESET_ORDER_SUCCESS:
-            return{
+            return {
                 ...state,
-                orderSuccess:false
+                orderSuccess: false
             };
 
         case actionTypes.CONFIRM_ORDER_FAILURE:
