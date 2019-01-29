@@ -77,3 +77,11 @@ export const setPromoCode = (promoCodeObject) => {
         promoCode: promoCodeObject,
     }
 };
+
+export const changeCurrency = (currencyName) => {
+    // currency value can be fetched here from an external api and then passes to the store
+    return {
+        type: actionTypes.CHANGE_CURRENCY,
+        currencyName:currencyName
+    }
+};

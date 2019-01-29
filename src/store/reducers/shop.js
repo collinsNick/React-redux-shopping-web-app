@@ -8,10 +8,6 @@ const initialState = {
     orderSuccess: false,
     promoCode: [
         {
-            code: 'TWOPERCENT',
-            percentage: 2
-        },
-        {
             code: 'TENPERCENT',
             percentage: 10
         },
@@ -23,13 +19,13 @@ const initialState = {
     usedPromoCode: null,
     deliveryOptions: [
         {
-            id:1,
+            id: 1,
             name: 'standard',
             duration: '24 - 72 hours',
             cost: 300
         },
         {
-            id:2,
+            id: 2,
             name: 'fastest',
             duration: '1 - 24 hours',
             cost: 1000
@@ -38,6 +34,21 @@ const initialState = {
     productMaxShowModal: false,
     modalMessage: null,
     showSideNavigation: false,
+    defaultCurrency: {"KSH": 1},
+    usedCurrency: "KSH",
+    // exchange rates can be got from any api source
+    exchangeRates: {
+        "base": "KSH",
+        "date": "2019-01-29",
+        "rates": {
+            "USD": 0.9922,
+            "GBP": 0.7579,
+            "EUR": 0.8776,
+            "TSH": 22.9326,
+            "USH": 36.3643,
+            "NGN": 3.5936
+        }
+    },
     products: [
         {
             id: 1,
@@ -367,6 +378,28 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 usedPromoCode: action.promoCode
             };
+
+        case actionTypes.CHANGE_CURRENCY: {
+
+            let currencyName = Object.keys(state.defaultCurrency)[0];
+            let currencyValue = state.defaultCurrency[currencyName];
+            let currencyObj = {};
+
+            if (action.currencyName !== currencyName) {
+                let currencyNameSearch = Object.keys(state.exchangeRates.rates).filter(rate => (
+                    action.currencyName === rate
+                ));
+                if (currencyNameSearch) {
+                    currencyName = action.currencyName;
+                    currencyValue = state.exchangeRates.rates[currencyName];
+                }
+            }
+            currencyObj[currencyName] = currencyValue;
+            return {
+                ...state,
+                usedCurrency: currencyObj
+            }
+        }
 
         default:
             return {

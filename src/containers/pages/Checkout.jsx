@@ -159,7 +159,7 @@ class Checkout extends Component {
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
         let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
-        let discountAmount = productTotals * percentageDiscount;
+        let discountAmount = Math.round(productTotals * percentageDiscount);
         let shoppingTotal = productTotals > 0 ? ((productTotals + vat + shippingPrice) - discountAmount) : 0;
 
         if (this.state.paymentMethod === "creditCard") {
