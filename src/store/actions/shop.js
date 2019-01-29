@@ -33,6 +33,7 @@ export const updateCartProductCount = (value, productId) => {
 export const confirmOrder = (order, ownProps) => {
     return dispatch => {
         // place holder
+        console.log(order)
         dispatch(confirmOrderSuccess());
         ownProps.history.push('/cart');
         setTimeout(() => {

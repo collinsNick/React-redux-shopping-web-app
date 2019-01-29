@@ -24,7 +24,6 @@ class Checkout extends Component {
         alertMessage: '',
         paymentMethod: "creditCard",
         usedDeliveryOption: 1,
-        shippingPrice: 300,
         makeOrder: false,
         correctCardInfo: false,
         customerInfo: {
@@ -80,8 +79,19 @@ class Checkout extends Component {
         this.setState({paymentMethod: event.target.value})
     };
 
-    confirmOrderHandler = (event, order) => {
+    confirmOrderHandler = (event) => {
         event.preventDefault();
+        let order = {};
+        order['cart'] = this.props.cartProductsProps;
+        order['user'] = {
+            firstName: this.state.customerInfo.firstName.value,
+            secondName: this.state.customerInfo.secondName.value,
+            email: this.state.customerInfo.email.value
+        };
+        order['usedPromoCode'] = this.state.promoCode;
+        order['currency'] = this.props.usedCurrencyProp;
+        order['paymentMethod'] = this.state.paymentMethod;
+        order['deliveryOption'] = this.state.usedDeliveryOption;
         this.props.confirmOrderProp(order)
     };
 
@@ -132,7 +142,6 @@ class Checkout extends Component {
 
     render() {
 
-        let order = null;
         let productsPrices = [];
         let chosenPaymentMethod = null;
         let currencyKeys = Object.keys(this.props.usedCurrencyProp);
@@ -258,7 +267,7 @@ class Checkout extends Component {
                             <button
                                 disabled={!(this.state.makeOrder && this.state.correctCardInfo)}
                                 className="btn shop-btn-secondary btn-lg btn-block"
-                                onClick={(event) => this.confirmOrderHandler(event, order)}>
+                                onClick={(event) => this.confirmOrderHandler(event)}>
                                 Confirm Order
                             </button>
                         </form>
