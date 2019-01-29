@@ -32,8 +32,8 @@ export const updateCartProductCount = (value, productId) => {
 
 export const confirmOrder = (order, ownProps) => {
     return dispatch => {
-        // place holder
-        console.log(order)
+        // send order object to an api end point of choice
+        console.log(order);
         dispatch(confirmOrderSuccess());
         ownProps.history.push('/cart');
         setTimeout(() => {
@@ -61,6 +61,7 @@ export const resetOrderSuccess = () => {
 };
 
 export const confirmOrderFailure = () => {
+    // todo
     return {
         type: actionTypes.CONFIRM_ORDER_FAILURE
     }
@@ -83,6 +84,6 @@ export const changeCurrency = (currencyName) => {
     // currency value can be fetched here from an external api and then passes to the store
     return {
         type: actionTypes.CHANGE_CURRENCY,
-        currencyName:currencyName
+        currencyName: currencyName
     }
 };
