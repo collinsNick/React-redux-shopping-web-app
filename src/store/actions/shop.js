@@ -34,6 +34,8 @@ export const confirmOrder = (order, ownProps) => {
     return dispatch => {
         // send order object to an api end point of choice
         console.log(order);
+        // todo
+        //token to be used with stripe
         dispatch(confirmOrderSuccess());
         ownProps.history.push('/cart');
         setTimeout(() => {

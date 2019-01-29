@@ -1,12 +1,12 @@
-## React-Redux Ecommerce web application(Front end)
+## React-Redux Ecommerce web application
 this is a sample ecommerce web app made using react, redux and react router.
 
-live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
+Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
 
 ## Build Setup
 
 1. Run `npm install` in root directory, to install all required dependencies.
-3. Use `npm start` to start the application on you machine
+2. Use `npm start` to start the application on you machine
 
 
 

@@ -12,8 +12,7 @@ import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOpti
 import Alert from '../../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
 import formValidator from '../../Utility/formValidation';
-
-//import {CardElement, injectStripe} from 'react-stripe-elements';
+import {CardElement, injectStripe} from 'react-stripe-elements';
 
 class Checkout extends Component {
 
@@ -23,6 +22,7 @@ class Checkout extends Component {
         alertType: '',
         alertMessage: '',
         paymentMethod: "creditCard",
+        shippingPrice: 300,
         usedDeliveryOption: 1,
         makeOrder: false,
         correctCardInfo: false,
@@ -92,7 +92,11 @@ class Checkout extends Component {
         order['currency'] = this.props.usedCurrencyProp;
         order['paymentMethod'] = this.state.paymentMethod;
         order['deliveryOption'] = this.state.usedDeliveryOption;
+
+        // todo
+        // create stripe token for payments
         this.props.confirmOrderProp(order)
+
     };
 
     setPromoCode = (event) => {
@@ -140,6 +144,12 @@ class Checkout extends Component {
 
     };
 
+    creditCardHandler = (element) => {
+        if (element.complete) {
+            this.setState({correctCardInfo: true})
+        }
+    };
+
     render() {
 
         let productsPrices = [];
@@ -179,8 +189,7 @@ class Checkout extends Component {
         if (this.state.paymentMethod === "creditCard") {
             chosenPaymentMethod =
                 <div className={'ml-4 p-3 shop-card-field'}>
-                    "card"
-                    {/*<CardElement onChange={(element) => this.creditCardHandler(element)}/>*/}
+                    <CardElement onChange={(element) => this.creditCardHandler(element)}/>
                 </div>
         } else if (this.state.paymentMethod === "onDelivery") {
             chosenPaymentMethod =
@@ -314,5 +323,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 // inject stripe prop into the component
-//export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Checkout));
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps, mapDispatchToProps)(injectStripe(Checkout));
