@@ -16,8 +16,8 @@ class Cart extends Component {
     render() {
 
         let cartContent = null;
-        let currencyName = Object.keys(this.props.usedCurrencyProp);
-        let currencyValue = this.props.usedCurrencyProp[currencyName];
+        let currencyKeys = Object.keys(this.props.usedCurrencyProp);
+        let currencyValue = this.props.usedCurrencyProp[currencyKeys[0]];
 
         if (this.props.cartTotalProp > 0) {
             let cartPriceCountArray = [];

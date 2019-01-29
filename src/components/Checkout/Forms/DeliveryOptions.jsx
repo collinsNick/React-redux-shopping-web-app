@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 const deliveryOptions = (props) => {
 
-    let currencyName = Object.keys(props.currency);
-    let currencyValue = props.currency[currencyName];
+    let currencyKeys = Object.keys(props.currency);
+    let currencyValue = props.currency[currencyKeys[0]];
+    let currencyName = props.currency[currencyKeys[1]];
 
     return (
         <ul>
@@ -26,7 +27,7 @@ const deliveryOptions = (props) => {
                                         <div>{option.name}</div>
                                         <div className={''}>{option.duration}</div>
                                         <div><span
-                                            style={{textTransform: 'lowercase'}}>{currencyName} </span>{Math.round(option.cost * currencyValue)}
+                                            style={{textTransform: 'lowercase'}}>{currencyName}</span>{Math.round(option.cost * currencyValue)}
                                         </div>
                                     </div>
                                 </label>

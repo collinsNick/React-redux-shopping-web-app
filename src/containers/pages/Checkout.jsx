@@ -135,8 +135,8 @@ class Checkout extends Component {
         let order = null;
         let productsPrices = [];
         let chosenPaymentMethod = null;
-        let currencyName = Object.keys(this.props.usedCurrencyProp);
-        let currencyValue = this.props.usedCurrencyProp[currencyName];
+        let currencyKeys = Object.keys(this.props.usedCurrencyProp);
+        let currencyValue = this.props.usedCurrencyProp[currencyKeys[0]];
 
         const cartProducts = this.props.cartProductsProps.map((cartProduct, index) => {
             // fetch product information from source based on id
@@ -237,7 +237,7 @@ class Checkout extends Component {
                                 customerInfo={this.state.customerInfo}
                                 inputChanged={(event, identifier) => this.customerInfoChangeHandler(event, identifier)}/>
                             {/* delivery options selection fields */}
-                            <h4 className="mb-3">Delivery Options</h4>
+                            <h4 className="">Delivery Options</h4>
                             <DeliveryOptions
                                 currency={this.props.usedCurrencyProp}
                                 deliveryOptions={this.props.deliveryOptions}

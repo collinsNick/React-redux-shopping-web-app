@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const checkoutCartProduct = (props) => {
 
-    let currencyName = Object.keys(props.currency);
+    let currencyKeys = Object.keys(props.currency);
+    let currencyName = props.currency[currencyKeys[1]];
 
     return (
         <React.Fragment>
@@ -17,7 +18,7 @@ const checkoutCartProduct = (props) => {
                     <div className="pl-3 checkout-product-info">
                         <h6 className="my-0 ">{props.checkoutProductName}</h6>
                         <p>
-                            <span style={{textTransform:'lowercase'}}>{currencyName} </span>
+                            <span style={{textTransform:'lowercase'}}>{currencyName}</span>
                             {props.checkoutProductPrice}</p>
                         <p>
                             <small><span className="text-muted">Qty: </span>{props.checkoutCartCount}</small>

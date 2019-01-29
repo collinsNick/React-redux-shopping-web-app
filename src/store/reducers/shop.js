@@ -34,20 +34,33 @@ const initialState = {
     productMaxShowModal: false,
     modalMessage: null,
     showSideNavigation: false,
-    usedCurrency: {"KSH": 1},
+    // used currency should load with the default currency name and rate
+    usedCurrency: {"KES": 1,"symbol":"Ksh "},
     // exchange rates can be got from any api source
     exchangeRates: {
-        "base": "KSH",
+        "base": "KES",
         "date": "2019-01-29",
         "rates": {
-            "KSH": 1,
+            "KES": 1,
             "USD": 0.0099,
             "GBP": 0.0075,
             "EUR": 0.0087,
-            "TSH": 22.92,
+            "TZS": 22.92,
             "UGX": 36.33,
-            "NGN": 3.59
+            "NGN": 3.59,
+            "INR": 0.71
         }
+    },
+    // overkill but doing it for fun
+    currencySymbols: {
+        "KES": 'Ksh ',
+        "USD": '$',
+        "GBP": '£',
+        "EUR": '€',
+        "TZS": 'TSh ',
+        "UGX": 'USh ',
+        "NGN": '₦',
+        "INR": '₹'
     },
     products: [
         {
@@ -392,13 +405,16 @@ const reducer = (state = initialState, action) => {
             if (currencyNameSearch) {
                 currencyName = action.currencyName;
                 currencyValue = state.exchangeRates.rates[currencyName];
+
+                currencyObj[currencyName] = currencyValue;
+                currencyObj['symbol'] = state.currencySymbols[currencyName]
             }
 
 
-            currencyObj[currencyName] = currencyValue;
             return {
                 ...state,
-                usedCurrency: currencyObj
+                // just in case the currency is not found
+                usedCurrency: currencyNameSearch ? currencyObj : this.state.usedCurrency
             }
         }
 

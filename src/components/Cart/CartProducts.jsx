@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const cartProducts = (props) => {
 
-    let currencyName = Object.keys(props.currency);
+    let currencyKeys = Object.keys(props.currency);
+    let currencyName = props.currency[currencyKeys[1]];
 
     return (
         <React.Fragment>
@@ -31,7 +32,7 @@ const cartProducts = (props) => {
                             <div className="row">
                                 <div className="col-sm-6 text-left">
                                     <h6 className={'shop-cart-item-price'}>
-                                        <span style={{textTransform:'capitalize'}}>{currencyName} </span>
+                                        <span style={{textTransform:'capitalize'}}>{currencyName}</span>
                                          {props.productPrice.toLocaleString()}
                                         </h6>
                                     <select
@@ -45,7 +46,7 @@ const cartProducts = (props) => {
                                         ))}
                                     </select>
                                     <h6 className={'shop-cart-item-total'}>Total
-                                       <span style={{textTransform:'capitalize'}}> {currencyName} </span>
+                                       <span style={{textTransform:'capitalize'}}> {currencyName}</span>
                                         <span>{props.productPrice * props.productCount.toLocaleString()}</span>
                                     </h6>
                                 </div>

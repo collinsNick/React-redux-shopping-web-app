@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 const productCard = (props) => {
 
-    let currencyName = Object.keys(props.currency);
-    let currencyValue = props.currency[currencyName];
+    let currencyKeys = Object.keys(props.currency);
+    let currencyValue = props.currency[currencyKeys[0]];
+    let currencyName = props.currency[currencyKeys[1]];
 
     return (
         <React.Fragment>
@@ -28,9 +29,9 @@ const productCard = (props) => {
 
                     <div className="shop-card-content">
                         <h3 className="shop-card-title">{props.productName}</h3>
-                        <div className="shop-card-price"><span style={{textTransform:'capitalize'}}>{currencyName}</span> {Math.round(props.productPrice * currencyValue).toLocaleString()}
+                        <div className="shop-card-price"><span style={{textTransform:'capitalize'}}>{currencyName}</span>{Math.round(props.productPrice * currencyValue).toLocaleString()}
                             <span
-                                className={'shop-card-discount-price'}><span style={{textTransform:'lowercase'}}>{currencyName} </span>{Math.round(props.productDiscountPrice * currencyValue).toLocaleString()}</span>
+                                className={'shop-card-discount-price'}><span style={{textTransform:'lowercase'}}>{currencyName}</span>{Math.round(props.productDiscountPrice * currencyValue).toLocaleString()}</span>
                         </div>
 
                         <button type="button"
