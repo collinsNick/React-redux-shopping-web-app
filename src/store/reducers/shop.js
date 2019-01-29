@@ -35,18 +35,18 @@ const initialState = {
     modalMessage: null,
     showSideNavigation: false,
     defaultCurrency: {"KSH": 1},
-    usedCurrency: "KSH",
+    usedCurrency: {"KSH": 1},
     // exchange rates can be got from any api source
     exchangeRates: {
         "base": "KSH",
         "date": "2019-01-29",
         "rates": {
-            "USD": 0.9922,
-            "GBP": 0.7579,
-            "EUR": 0.8776,
-            "TSH": 22.9326,
-            "USH": 36.3643,
-            "NGN": 3.5936
+            "USD": 0.0099,
+            "GBP": 0.0075,
+            "EUR": 0.0087,
+            "TSH": 22.92,
+            "UGX": 36.33,
+            "NGN": 3.59
         }
     },
     products: [

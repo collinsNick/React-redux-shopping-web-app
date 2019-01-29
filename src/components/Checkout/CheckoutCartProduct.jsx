@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const checkoutCartProduct = (props) => {
+
+    let currencyName = Object.keys(props.currency);
+    let currencyValue = props.currency[currencyName];
+
     return (
         <React.Fragment>
             <li className="list-group-item ">
@@ -13,8 +17,12 @@ const checkoutCartProduct = (props) => {
                     </div>
                     <div className="pl-3 checkout-product-info">
                         <h6 className="my-0 ">{props.checkoutProductName}</h6>
-                        <p>Ksh {props.checkoutProductPrice}</p>
-                        <p><small><span className="text-muted">Qty: </span>{props.checkoutCartCount}</small></p>
+                        <p>
+                            <span style={{textTransform:'lowercase'}}>{currencyName} </span>
+                            {Math.round(props.checkoutProductPrice * currencyValue)}</p>
+                        <p>
+                            <small><span className="text-muted">Qty: </span>{props.checkoutCartCount}</small>
+                        </p>
                     </div>
                 </div>
             </li>
@@ -26,7 +34,8 @@ checkoutCartProduct.propTypes = {
     checkoutProductName: PropTypes.string.isRequired,
     checkoutCartCount: PropTypes.number.isRequired,
     checkoutProductPrice: PropTypes.number.isRequired,
-    checkoutProductImage: PropTypes.string.isRequired
+    checkoutProductImage: PropTypes.string.isRequired,
+    currency: PropTypes.object.isRequired
 };
 
 export default checkoutCartProduct;

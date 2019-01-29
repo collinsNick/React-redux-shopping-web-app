@@ -23,6 +23,7 @@ class Children extends Component {
                         productImage={product.img}
                         productCategory={product.category}
                         productQuantity={product.quantity}
+                        currency={this.props.usedCurrencyProp}
                         addToCart={() => this.props.addProductToCartProp(product.id)}
                     />
                 )
@@ -38,7 +39,8 @@ class Children extends Component {
 
 const mapStateToProps = state => {
     return {
-        productsProps: state.products.filter( product => product.category === 'kids')
+        productsProps: state.products.filter( product => product.category === 'kids'),
+        usedCurrencyProp: state.usedCurrency
     }
 };
 
@@ -49,7 +51,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 Children.propTypes = {
-    productsProps: PropTypes.array.isRequired
+    productsProps: PropTypes.array.isRequired,
+    usedCurrencyProp: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Children);

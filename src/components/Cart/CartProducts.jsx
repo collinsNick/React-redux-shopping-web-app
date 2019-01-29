@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const cartProducts = (props) => {
+
+    let currencyName = Object.keys(props.currency);
+    let currencyValue = props.currency[currencyName];
+
     return (
         <React.Fragment>
             <div className="row">
@@ -27,7 +31,10 @@ const cartProducts = (props) => {
                         <div className="col-sm-7 col-md-6">
                             <div className="row">
                                 <div className="col-sm-6 text-left">
-                                    <h6 className={'shop-cart-item-price'}>Ksh. {props.productPrice.toLocaleString()}</h6>
+                                    <h6 className={'shop-cart-item-price'}>
+                                        <span style={{textTransform:'capitalize'}}>{currencyName} </span>
+                                         {Math.round(props.productPrice * currencyValue).toLocaleString()}
+                                        </h6>
                                     <select
                                         className="form-control input-sm my-3 w-50"
                                         disabled={props.productQuantity <= 0}
@@ -39,7 +46,8 @@ const cartProducts = (props) => {
                                         ))}
                                     </select>
                                     <h6 className={'shop-cart-item-total'}>Total
-                                        Ksh. <span>{(props.productPrice * props.productCount).toLocaleString()}</span>
+                                       <span style={{textTransform:'capitalize'}}> {currencyName} </span>
+                                        <span>{Math.round(props.productPrice * props.productCount * currencyValue).toLocaleString()}</span>
                                     </h6>
                                 </div>
                                 <div className="col-sm-4 offset-sm-2 shop-cart-b-container">
@@ -66,6 +74,7 @@ cartProducts.propTypes = {
     updateProductCount: PropTypes.func.isRequired,
     productQuantity: PropTypes.number.isRequired,
     removeCartProduct: PropTypes.func.isRequired,
+    currency: PropTypes.object.isRequired
 };
 
 export default cartProducts;

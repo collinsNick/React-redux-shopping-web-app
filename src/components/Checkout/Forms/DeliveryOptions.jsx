@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const footer = (props) => {
+const deliveryOptions = (props) => {
+
+    let currencyName = Object.keys(props.currency);
+    let currencyValue = props.currency[currencyName];
+
     return (
         <ul>
             <div className="row">
                 {props.deliveryOptions.map((option, index) => {
                     return (
-                        <div className="col-11 col-sm-10 col-md-8 py-2 text-capitalize shop-delivery-options mt-3" key={index}>
+                        <div className="col-11 col-sm-10 col-md-8 py-2 text-capitalize shop-delivery-options mt-3"
+                             key={index}>
                             <li className={' '}>
                                 <label className={'w-100 d-flex flex-row'}>
                                     <input
@@ -20,7 +25,9 @@ const footer = (props) => {
                                     <div className={'w-100 d-flex justify-content-between'}>
                                         <div>{option.name}</div>
                                         <div className={''}>{option.duration}</div>
-                                        <div>Ksh. {option.cost}</div>
+                                        <div><span
+                                            style={{textTransform: 'lowercase'}}>{currencyName} </span>{Math.round(option.cost * currencyValue)}
+                                        </div>
                                     </div>
                                 </label>
                             </li>
@@ -32,10 +39,11 @@ const footer = (props) => {
     )
 };
 
-footer.propTypes = {
+deliveryOptions.propTypes = {
     deliveryOptions: PropTypes.array.isRequired,
     usedDeliveryOption: PropTypes.number,
     deliveryOptionChanged: PropTypes.func.isRequired,
+    currency: PropTypes.object.isRequired
 };
 
-export default footer;
+export default deliveryOptions;

@@ -24,6 +24,7 @@ class Index extends Component {
                         productImage={product.img}
                         productCategory={product.category}
                         productQuantity={product.quantity}
+                        currency={this.props.usedCurrencyProp}
                         addToCart={() => this.props.addProductToCartProp(product.id, product.quantity)}
                     />
                 )
@@ -39,7 +40,8 @@ class Index extends Component {
 
 const mapStateToProps = state => {
     return {
-        productsProps: state.products
+        productsProps: state.products,
+        usedCurrencyProp: state.usedCurrency
     }
 };
 
@@ -50,7 +52,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 Index.propTypes = {
-    productsProps: PropTypes.array.isRequired
+    productsProps: PropTypes.array.isRequired,
+    usedCurrencyProp: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

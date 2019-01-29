@@ -39,15 +39,16 @@ class Cart extends Component {
                             productQuantity={productFromStore.quantity}
                             updateProductCount={(event) => this.productCountHandler(event.target.value, productInCart.id)}
                             removeCartProduct={() => this.props.removeProductFromCartProp(productInCart.id, productInCart.count)}
+                            currency={this.props.usedCurrencyProp}
                         />
                     )
                 });
 
             let cartTotals = <CartProductTotals
-                shippingPrice={this.props.shippingPriceProp}
                 subtotal={cartPriceCountArray.reduce((acc, el) => acc + (el.price * el.count), 0)}
                 vat={this.props.vatProp}
                 clearCart={() => this.props.clearProductsFromCartProp()}
+                currency={this.props.usedCurrencyProp}
             />;
 
             cartContent = (
@@ -80,7 +81,8 @@ const mapStateToProps = state => {
         cartTotalProp: state.cartTotal,
         cartProductsProp: state.cart,
         vatProp: state.vat,
-        orderSuccessProp: state.orderSuccess
+        orderSuccessProp: state.orderSuccess,
+        usedCurrencyProp: state.usedCurrency
     }
 };
 
@@ -98,6 +100,7 @@ Cart.propTypes = {
     productProps: PropTypes.array.isRequired,
     orderSuccessProp: PropTypes.bool.isRequired,
     vatProp: PropTypes.number,
+    usedCurrencyProp: PropTypes.object.isRequired
 };
 
 

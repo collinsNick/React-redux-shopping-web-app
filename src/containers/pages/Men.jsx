@@ -24,6 +24,7 @@ class Men extends Component {
                             productImage={product.img}
                             productCategory={product.category}
                             productQuantity={product.quantity}
+                            currency={this.props.usedCurrencyProp}
                             addToCart={() => this.props.addProductToCartProp(product.id)}
                         />
                     )
@@ -39,7 +40,8 @@ class Men extends Component {
 
 const mapStateToProps = state => {
     return {
-        productsProps: state.products.filter(product => product.category === 'men')
+        productsProps: state.products.filter(product => product.category === 'men'),
+        usedCurrencyProp: state.usedCurrency
     }
 };
 
@@ -50,7 +52,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 Men.propTypes = {
-    productsProps: PropTypes.array.isRequired
+    productsProps: PropTypes.array.isRequired,
+    usedCurrencyProp: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Men);

@@ -121,7 +121,7 @@ class Checkout extends Component {
         let deliveryOption = this.props.deliveryOptions.find(option => (
             option.id === parseInt(event.target.value)
         ));
-        if(deliveryOption){
+        if (deliveryOption) {
             this.setState({
                 usedDeliveryOption: parseInt(event.target.value),
                 shippingPrice: deliveryOption.cost
@@ -150,6 +150,7 @@ class Checkout extends Component {
                     checkoutProductPrice={productFromStore.price}
                     checkoutProductImage={productFromStore.img}
                     checkoutCartCount={cartProduct.count}
+                    currency={this.props.usedCurrencyProp}
                 />
             )
         });
@@ -203,6 +204,7 @@ class Checkout extends Component {
                             {/* used promo codes */}
                             {this.props.usedPromoCodeProp ?
                                 <PromoCodeValue
+                                    currency={this.props.usedCurrencyProp}
                                     usedPromoCode={this.props.usedPromoCodeProp}
                                     discountAmount={discountAmount}/> : null}
 
@@ -211,7 +213,8 @@ class Checkout extends Component {
                                 productTotals={productTotals}
                                 vat={vat}
                                 shippingPrice={shippingPrice}
-                                shoppingTotal={shoppingTotal}/>
+                                shoppingTotal={shoppingTotal}
+                                currency={this.props.usedCurrencyProp}/>
                         </ul>
 
                         {/*promo code form */}
@@ -232,6 +235,7 @@ class Checkout extends Component {
                             {/* delivery options selection fields */}
                             <h4 className="mb-3">Delivery Options</h4>
                             <DeliveryOptions
+                                currency={this.props.usedCurrencyProp}
                                 deliveryOptions={this.props.deliveryOptions}
                                 usedDeliveryOption={this.state.usedDeliveryOption}
                                 deliveryOptionChanged={this.deliveryOptionChangeHandler}/>
@@ -267,7 +271,8 @@ Checkout.propTypes = {
     cartTotalProps: PropTypes.number.isRequired,
     promoCodeProp: PropTypes.array,
     usedPromoCodeProp: PropTypes.object,
-    deliveryOptions: PropTypes.array.isRequired
+    deliveryOptions: PropTypes.array.isRequired,
+    usedCurrencyProp: PropTypes.object.isRequired
 };
 
 Checkout.defaultProps = {
@@ -282,7 +287,8 @@ const mapStateToProps = state => {
         vatProps: state.vat,
         promoCodeProp: state.promoCode,
         usedPromoCodeProp: state.usedPromoCode,
-        deliveryOptions: state.deliveryOptions
+        deliveryOptions: state.deliveryOptions,
+        usedCurrencyProp: state.usedCurrency
     }
 };
 
