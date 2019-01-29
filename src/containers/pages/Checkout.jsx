@@ -135,19 +135,23 @@ class Checkout extends Component {
         let order = null;
         let productsPrices = [];
         let chosenPaymentMethod = null;
+        let currencyName = Object.keys(this.props.usedCurrencyProp);
+        let currencyValue = this.props.usedCurrencyProp[currencyName];
 
         const cartProducts = this.props.cartProductsProps.map((cartProduct, index) => {
             // fetch product information from source based on id
             let productFromStore = this.props.productsProps.find(product => product.id === cartProduct.id);
             productsPrices.push({
-                price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: cartProduct.count
+                price: productFromStore.quantity > 0 ?
+                    Math.round(productFromStore.price * currencyValue) : 0, count:
+                cartProduct.count
             });
             return (
                 <CheckoutCartProduct
                     key={index}
                     checkoutProductName={productFromStore.name}
                     checkoutProductCategory={productFromStore.category}
-                    checkoutProductPrice={productFromStore.price}
+                    checkoutProductPrice={Math.round(productFromStore.price * currencyValue)}
                     checkoutProductImage={productFromStore.img}
                     checkoutCartCount={cartProduct.count}
                     currency={this.props.usedCurrencyProp}
@@ -155,12 +159,12 @@ class Checkout extends Component {
             )
         });
 
-        let shippingPrice = this.state.shippingPrice ? this.state.shippingPrice : 0;
+        let shippingPrice = this.state.shippingPrice ? Math.round(this.state.shippingPrice * currencyValue) : 0;
         let productTotals = productsPrices.reduce((acc, el) => acc + (el.price * el.count), 0);
         let vatPercentage = this.props.vatProps > 0 ? this.props.vatProps / 100 : 0;
-        let vat = productTotals > 0 ? (productTotals * vatPercentage) : 0;
+        let vat = productTotals > 0 ? Math.round(productTotals * vatPercentage) : 0;
         let percentageDiscount = this.props.usedPromoCodeProp ? this.props.usedPromoCodeProp.percentage / 100 : 0;
-        let discountAmount = Math.round(productTotals * percentageDiscount);
+        let discountAmount = productTotals * percentageDiscount;
         let shoppingTotal = productTotals > 0 ? ((productTotals + vat + shippingPrice) - discountAmount) : 0;
 
         if (this.state.paymentMethod === "creditCard") {
@@ -272,7 +276,8 @@ Checkout.propTypes = {
     promoCodeProp: PropTypes.array,
     usedPromoCodeProp: PropTypes.object,
     deliveryOptions: PropTypes.array.isRequired,
-    usedCurrencyProp: PropTypes.object.isRequired
+    usedCurrencyProp: PropTypes.object.isRequired,
+    vatProps: PropTypes.number
 };
 
 Checkout.defaultProps = {

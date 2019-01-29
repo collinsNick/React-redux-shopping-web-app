@@ -16,6 +16,8 @@ class Cart extends Component {
     render() {
 
         let cartContent = null;
+        let currencyName = Object.keys(this.props.usedCurrencyProp);
+        let currencyValue = this.props.usedCurrencyProp[currencyName];
 
         if (this.props.cartTotalProp > 0) {
             let cartPriceCountArray = [];
@@ -25,7 +27,9 @@ class Cart extends Component {
                     // product information can also be stored in state
                     let productFromStore = this.props.productProps.find(product => product.id === productInCart.id);
                     cartPriceCountArray.push({
-                            price: productFromStore.quantity > 0 ? productFromStore.price : 0, count: productInCart.count
+                            price: productFromStore.quantity > 0 ?
+                                Math.round(productFromStore.price * currencyValue) : 0,
+                            count: productInCart.count
                         }
                     );
                     return (
@@ -34,7 +38,7 @@ class Cart extends Component {
                             productName={productFromStore.name}
                             productCategory={productFromStore.category}
                             productPhoto={productFromStore.img}
-                            productPrice={productFromStore.price}
+                            productPrice={Math.round(productFromStore.price * currencyValue)}
                             productCount={productInCart.count}
                             productQuantity={productFromStore.quantity}
                             updateProductCount={(event) => this.productCountHandler(event.target.value, productInCart.id)}
@@ -58,18 +62,18 @@ class Cart extends Component {
                 </React.Fragment>
             )
         }
-        else if(this.props.cartTotalProp === 0 && this.props.orderSuccessProp){
-            cartContent = <OrderSuccess />
-        }else{
+        else if (this.props.cartTotalProp === 0 && this.props.orderSuccessProp) {
+            cartContent = <OrderSuccess/>
+        } else {
             cartContent = <h5 className={'shop-empty-cart'}>Your cart is empty. <Link to={'/'}>Please fill it up.</Link>
-        </h5>;
+            </h5>;
         }
 
         return (
             <div className="container shop-container py-4">
                 <div className={'p-4 shop-div'}>
-                {cartContent}
-                 </div>
+                    {cartContent}
+                </div>
             </div>
         )
     }

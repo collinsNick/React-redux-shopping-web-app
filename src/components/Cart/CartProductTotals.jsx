@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 const cartProductTotals = (props) => {
 
     let currencyName = Object.keys(props.currency);
-    let currencyValue = props.currency[currencyName];
 
     let subtotal = props.subtotal;
     let vatPercentage = props.vat > 0 ? props.vat/100 : 0;
-    let vat = subtotal > 0 ? (subtotal * vatPercentage) : 0;
-    let totalCost = subtotal > 0 ? (Math.round(subtotal * currencyValue) + Math.round(vat * currencyValue)) : 0;
+    let vat = subtotal > 0 ? Math.round(subtotal * vatPercentage) : 0;
+    let totalCost = subtotal > 0 ? subtotal + vat : 0;
 
     return (
         <React.Fragment>
@@ -19,7 +18,7 @@ const cartProductTotals = (props) => {
                     Subtotal
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    <span style={{textTransform:'lowercase'}}>{currencyName} </span> {Math.round(subtotal * currencyValue).toLocaleString()}
+                    <span style={{textTransform:'lowercase'}}>{currencyName} </span> {subtotal.toLocaleString()}
                 </div>
             </div>
             <hr/>
@@ -28,7 +27,7 @@ const cartProductTotals = (props) => {
                     VAT
                 </div>
                 <div className="col-6 col-sm-3 text-right shop-cart-amounts">
-                    <span style={{textTransform:'lowercase'}}>{currencyName} </span> {Math.round(vat * currencyValue).toLocaleString()}
+                    <span style={{textTransform:'lowercase'}}>{currencyName} </span> {vat.toLocaleString()}
                 </div>
             </div>
             <hr/>

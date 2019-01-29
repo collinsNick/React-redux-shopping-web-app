@@ -57,7 +57,7 @@ productCard.propTypes = {
     productName: PropTypes.string.isRequired,
     addToCart: PropTypes.func.isRequired,
     productQuantity: PropTypes.number.isRequired,
-
+    currency: PropTypes.object.isRequired
 };
 
 export default productCard;
