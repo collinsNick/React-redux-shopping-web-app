@@ -34,13 +34,13 @@ const initialState = {
     productMaxShowModal: false,
     modalMessage: null,
     showSideNavigation: false,
-    defaultCurrency: {"KSH": 1},
     usedCurrency: {"KSH": 1},
     // exchange rates can be got from any api source
     exchangeRates: {
         "base": "KSH",
         "date": "2019-01-29",
         "rates": {
+            "KSH": 1,
             "USD": 0.0099,
             "GBP": 0.0075,
             "EUR": 0.0087,
@@ -381,19 +381,20 @@ const reducer = (state = initialState, action) => {
 
         case actionTypes.CHANGE_CURRENCY: {
 
-            let currencyName = Object.keys(state.defaultCurrency)[0];
-            let currencyValue = state.defaultCurrency[currencyName];
+            let currencyName = null;
+            let currencyValue = null;
             let currencyObj = {};
 
-            if (action.currencyName !== currencyName) {
-                let currencyNameSearch = Object.keys(state.exchangeRates.rates).filter(rate => (
-                    action.currencyName === rate
-                ));
-                if (currencyNameSearch) {
-                    currencyName = action.currencyName;
-                    currencyValue = state.exchangeRates.rates[currencyName];
-                }
+
+            let currencyNameSearch = Object.keys(state.exchangeRates.rates).filter(rate => (
+                action.currencyName === rate
+            ));
+            if (currencyNameSearch) {
+                currencyName = action.currencyName;
+                currencyValue = state.exchangeRates.rates[currencyName];
             }
+
+
             currencyObj[currencyName] = currencyValue;
             return {
                 ...state,

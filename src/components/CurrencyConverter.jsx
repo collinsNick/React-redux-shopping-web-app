@@ -11,15 +11,12 @@ class CurrencyConverter extends Component {
 
     render() {
 
-        let usedCurrencyName = Object.keys(this.props.defaultCurrencyProp)[0];
-
         return (
             <div className="form-group">
                 {this.props.showLabel ? <label><h5>Convert Currency</h5></label> : null}
                 <select className="form-control"
-                        value={this.props.usedCurrencyProp}
+                        value={Object.keys(this.props.usedCurrencyProp)[0]}
                         onChange={this.currencyChangeHandler}>
-                    <option value={usedCurrencyName}>{usedCurrencyName}</option>
                     {Object.keys(this.props.exchangeRatesProps.rates).map((rateName, index) => (
                         <option
                             key={index}
@@ -34,17 +31,15 @@ class CurrencyConverter extends Component {
 }
 
 CurrencyConverter.propType = {
-    usedCurrencyProp: PropTypes.string.isRequired,
+    usedCurrencyProp: PropTypes.object.isRequired,
     exchangeRatesProps: PropTypes.object.isRequired,
-    defaultCurrencyProp: PropTypes.object.isRequired,
     showLabel: PropTypes.bool
 };
 
 const mapStateToProps = state => {
     return {
         exchangeRatesProps: state.exchangeRates,
-        usedCurrencyProp:state.usedCurrency,
-        defaultCurrencyProp: state.defaultCurrency
+        usedCurrencyProp:state.usedCurrency
     }
 };
 

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 const checkoutCartTotals = (props) => {
 
      let currencyName = Object.keys(props.currency);
-    let currencyValue = props.currency[currencyName];
 
     return (
         <React.Fragment>
