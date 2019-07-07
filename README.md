@@ -6,10 +6,9 @@ Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe
 ## Build Setup
 
 1. Run `npm install` in root directory, to install all required dependencies.
-2. Use `npm start` to start the application on you machine
+2. Use `npm start` to start the application on you machin
 
 ## To do
 
 1. Finish stripe intergration
-2. handle order submission errors
-
+2. <del>handle order submission errors</del>

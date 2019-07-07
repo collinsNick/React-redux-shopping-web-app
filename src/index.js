@@ -12,8 +12,11 @@ import shopReducer from './store/reducers/shop';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 
 // setup redux dev tools to use our app state
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
-const store = createStore(shopReducer, composeEnhancers(applyMiddleware(thunk)))
+// enable these to use thunk chrome dev tool
+// const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+// composeEnhancers prevents using promises in actions, if you find a solution please share
+// const store = createStore(shopReducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(shopReducer, applyMiddleware(thunk));
 
 const app = (
 

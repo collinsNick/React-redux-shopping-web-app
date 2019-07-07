@@ -40,7 +40,7 @@ export const confirmOrder = (order, ownProps) => {
         ownProps.history.push('/cart');
         setTimeout(() => {
             dispatch(resetOrderSuccess())
-        }, 3000)
+        }, 5000)
     }
 };
 
