@@ -1,0 +1,129 @@
+/* ------------- shop product cards --------------*/
+
+.shop-card {
+    text-align: center;
+    background-color: #fff;
+}
+
+.shop-card .shop-card-image {
+    position: relative;
+    padding-top: .5rem;
+}
+
+.shop-card .shop-card-image a {
+    display: block
+}
+
+.shop-card .shop-card-image img {
+    width: 70%;
+    height: auto
+}
+
+.shop-card .shop-card-wishlist,
+.shop-card .shop-card-new {
+    color: #fff;
+    background-color: #E40046;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0
+}
+
+.shop-card .shop-card-wishlist {
+    background-color: transparent;
+    color: #999 !important;
+    font-size: 20px !important;
+    left: auto;
+    cursor: pointer;
+    top: 3px;
+    right: 0
+}
+
+.new {
+    position: absolute;
+    background: #E40046;
+    color: #fff;
+    font-size: 14px;
+    left: 0;
+    top: 0;
+    padding: 11px 0 0 0px;
+    font-weight: 500;
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    border-radius: 0% 40% 40% 0%;
+}
+
+.shop-card .shop-card-content {
+    text-align: center;
+    padding: 12px 5px 5px;
+    margin: 0 auto;
+}
+
+.shop-card .shop-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: .5px;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+}
+
+.shop-card .shop-card-title a:hover,
+.shop-card:hover .shop-card-title a {
+    color: #E40046;
+    text-decoration: none;
+}
+
+.shop-card .shop-card-price {
+    color: rgba(32, 32, 32, 0.87);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .6px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.shop-card .shop-card-discount-price {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-left: 3px;
+    display: inline-block
+}
+
+.shop-btn-primary,
+.shop-btn-primary:focus,
+.shop-btn-primary.focus,
+.shop-btn-primary:hover,
+.shop-btn-primary:active,
+.shop-btn-primary:active:focus,
+.shop-btn-primary.active {
+    color: #FFF;
+    font-size: 13px;
+    background-color: #F17E0A;
+    font-weight: 600;
+    border-color: #F17E0A;
+}
+
+
+/*cart and checkout buttons*/
+
+.shop-btn-secondary,
+.shop-btn-secondary:focus,
+.shop-btn-secondary.focus,
+.shop-btn-secondary:hover,
+.shop-btn-secondary:active,
+.shop-btn-secondary:active:focus,
+.shop-btn-secondary.active {
+    color: #FFF;
+    font-size: 1rem;
+    background-color: #F17E0A;
+    font-weight: 600;
+    border-color: #F17E0A;
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './ProductCard.css'
+import { FaRegHeart } from "react-icons/fa";
 
 const productCard = (props) => {
 
@@ -14,33 +16,37 @@ const productCard = (props) => {
                 <div className="shop-card">
                     <div className="shop-card-image">
                         <img
-                            src={require(`../assets/images/shop_images/${props.productImage}`)}
+                            src={require(`../../assets/images/shop_images/${props.productImage}`)}
                             alt={props.productImage.split('.')[0]}
                         />
-                        {props.productSale ? <span className="shop-card-sale">Sale</span> : null}
-
-                        {props.productDiscountPrice ?
-                            <span className="shop-card-discount">
-                                {`${Math.round(((props.productDiscountPrice - props.productPrice) * 100) / props.productDiscountPrice)}%`}
-                                    </span>
-                            : null
-                        }
+                        {props.productSale ? <span className="shop-card-new">New</span> : null}
+                        <span className="shop-card-wishlist"><FaRegHeart /></span>
                     </div>
 
                     <div className="shop-card-content">
                         <h3 className="shop-card-title">{props.productName}</h3>
-                        <div className="shop-card-price"><span style={{textTransform:'capitalize'}}>{currencyName}</span>{Math.round(props.productPrice * currencyValue).toLocaleString()}
-                            <span
-                                className={'shop-card-discount-price'}><span style={{textTransform:'lowercase'}}>{currencyName}</span>{Math.round(props.productDiscountPrice * currencyValue).toLocaleString()}</span>
+                        <div className="shop-card-price"><span style={{ textTransform: 'capitalize' }}>{currencyName}</span>{Math.round(props.productPrice * currencyValue).toLocaleString()}
+                            {
+                                props.productDiscountPrice ?
+                                    <span
+                                        className={'shop-card-discount-price'}>
+                                        <span style={{ textTransform: 'lowercase' }}>
+                                            {currencyName}
+                                        </span>
+                                        {
+                                            Math.round(props.productDiscountPrice * currencyValue).toLocaleString()
+                                        }
+                                    </span>
+                                    : null
+                            }
                         </div>
 
                         <button type="button"
-                                className="btn shop-btn-primary btn-sm"
-                                disabled={props.productQuantity <= 0 }
-                                onClick={props.addToCart}>
+                            className="btn shop-btn-primary"
+                            disabled={props.productQuantity <= 0}
+                            onClick={props.addToCart}>
                             {props.productQuantity > 0 ? ' Add To Cart' : 'Out Of Stock'}
                         </button>
-
                     </div>
                 </div>
 

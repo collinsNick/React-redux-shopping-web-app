@@ -6,10 +6,10 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import {BrowserRouter} from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import shopReducer from './store/reducers/shop';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import shopReducer from './store/reducers/shop';
-import {Elements, StripeProvider} from 'react-stripe-elements';
+// import {Elements, StripeProvider} from 'react-stripe-elements';
 
 // setup redux dev tools to use our app state
 // enable these to use thunk chrome dev tool
@@ -24,9 +24,9 @@ const app = (
         <BrowserRouter>
             {/*StripeProvider initializes the stripe and passes in the publishable key*/}
             {/* <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx"> */}
-                <Elements>
+                {/* <Elements> */}
                     <App/>
-                </Elements>
+                {/* </Elements> */}
             {/* </StripeProvider> */}
         </BrowserRouter>
     </Provider>
