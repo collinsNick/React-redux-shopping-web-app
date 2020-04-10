@@ -23,11 +23,11 @@ const app = (
     <Provider store={store}>
         <BrowserRouter>
             {/*StripeProvider initializes the stripe and passes in the publishable key*/}
-            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+            {/* <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx"> */}
                 <Elements>
                     <App/>
                 </Elements>
-            </StripeProvider>
+            {/* </StripeProvider> */}
         </BrowserRouter>
     </Provider>
 
