@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './ProductCard.css'
-import { FaHeart } from "react-icons/fa";
+import Ratings from '../Ratings/Ratings';
+import { Heart, LocalShipping, International, Warehouse } from '../UI/Icons/Icons.jsx';
+
 
 const productCard = (props) => {
 
@@ -17,15 +19,15 @@ const productCard = (props) => {
                 <div className="shop-card">
                     <div className="shop-card-image">
                         <NavLink
-                        to={'/women'}
-                        exact>
-                        <img
-                            src={require(`../../assets/images/shop_images/${props.productImage}`)}
-                            alt={props.productImage.split('.')[0]}
-                        />
+                            to={'/women'}
+                            exact>
+                            <img
+                                src={require(`../../assets/images/shop_images/${props.productImage}`)}
+                                alt={props.productImage.split('.')[0]}
+                            />
                         </NavLink>
                         {props.productSale ? <span className="shop-card-new">Sale</span> : null}
-                        <span className="shop-card-wishlist" title="add to wishlist"><FaHeart /></span>
+                        <span className="shop-card-wishlist" title="add to wishlist"><Heart /></span>
                         {props.productDiscountPrice ?
                             <span className="shop-card-discount">
                                 {`-${Math.round(((props.productDiscountPrice - props.productPrice) * 100) / props.productDiscountPrice)}%`}
@@ -35,7 +37,18 @@ const productCard = (props) => {
                     </div>
 
                     <div className="shop-card-content">
+                        <h2 className="shop-card-vendor">
+                            Some Vendor Name
+                        </h2>
                         <h3 className="shop-card-title">{props.productName}</h3>
+                        <Ratings
+                        ratings={5}
+                        totalVotes={300}
+                        containerClassName={'shop-card-ratings-container'}
+                        fullStarIcon={'full-star-icon'}
+                        halfStarIcon={'half-star-icon'}
+                        emptyStarIcon={'empty-star-icon'}
+                        />
                         <div className="shop-card-price-container">
                             <span
                                 className='shop-card-price'>
@@ -55,6 +68,12 @@ const productCard = (props) => {
                                     </span>
                                     : null
                             }
+                        </div>
+
+                        <div className="shop-card-features-container">
+                        <span className="shop-card-product-features padding" title="Fullfiled By Duka"><Warehouse /></span>
+                        <span className="shop-card-product-features" title="Local Shipping"><LocalShipping /></span>
+                        <span className="shop-card-product-features padding" title="International Shipping"><International /></span>
                         </div>
 
                         <button type="button"

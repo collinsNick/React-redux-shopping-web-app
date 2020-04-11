@@ -2,6 +2,7 @@
 
 .shop-card {
     background-color: #fff;
+    padding: 3px;
 }
 
 .shop-card .shop-card-image {
@@ -44,18 +45,55 @@
 }
 
 .shop-card .shop-card-content {
-    text-align: center;
-    padding: 12px 5px 5px;
+    /* text-align: center; */
+    padding: 15px 5px 5px;
     margin: 0 auto;
 }
 
+.shop-card .shop-card-vendor {
+    color: #878787;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
 .shop-card .shop-card-title {
+    white-space: nowrap;
+    width: 100%;                   /* IE6 needs any width */
+    overflow: hidden;              /* "overflow" value must be different from  visible"*/
+    -o-text-overflow: ellipsis;    /* Opera < 11*/
+    text-overflow:    ellipsis;
     font-size: 14px;
-    font-weight: 600;
-    color: #000;
+    font-weight: 400;
+    color: #212121;
     letter-spacing: .5px;
     text-transform: capitalize;
-    margin: 5px 0 10px;
+    margin: 5px 0 5px;
+}
+
+.shop-card .shop-card-ratings-container {
+    margin-bottom:5px;
+    font-size: 12px;
+    position : relative;
+}
+
+.shop-card .shop-card-ratings-container > span {
+    margin-right:5px;
+}
+
+.full-star-icon,.half-star-icon{
+    color:#fbb023;
+}
+
+.empty-star-icon{
+    color:#999;
+}
+
+.total-rating-votes{
+    position:relative;
+    bottom: -2px;
+    color:#999;
+    margin-left: 5px !important;
 }
 
 .shop-card .shop-card-title a:hover,
@@ -64,15 +102,10 @@
     text-decoration: none;
 }
 
-.shop-card .shop-card-price-container {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
 .shop-card .shop-card-price {
     text-transform: capitalize;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 700;
     color: #212121;
 }
 
@@ -100,6 +133,20 @@
     margin-left: 3px;
     display: inline-block
 }
+
+.shop-card .shop-card-features-container {
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.shop-card .shop-card-product-features {
+    font-size: 18px;
+    color: #e40044bc
+}
+
+.shop-card .shop-card-product-features:not(.padding) {
+    padding: 0 25px;
+  }
 
 .shop-btn-primary{
     color: #F17E0A;
