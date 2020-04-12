@@ -11,7 +11,7 @@ class AddToWishlist extends Component {
     };
 
     wished = () => {
-        return this.props.wishlistItems.find(productId => productId == this.props.productId ) ? 'wished' : null
+        return this.props.wishlistItems.find(productId => productId === this.props.productId ) ? 'wished' : null
     };
 
     render() {

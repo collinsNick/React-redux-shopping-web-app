@@ -72,6 +72,10 @@ let data = {
             article: 'watch',
             quantity: 5,
             img: 'analog-quartz-watch.jpg',
+            vendor:{
+                id:1,
+                name:'duka'
+            }
         },
         {
             id: 2,
@@ -83,7 +87,11 @@ let data = {
             sale: false,
             article: 'handbag',
             quantity: 8,
-            img: 'singedani-handbag.jpg'
+            img: 'singedani-handbag.jpg',
+            vendor:{
+                id:2,
+                name:'vendor two'
+            }
         },
         {
             id: 3,
@@ -95,7 +103,11 @@ let data = {
             sale: true,
             article: 'boxer',
             quantity: 3,
-            img: 'boy_boxers.jpg'
+            img: 'boy_boxers.jpg',
+            vendor:{
+                id:3,
+                name:'vendor three'
+            }
         },
         {
             id: 4,
@@ -107,7 +119,11 @@ let data = {
             sale: false,
             article: 'belt',
             quantity: 10,
-            img: 'belt.jpg'
+            img: 'belt.jpg',
+            vendor:{
+                id:4,
+                name:'vendor four'
+            }
         },
         {
             id: 5,
@@ -119,7 +135,11 @@ let data = {
             sale: true,
             article: 'dress',
             quantity: 0,
-            img: 'vintage-flare-dress.jpg'
+            img: 'vintage-flare-dress.jpg',
+            vendor:{
+                id:5,
+                name:'vendor five'
+            }
         },
         {
             id: 6,
@@ -131,7 +151,11 @@ let data = {
             sale: true,
             article: 'dress',
             quantity: 2,
-            img: 'cotton-dress.jpg'
+            img: 'cotton-dress.jpg',
+            vendor:{
+                id:1,
+                name:'duka'
+            }
         },
         {
             id: 7,
@@ -143,7 +167,11 @@ let data = {
             sale: false,
             article: 'shoes',
             quantity: 6,
-            img: 'gemch_shoes.jpg'
+            img: 'gemch_shoes.jpg',
+            vendor:{
+                id:2,
+                name:'vendor one'
+            }
         },
         {
             id: 8,
@@ -155,7 +183,11 @@ let data = {
             sale: true,
             article: 'dress',
             quantity: 10,
-            img: 'floral-dress.jpg'
+            img: 'floral-dress.jpg',
+            vendor:{
+                id:3,
+                name:'vendor three'
+            }
         },
         {
             id: 9,
@@ -167,7 +199,11 @@ let data = {
             sale: false,
             article: 'dress',
             quantity: 9,
-            img: 'leather-shoes.jpg'
+            img: 'leather-shoes.jpg',
+            vendor:{
+                id:4,
+                name:'vendor four'
+            }
         },
         {
             id: 10,
@@ -179,7 +215,11 @@ let data = {
             sale: false,
             article: 'shoes',
             quantity: 0,
-            img: 'gsoft-khaki.jpg'
+            img: 'gsoft-khaki.jpg',
+            vendor:{
+                id:5,
+                name:'vendor five'
+            }
         },
         {
             id: 11,
@@ -191,7 +231,11 @@ let data = {
             sale: false,
             article: 'dress',
             quantity: 7,
-            img: 'bodycon-dress.jpg'
+            img: 'bodycon-dress.jpg',
+            vendor:{
+                id:1,
+                name:'duka'
+            }
         },
         {
             id: 12,
@@ -203,7 +247,11 @@ let data = {
             sale: true,
             article: 'dress',
             quantity: 4,
-            img: 'princes-dress.jpg'
+            img: 'princes-dress.jpg',
+            vendor:{
+                id:2,
+                name:'vendor one'
+            }
         },
         {
             id: 13,
@@ -215,7 +263,11 @@ let data = {
             sale: true,
             article: 'suit',
             quantity: 3,
-            img: 'slim-fit-suit.jpg'
+            img: 'slim-fit-suit.jpg',
+            vendor:{
+                id:3,
+                name:'vendor three'
+            }
         },
         {
             id: 14,
@@ -227,7 +279,11 @@ let data = {
             sale: true,
             article: 'sandals',
             quantity: 2,
-            img: 'gladiator-flat-flip.jpg'
+            img: 'gladiator-flat-flip.jpg',
+            vendor:{
+                id:4,
+                name:'vendor four'
+            }
         },
         {
             id: 15,
@@ -239,7 +295,11 @@ let data = {
             sale: false,
             article: 'dress',
             quantity: 0,
-            img: 'boys-t-shirt.jpg'
+            img: 'boys-t-shirt.jpg',
+            vendor:{
+                id:5,
+                name:'vendor five'
+            }
         },
         {
             id: 16,
@@ -251,7 +311,11 @@ let data = {
             sale: true,
             article: 'suit',
             quantity: 8,
-            img: 'vest.jpg'
+            img: 'vest.jpg',
+            vendor:{
+                id:1,
+                name:'duka'
+            }
         },
         {
             id: 17,
@@ -263,7 +327,11 @@ let data = {
             sale: true,
             article: 'watch',
             quantity: 4,
-            img: 'quartz-wrist-watch.jpg'
+            img: 'quartz-wrist-watch.jpg',
+            vendor:{
+                id:2,
+                name:'vendor two'
+            }
         },
         {
             id: 18,
@@ -275,7 +343,11 @@ let data = {
             sale: true,
             article: 'dress',
             quantity: 7,
-            img: 'crew-neck-tshirt.jpg'
+            img: 'crew-neck-tshirt.jpg',
+            vendor:{
+                id:3,
+                name:'vendor three'
+            }
         },
     ]
 };

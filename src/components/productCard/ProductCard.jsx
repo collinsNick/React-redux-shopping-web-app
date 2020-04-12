@@ -12,6 +12,7 @@ const productCard = (props) => {
     let currencyKeys = Object.keys(props.currency);
     let currencyValue = props.currency[currencyKeys[0]];
     let currencyName = props.currency[currencyKeys[1]];
+    let item = props.product;
 
     return (
         <React.Fragment>
@@ -23,19 +24,19 @@ const productCard = (props) => {
                             to={'/women'}
                             exact>
                             <img
-                                src={require(`../../assets/images/shop_images/${props.productImage}`)}
-                                alt={props.productImage.split('.')[0]}
+                                src={require(`../../assets/images/shop_images/${item.img}`)}
+                                alt={item.img.split('.')[0]}
                             />
                         </NavLink>
-                        {props.productSale ? <span className="shop-card-sale">Sale</span> : null}
+                        {item.sale ? <span className="shop-card-sale">Sale</span> : null}
                         <AddToWishList
-                        productId={props.productId}
+                        productId={item.id}
                         title={'add to wishlist'}
                         classStyleName={'shop-card-wishlist'}
                         />
-                        {props.productDiscountPrice ?
+                        {item.discount_price ?
                             <span className="shop-card-discount">
-                                {`-${Math.round(((props.productDiscountPrice - props.productPrice) * 100) / props.productDiscountPrice)}%`}
+                                {`-${Math.round(((item.discount_price - item.price) * 100) / item.discount_price)}%`}
                             </span>
                             : null
                         }
@@ -43,9 +44,9 @@ const productCard = (props) => {
 
                     <div className="shop-card-content">
                         <h2 className="shop-card-vendor">
-                            Some Vendor Name
+                            {item.vendor ? item.vendor.name : null}
                         </h2>
-                        <h3 className="shop-card-title">{props.productName}</h3>
+                        <h3 className="shop-card-title">{item.name}</h3>
                         <Ratings
                         ratings={5}
                         totalVotes={300}
@@ -58,17 +59,17 @@ const productCard = (props) => {
                             <span
                                 className='shop-card-price'>
                                 {currencyName}
-                                {Math.round(props.productPrice * currencyValue).toLocaleString()}
+                                {Math.round(item.price * currencyValue).toLocaleString()}
                             </span>
                             {
-                                props.productDiscountPrice ?
+                                props.discount_price ?
                                     <span
                                         className={'shop-card-discount-price'}>
                                         <span style={{ textTransform: 'lowercase' }}>
                                             {currencyName}
                                         </span>
                                         {
-                                            Math.round(props.productDiscountPrice * currencyValue).toLocaleString()
+                                            Math.round(item.discount_price * currencyValue).toLocaleString()
                                         }
                                     </span>
                                     : null
@@ -83,9 +84,9 @@ const productCard = (props) => {
 
                         <button type="button"
                             className="btn shop-btn-primary btn-block"
-                            disabled={props.productQuantity <= 0}
+                            disabled={item.quantity <= 0}
                             onClick={props.addToCart}>
-                            {props.productQuantity > 0 ? ' Add To Cart' : 'Out Of Stock'}
+                            {item.quantity > 0 ? ' Add To Cart' : 'Out Of Stock'}
                         </button>
                     </div>
                 </div>
@@ -96,15 +97,7 @@ const productCard = (props) => {
 };
 
 productCard.propTypes = {
-    productId: PropTypes.number.isRequired,
-    productCategory: PropTypes.string.isRequired,
-    productImage: PropTypes.string.isRequired,
-    productSale: PropTypes.bool.isRequired,
-    productDiscountPrice: PropTypes.number,
-    productPrice: PropTypes.number.isRequired,
-    productName: PropTypes.string.isRequired,
-    addToCart: PropTypes.func.isRequired,
-    productQuantity: PropTypes.number.isRequired,
+    product: PropTypes.object.isRequired,
     currency: PropTypes.object.isRequired
 };
 

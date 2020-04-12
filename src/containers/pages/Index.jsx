@@ -17,14 +17,7 @@ class Index extends Component {
                 return (
                     <ProductCard
                         key={product.id}
-                        productId={product.id}
-                        productName={product.name}
-                        productPrice={product.price}
-                        productDiscountPrice={product.discount_price}
-                        productSale={product.sale}
-                        productImage={product.img}
-                        productCategory={product.category}
-                        productQuantity={product.quantity}
+                        product={product}
                         currency={this.props.usedCurrencyProp}
                         addToCart={() => this.props.addProductToCartProp(product.id, product.quantity)}
                     />
