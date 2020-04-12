@@ -6,7 +6,8 @@ import {
     FaWarehouse,
     FaRegStar,
     FaStar,
-    FaStarHalfAlt
+    FaStarHalfAlt,
+    FaAward
 } from "react-icons/fa";
 
 export const Heart = () => <FaHeart />;
@@ -16,3 +17,4 @@ export const Warehouse = () => <FaWarehouse />
 export const EmptyStar = () => <FaRegStar />
 export const HalfStar = () => <FaStarHalfAlt />
 export const FullStar = () => <FaStar />
+export const DukaApproved = () => <FaAward />

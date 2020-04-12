@@ -146,12 +146,9 @@
 
 .shop-card .shop-card-product-features {
     font-size: 18px;
-    color: #e40044bc
+    color: #e40044bc;
+    padding-right: 25px;
 }
-
-.shop-card .shop-card-product-features:not(.padding) {
-    padding: 0 25px;
-  }
 
 .shop-btn-primary{
     color: #F17E0A;
