@@ -1,5 +1,6 @@
 let data = {
     cart: [],
+    wishlist: [],
     vat: 16, //vat in percentage
     cartTotal: 0,
     orderSuccess: false,

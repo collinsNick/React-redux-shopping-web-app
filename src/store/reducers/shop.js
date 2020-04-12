@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
                     if (chkProductInCart.count < action.productQuantity) {
                         newCart = state.cart.map(
                             product => (product.id === action.productId ?
-                                    {...product, count: product.count + 1} : product
+                                { ...product, count: product.count + 1 } : product
                             ));
                         newCartTotal = state.cartTotal + 1
                     } else {
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
                         modalMessage = 'Sorry! Your product order cannot exceed our stock.'
                     }
                 } else {
-                    newCart = state.cart.concat({id: action.productId, count: 1});
+                    newCart = state.cart.concat({ id: action.productId, count: 1 });
                     newCartTotal = state.cartTotal + 1
                 }
             }
@@ -65,7 +65,7 @@ const reducer = (state = initialState, action) => {
                 cartTotal = state.cartTotal - (product.count - action.newCountValue);
                 newCart = state.cart.map(
                     product => product.id === action.productId ?
-                        {...product, count: action.newCountValue} : product
+                        { ...product, count: action.newCountValue } : product
                 );
             }
 
@@ -138,6 +138,22 @@ const reducer = (state = initialState, action) => {
                 usedCurrency: currencyNameSearch ? currencyObj : this.state.usedCurrency
             }
         }
+
+        case actionTypes.TOOLE_ITEM_IN_WISHLIST:
+            let wisList = state.wishlist;
+            let chkProductInWishList = state.wishlist.find(id => id === action.productId);
+            if (chkProductInWishList) {
+                // remove from wish list
+                wisList = state.wishlist.filter(id => id !== action.productId)
+            } else {
+                // addd to wish list
+                wisList = state.wishlist.concat(action.productId);
+            }
+
+            return {
+                ...state,
+                wishlist: wisList,
+            };
 
         default:
             return {

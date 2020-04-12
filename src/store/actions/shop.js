@@ -89,3 +89,10 @@ export const changeCurrency = (currencyName) => {
         currencyName: currencyName
     }
 };
+
+export const toogleItemInWishList = (productId) => {
+    return {
+        type: actionTypes.TOOLE_ITEM_IN_WISHLIST,
+        productId: productId,
+    }
+};

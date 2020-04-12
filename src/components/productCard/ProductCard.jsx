@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from "react-router-dom";
 import './ProductCard.css'
+import AddToWishList from '../AddToWishlist/AddToWishlist'
 import Ratings from '../Ratings/Ratings';
-import { Heart, LocalShipping, International, Warehouse } from '../UI/Icons/Icons.jsx';
+import { LocalShipping, International, Warehouse } from '../UI/Icons/Icons.jsx';
 
 
 const productCard = (props) => {
@@ -26,8 +27,12 @@ const productCard = (props) => {
                                 alt={props.productImage.split('.')[0]}
                             />
                         </NavLink>
-                        {props.productSale ? <span className="shop-card-new">Sale</span> : null}
-                        <span className="shop-card-wishlist" title="add to wishlist"><Heart /></span>
+                        {props.productSale ? <span className="shop-card-sale">Sale</span> : null}
+                        <AddToWishList
+                        productId={props.productId}
+                        title={'add to wishlist'}
+                        classStyleName={'shop-card-wishlist'}
+                        />
                         {props.productDiscountPrice ?
                             <span className="shop-card-discount">
                                 {`-${Math.round(((props.productDiscountPrice - props.productPrice) * 100) / props.productDiscountPrice)}%`}
@@ -91,6 +96,7 @@ const productCard = (props) => {
 };
 
 productCard.propTypes = {
+    productId: PropTypes.number.isRequired,
     productCategory: PropTypes.string.isRequired,
     productImage: PropTypes.string.isRequired,
     productSale: PropTypes.bool.isRequired,

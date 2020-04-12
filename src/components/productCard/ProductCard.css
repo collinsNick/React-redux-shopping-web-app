@@ -20,8 +20,7 @@
     height: auto
 }
 
-.shop-card .shop-card-wishlist,
-.shop-card .shop-card-new {
+.shop-card .shop-card-sale {
     color: #fff;
     background-color: #E40046;
     font-size: 12px;
@@ -35,6 +34,8 @@
 }
 
 .shop-card .shop-card-wishlist {
+    position: absolute;
+    padding: 2px 7px;
     background-color: transparent;
     color: #e5e5e5 !important;
     font-size: 20px !important;
@@ -42,6 +43,10 @@
     cursor: pointer;
     top: 3px;
     right: 0
+}
+
+.shop-card .wished {
+    color: #E40046 !important;
 }
 
 .shop-card .shop-card-content {

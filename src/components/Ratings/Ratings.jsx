@@ -14,14 +14,14 @@ const Ratings = (props) => {
         const remainingRatings = defaultCount - flooredRatingsValue;
 
         for(let i =0; i < flooredRatingsValue ; i++){
-            stars.push(<span className={`${props.fullStarIcon}`}><FullStar /></span>);
+            stars.push(<span className={`${props.fullStarIcon}`} key={`${i}i`}><FullStar /></span>);
         }
         if(remainingRatingsValue > 0){
-            stars.push(<span className={`${props.halfStarIcon}`}><HalfStar /></span>);
+            stars.push(<span className={`${props.halfStarIcon}`} key={'j'}><HalfStar /></span>);
         }
         if(remainingRatings){
             for(let k =0; k < remainingRatings; k++){
-                stars.push(<span className={`${props.emptyStarIcon}`}><EmptyStar /></span>);
+                stars.push(<span className={`${props.emptyStarIcon}`} key={`${k}k`}><EmptyStar /></span>);
             }
         }
         return stars;

@@ -17,6 +17,7 @@ class Index extends Component {
                 return (
                     <ProductCard
                         key={product.id}
+                        productId={product.id}
                         productName={product.name}
                         productPrice={product.price}
                         productDiscountPrice={product.discount_price}
