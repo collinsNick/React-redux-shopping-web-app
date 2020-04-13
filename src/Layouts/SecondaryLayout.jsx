@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import LeftColumn from "../components/LeftColumn";
 
 class SecondaryLayout extends Component {
@@ -10,6 +11,13 @@ class SecondaryLayout extends Component {
                         <LeftColumn/>
                     </div>
                     <div className="col-md-8 col-lg-9">
+                        { this.props.results ?
+                        <div className="row page-results">
+                            <div className="col-sm-12">
+                                { this.props.results}
+                            </div>
+                        </div>
+                        :null }
                         <div className="row">
                             {this.props.children}
                         </div>
@@ -18,6 +26,10 @@ class SecondaryLayout extends Component {
             </div>
         )
     }
+}
+
+SecondaryLayout.prototypes = {
+    results: PropTypes.string,
 }
 
 export default SecondaryLayout;

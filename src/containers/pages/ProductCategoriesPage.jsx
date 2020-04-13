@@ -9,9 +9,11 @@ import EmptyCategoryPageContent from  '../../components/EmptyCategoryPageContent
 class ProductCategoriesPage extends Component {
     render() {
 
+        let productsCount =  this.props.productsProps.length;
         let products = <EmptyCategoryPageContent />;
+        const { match: { params } } = this.props;
 
-        if (this.props.productsProps.length > 0) {
+        if (productsCount > 0) {
             products = this.props.productsProps
                 .map(product => {
                     return (
@@ -25,7 +27,7 @@ class ProductCategoriesPage extends Component {
                 })
         }
         return (
-            <SecondaryLayout>
+            <SecondaryLayout results={`(${productsCount} items found)`}>
                 {products}
             </SecondaryLayout>
         )

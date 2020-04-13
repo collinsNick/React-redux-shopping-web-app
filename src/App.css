@@ -35,6 +35,12 @@ input.success{
     border: 1px solid #D6E9C6;
 }
 
+.page-results{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
 /* ------------- shop menu --------------*/
 
 .navbar {

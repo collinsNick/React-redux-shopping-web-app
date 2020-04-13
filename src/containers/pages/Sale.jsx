@@ -10,8 +10,9 @@ class Sale extends Component {
     render() {
 
         let products = <EmptyCategoryPageContent />;
+        let productsCount =  this.props.productsProps.length;
 
-        if (this.props.productsProps.length > 0) {
+        if (productsCount > 0) {
             products = this.props.productsProps
                 .map(product => {
                 return (
@@ -25,7 +26,7 @@ class Sale extends Component {
             })
         }
         return (
-            <SecondaryLayout>
+            <SecondaryLayout results={`(${productsCount} items found)`}>
                 {products}
             </SecondaryLayout>
         )
@@ -47,7 +48,8 @@ const mapDispatchToProps = dispatch => {
 
 Sale.propTypes = {
     productsProps: PropTypes.array.isRequired,
-    usedCurrencyProp: PropTypes.object.isRequired
+    usedCurrencyProp: PropTypes.object.isRequired,
+    results: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sale);
