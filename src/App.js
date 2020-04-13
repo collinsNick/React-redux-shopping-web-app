@@ -4,13 +4,11 @@ import {connect} from 'react-redux';
 import {closeMaxProductModal, toogleSideBar} from './store/actions/shop'
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/pages/Index';
-import Men from './containers/pages/Men';
-import Women from './containers/pages/Women';
-import Children from './containers/pages/Children';
+import ProductCategoriesPage from './containers/pages/ProductCategoriesPage';
+import ProductPage from './containers/pages/ProductPage/ProductPage';
 import Sale from './containers/pages/Sale';
 import Cart from './containers/pages/Cart';
 import Checkout from './containers/pages/Checkout';
-import ProductPage from './containers/pages/ProductPage/ProductPage';
 import './App.css';
 
 class App extends Component {
@@ -26,9 +24,7 @@ class App extends Component {
                     toggleSideBar={this.props.toggleSideBarProp}>
                     <Switch>
                         <Route path={'/'} exact component={Homepage}/>
-                        <Route path={'/men'} component={Men}/>
-                        <Route path={'/women'} component={Women}/>
-                        <Route path={'/children'} component={Children}/>
+                        <Route path={'/category/:category'} component={ProductCategoriesPage}/>
                         <Route path={'/sale'} component={Sale}/>
                         <Route path={'/cart'} component={Cart}/>
                         <Route path={'/checkout'} component={Checkout}/>
