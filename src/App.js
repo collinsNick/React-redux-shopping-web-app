@@ -10,6 +10,7 @@ import Children from './containers/pages/Children';
 import Sale from './containers/pages/Sale';
 import Cart from './containers/pages/Cart';
 import Checkout from './containers/pages/Checkout';
+import ProductPage from './containers/pages/ProductPage/ProductPage';
 import './App.css';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
                         <Route path={'/sale'} component={Sale}/>
                         <Route path={'/cart'} component={Cart}/>
                         <Route path={'/checkout'} component={Checkout}/>
+                        <Route path={'/product/:productSlug'} component={ProductPage}/>
                         {/*always redirect to index*/}
                         <Redirect to={'/'}/>
                     </Switch>

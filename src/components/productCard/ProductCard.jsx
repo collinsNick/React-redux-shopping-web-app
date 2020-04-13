@@ -18,7 +18,7 @@ const productCard = (props) => {
         if (item.options && item.options.length && item.quantity > 0) {
             return <NavLink
                 className="btn shop-btn-primary btn-block"
-                to={'/women'}
+                to={`/product/${item.slug}`}
                 exact>
                 Choose Options
             </NavLink>
@@ -39,7 +39,7 @@ const productCard = (props) => {
                 <div className="shop-card">
                     <div className="shop-card-image">
                         <NavLink
-                            to={'/women'}
+                            to={`/product/${item.slug}`}
                             exact>
                             <img
                                 src={require(`../../assets/images/shop_images/${item.img}`)}
