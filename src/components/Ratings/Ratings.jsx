@@ -29,7 +29,8 @@ const Ratings = (props) => {
 
     return (
         <div className={`${props.containerClassName}`}>
-            { createStars() }{ props.totalVotes ? <span className='total-rating-votes'>({props.totalVotes})</span> : null}
+            { createStars() }
+            { props.totalVotes ? <span className='total-rating-votes'>({props.totalVotes})</span> : null}
         </div>
     );
 

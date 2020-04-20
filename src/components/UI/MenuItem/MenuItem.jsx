@@ -10,7 +10,6 @@ const menuItem = (props) => {
                 to={props.linkTo}
                 exact>
                 {props.children}</NavLink>
-
         </li>
     )
 };

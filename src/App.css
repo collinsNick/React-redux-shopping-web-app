@@ -41,14 +41,41 @@ input.success{
     margin-bottom: 10px;
 }
 
+/* ------------- breadCrumbs --------------*/
+
+.breadcrumb {
+    padding: .5rem 0rem;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+.breadcrumb-item > a {
+    text-transform: capitalize !important;
+    text-decoration: none;
+    color: #000;
+}
+
+.breadcrumb-item > a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.breadcrumb-item.active {
+    text-transform: capitalize !important;
+}
+
+
 /* ------------- shop menu --------------*/
 
 .navbar {
     padding: .8rem 1rem;
-}
-
-nav {
-    box-shadow: 0 2px 2px -2px gray;
 }
 
 .navbar-light .navbar-brand,

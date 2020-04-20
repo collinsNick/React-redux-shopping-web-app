@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const mainMenu = (props) => {
     return (
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-light bg-light" style={{ boxShadow:'0 2px 2px -2px gray'}}>
             <span className="navbar-brand">DUKA</span>
             <button
                 className="navbar-toggler"

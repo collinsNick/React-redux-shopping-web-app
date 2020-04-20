@@ -26,7 +26,16 @@ class Sale extends Component {
             })
         }
         return (
-            <SecondaryLayout results={`(${productsCount} items found)`}>
+            <SecondaryLayout
+            results={`(${productsCount} items found)`}
+            breadCrumbs={
+                [
+                    {
+                        label: 'sale',
+                        to: '/sale'
+                    }
+                ]
+            }>
                 {products}
             </SecondaryLayout>
         )
@@ -49,7 +58,7 @@ const mapDispatchToProps = dispatch => {
 Sale.propTypes = {
     productsProps: PropTypes.array.isRequired,
     usedCurrencyProp: PropTypes.object.isRequired,
-    results: PropTypes.object.isRequired
+    results: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sale);

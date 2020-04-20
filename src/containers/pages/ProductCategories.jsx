@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {addToCart} from "../../store/actions/shop";
+import { addToCart } from "../../store/actions/shop";
 import ProductCard from '../../components/productCard/ProductCard';
 import SecondaryLayout from '../../Layouts/SecondaryLayout';
-import EmptyCategoryPageContent from  '../../components/EmptyCategoryPageContent';
+import EmptyCategoryPageContent from '../../components/EmptyCategoryPageContent';
 
-class ProductCategoriesPage extends Component {
+class ProductCategories extends Component {
     render() {
 
-        let productsCount =  this.props.productsProps.length;
+        let productsCount = this.props.productsProps.length;
         let products = <EmptyCategoryPageContent />;
         const { match: { params } } = this.props;
 
@@ -27,7 +27,17 @@ class ProductCategoriesPage extends Component {
                 })
         }
         return (
-            <SecondaryLayout results={`(${productsCount} items found)`}>
+            <SecondaryLayout
+                results={`(${productsCount} items found)`}
+                breadCrumbs={
+                    [
+                        {
+                            label: params.category,
+                            to: '/category/' + params.category
+                        }
+                    ]
+                }
+            >
                 {products}
             </SecondaryLayout>
         )
@@ -47,9 +57,9 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-ProductCategoriesPage.propTypes = {
+ProductCategories.propTypes = {
     productsProps: PropTypes.array.isRequired,
     usedCurrencyProp: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCategoriesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCategories);
