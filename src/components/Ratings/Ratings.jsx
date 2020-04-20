@@ -7,8 +7,8 @@ const Ratings = (props) => {
     function createStars(){
 
         let stars = [];
-        const ratingsValue = props.ratings;
-        const flooredRatingsValue = Math.floor(props.ratings);
+        let ratingsValue = props.ratings.star_ratings;
+        const flooredRatingsValue = Math.floor(ratingsValue);
         const remainingRatingsValue = (ratingsValue-flooredRatingsValue).toFixed(1);
         const defaultCount = remainingRatingsValue > 0 ? 4 : 5;
         const remainingRatings = defaultCount - flooredRatingsValue;
@@ -28,17 +28,16 @@ const Ratings = (props) => {
     }
 
     return (
-        <div className={`${props.containerClassName}`}>
+        <div className={`${props.containerClassName}`} title={props.ratings.star_ratings}>
             { createStars() }
-            { props.totalVotes ? <span className='total-rating-votes'>({props.totalVotes})</span> : null}
+            <span className='total-rating-votes'>({props.ratings.votes})</span>
         </div>
     );
 
 }
 
 Ratings.prototypes = {
-    ratings: PropTypes.number.isRequired,
-    totalVotes: PropTypes.number,
+    ratings: PropTypes.object.isRequired,
     containerClassName: PropTypes.string,
     fullStarIcon: PropTypes.string,
     halfStarIcon: PropTypes.string,

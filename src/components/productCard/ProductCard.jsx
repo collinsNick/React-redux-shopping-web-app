@@ -66,8 +66,7 @@ const productCard = (props) => {
                         </h2>
                         <h3 className="shop-card-title">{item.name}</h3>
                         <Ratings
-                            ratings={5}
-                            totalVotes={300}
+                            ratings={item.ratings}
                             containerClassName={'shop-card-ratings-container'}
                             fullStarIcon={'full-star-icon'}
                             halfStarIcon={'half-star-icon'}

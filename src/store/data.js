@@ -80,6 +80,10 @@ let data = {
             vendor: {
                 id: 1,
                 name: 'duka'
+            },
+            ratings: {
+                star_ratings: 4.8,
+                votes: 350
             }
         },
         {
@@ -101,6 +105,10 @@ let data = {
             vendor: {
                 id: 2,
                 name: 'vendor two'
+            },
+            ratings: {
+                star_ratings: 3.6,
+                votes: 200
             }
         },
         {
@@ -122,6 +130,10 @@ let data = {
             vendor: {
                 id: 3,
                 name: 'vendor three'
+            },
+            ratings: {
+                star_ratings: 2.5,
+                votes: 150
             }
         },
         {
@@ -143,12 +155,16 @@ let data = {
             vendor: {
                 id: 4,
                 name: 'vendor four'
+            },
+            ratings: {
+                star_ratings: 3.8,
+                votes: 20
             }
         },
         {
             id: 5,
             name: 'vintage print flare dress',
-            name: 'vintage-print-flare-dress-987426',
+            slug: 'vintage-print-flare-dress-987426',
             price: 1720,
             discount_price: 5160,
             category: 'women',
@@ -164,6 +180,10 @@ let data = {
             vendor: {
                 id: 5,
                 name: 'vendor five'
+            },
+            ratings: {
+                star_ratings: 4.0,
+                votes: 130
             }
         },
         {
@@ -185,6 +205,10 @@ let data = {
             vendor: {
                 id: 1,
                 name: 'duka'
+            },
+            ratings: {
+                star_ratings: 2.1,
+                votes: 268
             }
         },
         {
@@ -206,6 +230,10 @@ let data = {
             vendor: {
                 id: 2,
                 name: 'vendor one'
+            },
+            ratings: {
+                star_ratings: 4,
+                votes: 250
             }
         },
         {
@@ -227,6 +255,10 @@ let data = {
             vendor: {
                 id: 3,
                 name: 'vendor three'
+            },
+            ratings: {
+                star_ratings: 3.6,
+                votes: 129
             }
         },
         {
@@ -248,6 +280,10 @@ let data = {
             vendor: {
                 id: 4,
                 name: 'vendor four'
+            },
+            ratings: {
+                star_ratings: 4.1,
+                votes: 50
             }
         },
         {
@@ -269,6 +305,10 @@ let data = {
             vendor: {
                 id: 5,
                 name: 'vendor five'
+            },
+            ratings: {
+                star_ratings: 2.0,
+                votes: 35
             }
         },
         {
@@ -290,6 +330,10 @@ let data = {
             vendor: {
                 id: 1,
                 name: 'duka'
+            },
+            ratings: {
+                star_ratings: 3.2,
+                votes: 240
             }
         },
         {
@@ -311,6 +355,10 @@ let data = {
             vendor: {
                 id: 2,
                 name: 'vendor one'
+            },
+            ratings: {
+                star_ratings: 3.6,
+                votes: 70
             }
         },
         {
@@ -332,6 +380,10 @@ let data = {
             vendor: {
                 id: 3,
                 name: 'vendor three'
+            },
+            ratings: {
+                star_ratings: 5.0,
+                votes: 210
             }
         },
         {
@@ -353,6 +405,10 @@ let data = {
             vendor: {
                 id: 4,
                 name: 'vendor four'
+            },
+            ratings: {
+                star_ratings: 1.5,
+                votes: 3
             }
         },
         {
@@ -374,6 +430,10 @@ let data = {
             vendor: {
                 id: 5,
                 name: 'vendor five'
+            },
+            ratings: {
+                star_ratings: 2.9,
+                votes: 65
             }
         },
         {
@@ -395,6 +455,10 @@ let data = {
             vendor: {
                 id: 1,
                 name: 'duka'
+            },
+            ratings: {
+                star_ratings: 3.0,
+                votes: 289
             }
         },
         {
@@ -416,6 +480,10 @@ let data = {
             vendor: {
                 id: 2,
                 name: 'vendor two'
+            },
+            ratings: {
+                star_ratings: 4.0,
+                votes: 200
             }
         },
         {
@@ -437,6 +505,10 @@ let data = {
             vendor: {
                 id: 3,
                 name: 'vendor three'
+            },
+            ratings: {
+                star_ratings: 4.7,
+                votes: 130
             }
         },
     ]
