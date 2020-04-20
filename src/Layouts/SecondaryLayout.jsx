@@ -6,7 +6,7 @@ import BreadCrumbs from '../components/UI/BreadCrumbs/BreadCrumbs';
 class SecondaryLayout extends Component {
     render() {
         return (
-            <div className={`container ${this.props.showbreadCrumbs ? 'py-2' :'py-4' }`}>
+            <div className={`container ${this.props.breadCrumbs ? 'py-2' :'py-4' }`}>
                 {
                 this.props.breadCrumbs ?
                 <div className="row">

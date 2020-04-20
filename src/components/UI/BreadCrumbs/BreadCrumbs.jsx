@@ -11,7 +11,7 @@ const BreadCrumbs = (props) => {
         if (links.length) {
             links.forEach((link, index) => {
                 if(index === (links.length - 1)){
-                    crumbs.push(<li className="breadcrumb-item active" key={index}>{links[0].label}</li>);
+                    crumbs.push(<li className="breadcrumb-item active" key={index}>{link.label}</li>);
                 }else{
                     crumbs.push(
                         <li className="breadcrumb-item" key={index}>
