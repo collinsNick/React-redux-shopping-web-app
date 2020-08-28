@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {addToCart} from '../../store/actions/shop';
-import ProductCard from '../../components/productCard/ProductCard';
-import SecondaryLayout from "../../Layouts/SecondaryLayout";
-import EmptyCategoryPageContent from  '../../components/EmptyCategoryPageContent';
+import {addToCart} from '../store/actions/shop';
+import ProductCard from '../components/productCard/ProductCard';
+import SecondaryLayout from "../Layouts/SecondaryLayout";
+import EmptyCategoryPageContent from  '../components/EmptyCategoryPageContent';
 
-class Index extends Component {
+class All extends Component {
 
     render() {
 
@@ -45,9 +45,9 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-Index.propTypes = {
+All.propTypes = {
     productsProps: PropTypes.array.isRequired,
     usedCurrencyProp: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(mapStateToProps, mapDispatchToProps)(All);

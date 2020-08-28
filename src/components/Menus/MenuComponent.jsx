@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const menuComponent = (props) => {
     return (
         <React.Fragment>
-            <MenuItem linkTo={'/'}>Home</MenuItem>
+            <MenuItem linkTo={'/all'}>All</MenuItem>
             <MenuItem linkTo={'/category/men'}>Men</MenuItem>
             <MenuItem linkTo={'/category/women'}>Women</MenuItem>
             <MenuItem linkTo={'/category/kids'}>Kids</MenuItem>

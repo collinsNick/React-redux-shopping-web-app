@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {confirmOrder, setPromoCode} from '../../store/actions/shop';
-import CheckoutCartProduct from '../../components/Checkout/CheckoutCartProduct';
-import PromoCodeForm from '../../components/Checkout/PromoCodeForm';
-import PromoCodeValue from '../../components/Checkout/PromoCodeValue';
-import CheckoutCartTotals from '../../components/Checkout/CheckoutCartTotals';
-import CustomerInputs from '../../components/Checkout/Forms/CustomerInputs';
-import DeliveryOptions from '../../components/Checkout/Forms/DeliveryOptions'
-import PaymentOptions from '../../components/Checkout/Forms/Payments/PaymentOptions';
-import Alert from '../../components/UI/Alert/Alert';
+import {confirmOrder, setPromoCode} from '../store/actions/shop';
+import CheckoutCartProduct from '../components/Checkout/CheckoutCartProduct';
+import PromoCodeForm from '../components/Checkout/PromoCodeForm';
+import PromoCodeValue from '../components/Checkout/PromoCodeValue';
+import CheckoutCartTotals from '../components/Checkout/CheckoutCartTotals';
+import CustomerInputs from '../components/Checkout/Forms/CustomerInputs';
+import DeliveryOptions from '../components/Checkout/Forms/DeliveryOptions'
+import PaymentOptions from '../components/Checkout/Forms/Payments/PaymentOptions';
+import Alert from '../components/UI/Alert/Alert';
 import PropTypes from 'prop-types';
-import formValidator from '../../Utility/formValidation';
+import formValidator from '../Utility/formValidation';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 
 class Checkout extends Component {

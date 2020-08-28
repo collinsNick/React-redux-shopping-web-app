@@ -1,9 +1,0 @@
-import React, {Component} from 'react';
-
-class ProductPage extends Component{
-    render(){
-        return ('product page')
-    }
-}
-
-export default ProductPage;

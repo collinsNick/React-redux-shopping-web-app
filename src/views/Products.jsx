@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BreadCrumbs from '../../../components/UI/BreadCrumbs/BreadCrumbs'
+import BreadCrumbs from '../components/UI/BreadCrumbs/BreadCrumbs'
 
-class ProductPage extends Component {
+class Products extends Component {
 
     product = this.props.productProp;
 
@@ -33,7 +33,7 @@ class ProductPage extends Component {
                             <div className="preview-pic tab-content">
                                 <div className="tab-pane active" id="pic-1">
                                     <img
-                                    src={require(`../../../assets/images/shop_images/${this.product.img}`)}
+                                    src={require(`../assets/images/shop_images/${this.product.img}`)}
                                     alt={this.product.name}
                                      />
                                 </div>
@@ -53,4 +53,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(ProductPage);
+export default connect(mapStateToProps)(Products);

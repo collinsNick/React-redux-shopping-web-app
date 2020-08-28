@@ -78,9 +78,9 @@ input.success{
     padding: .8rem 1rem;
 }
 
-.navbar-light .navbar-brand,
-.navbar-light .navbar-brand:hover {
+.navbar-brand > a{
     color: #E40046;
+    text-decoration: none;
     font-weight: bold;
 }
 

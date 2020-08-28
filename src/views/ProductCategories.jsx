@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addToCart } from "../../store/actions/shop";
-import ProductCard from '../../components/productCard/ProductCard';
-import SecondaryLayout from '../../Layouts/SecondaryLayout';
-import EmptyCategoryPageContent from '../../components/EmptyCategoryPageContent';
+import { addToCart } from "../store/actions/shop";
+import ProductCard from '../components/productCard/ProductCard';
+import SecondaryLayout from '../Layouts/SecondaryLayout';
+import EmptyCategoryPageContent from '../components/EmptyCategoryPageContent';
 
 class ProductCategories extends Component {
     render() {
