@@ -42,7 +42,7 @@
 }
 
 .main-banner-content {
-  padding: 30px;
+  padding: 2rem;
   background: #ffffff;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -65,8 +65,8 @@
 /* sellout section */
 .sellout-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
 }
 
 .sellout-card {
@@ -84,13 +84,13 @@
 /* item banners section*/
 .item-banners {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
 }
 
 .item-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   background-color: #ffffff;
   padding: 20px;
 }
@@ -98,6 +98,7 @@
 .item-content {
   align-self: center;
 }
+
 .item-banner-title {
   color: #f17e0a;
   text-transform: uppercase;
@@ -130,15 +131,15 @@
 
 .products-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
 }
 
 /* deals section */
 .deals-content {
   height: 450px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   background: #ffffff;
   align-items: center;
   justify-items: center;
@@ -183,15 +184,157 @@
   color: #ffffff;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (max-width: 576px) {
+  /* deals section */
+  .deals-image {
+    height: 150px;
+  }
+
+  .deals-text {
+    padding: 0 2rem 0 2rem;
+  }
+
+  /* newsletter section */
+  .newsletter-contaner {
+    padding: 30px;
+  }
+  .input-contaner {
+    width: 90%;
+  }
+
+  .newsletter-contaner .text-muted {
+    text-align: justify;
+  }
+
+  /* footer section */
+  .footer-contaner {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: left;
+  }
 }
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+
+@media (max-width: 768px) and (min-width: 567px) {
+  /* sellout section */
+  .sellout-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  /* deals section */
+  .deals-image {
+    height: 250px;
+  }
+
+  .deals-text {
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .deals-text .text {
+    text-align: justify;
+  }
+
+  /* products section */
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
+
+@media (max-width: 768px) {
+  /* banner section */
+  .main-banner-container {
+    max-height: auto;
+  }
+  .main-banner-content {
+    display: block;
+  }
+
+  .main-banner-title {
+    font-size: 3rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .main-banner-image {
+    display: none;
+  }
+
+  /* item banners section */
+  .item-banner-title {
+    font-size: 0.8rem;
+  }
+
+  .item-container h4 {
+    font-size: 1rem;
+  }
+
+  .banner-image {
+    height: 150px;
+  }
+
+  /* deals section */
+  .deals-content {
+    height: auto;
+    padding: 2rem 0;
+  }
+
+  .deals-title {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
 }
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+
+@media (max-width: 992px) and (min-width: 769px) {
+  /* banner section */
+  .main-banner-image {
+    height: 250px;
+    justify-self: center;
+    align-self: center;
+  }
+  .main-banner-title {
+    font-size: 2rem;
+  }
+  /* sellout section */
+  .sellout-section {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  /* item banners section*/
+  .banner-image {
+    height: 150px;
+  }
+
+  .item-banner-title {
+    font-size: 0.8rem;
+  }
+
+  .item-container h4 {
+    font-size: 0.9rem;
+  }
+
+  /* deals section */
+  .deals-text {
+    padding: 0 1rem;
+  }
+  .deals-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 993px) {
+  /* item banners section*/
+  .banner-image {
+    height: 250px;
+  }
+
+  /* products section */
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 }

@@ -131,7 +131,7 @@ export default class Home extends Component {
             </NavLink>
           </div>
           <div className="products-container">
-            <div className="card shadow h-100">
+            <div className="card shadow">
               <img
                 className="card-img-top"
                 src="http://placehold.it/500x325"
@@ -142,7 +142,7 @@ export default class Home extends Component {
                 <p className="card-text">price.</p>
               </div>
             </div>
-            <div className="card shadow h-100">
+            <div className="card shadow">
               <img
                 className="card-img-top"
                 src="http://placehold.it/500x325"
@@ -153,7 +153,7 @@ export default class Home extends Component {
                 <p className="card-text">price.</p>
               </div>
             </div>
-            <div className="card shadow h-100">
+            <div className="card shadow">
               <img
                 className="card-img-top"
                 src="http://placehold.it/500x325"
@@ -164,7 +164,7 @@ export default class Home extends Component {
                 <p className="card-text">price.</p>
               </div>
             </div>
-            <div className="card shadow h-100">
+            <div className="card shadow">
               <img
                 className="card-img-top"
                 src="http://placehold.it/500x325"
@@ -187,11 +187,10 @@ export default class Home extends Component {
             />
             <div className="deals-text">
               <div className="heading-block">
-                <h1 className="title mb-4">Latest Ladies Fashion</h1>
+                <h1 className="deals-title mb-4">Latest In Ladies Fashion</h1>
                 <p className="text mb-4 text-muted">
-                  Suspendisse massa leo, vestibulum cursus nulla sit amet,
-                  placerat lorem.vestibulum cursus nulla sit amet, placerat
-                  lorem
+                  Suspendisse massa leo, vesti cursus nulla sit amet, placerat
+                  lorem.vestibulum cursus nulla sit amet, placerat lorem
                 </p>
                 <NavLink
                   className="btn btn-primary btn"

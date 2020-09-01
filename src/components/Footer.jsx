@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const footer = () => {
   return (
     <React.Fragment>
-      <div className=" shop-footer text-center py-3">
+      <div className=" shop-footer text-center p-3">
         This project is made and open sourced by
         <NavLink to="http://collinsnick.com/" exact>
           {` Collins Nixon`}
