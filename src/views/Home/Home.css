@@ -135,6 +135,24 @@
   grid-gap: 1rem;
 }
 
+.products-container .card-title {
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.products-container .card-text {
+  text-align: center;
+  color: #f17e0a;
+  font-weight: 600;
+}
+
 /* deals section */
 .deals-content {
   height: 450px;
@@ -166,24 +184,6 @@
   width: 500px;
 }
 
-/* footer section */
-.footer-contaner {
-  color: #ffffff;
-  background: #111111;
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-}
-
-.footer-contaner a {
-  color: #6c757d;
-  text-decoration: none;
-}
-.footer-contaner a:hover {
-  color: #ffffff;
-}
-
 @media (max-width: 576px) {
   /* deals section */
   .deals-image {
@@ -204,13 +204,6 @@
 
   .newsletter-contaner .text-muted {
     text-align: justify;
-  }
-
-  /* footer section */
-  .footer-contaner {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-items: left;
   }
 }
 

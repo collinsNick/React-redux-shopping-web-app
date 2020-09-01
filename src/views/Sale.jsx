@@ -44,7 +44,7 @@ class Sale extends Component {
 
 const mapStateToProps = state => {
     return {
-         productsProps: state.products.filter( product => product.sale === true),
+        productsProps: state.products.filter( product => product.sale === true),
         usedCurrencyProp: state.usedCurrency
     }
 };

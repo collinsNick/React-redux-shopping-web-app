@@ -8,7 +8,7 @@ import shopReducer from './store/reducers/shop';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import {Elements, StripeProvider} from 'react-stripe-elements';
+// import {Elements, StripeProvider} from 'react-stripe-elements';
 import App from './App';
 
 // use this to show redux dev tool
@@ -23,11 +23,11 @@ const app = (
     <Provider store={store}>
         <BrowserRouter>
             {/* StripeProvider initializes the stripe and passes in the publishable key */}
-            <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
-                <Elements>
+            {/* <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx"> */}
+                {/* <Elements> */}
                     <App/>
-                </Elements>
-            </StripeProvider>
+                {/* </Elements> */}
+            {/* </StripeProvider> */}
         </BrowserRouter>
     </Provider>
 
