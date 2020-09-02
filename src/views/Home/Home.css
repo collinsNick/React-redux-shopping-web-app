@@ -13,11 +13,16 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:disabled {
   background-color: #333333;
   border-color: #333333;
   color: #ffffff;
   border-radius: 0;
+}
+
+.btn-primary:disabled {
+  cursor: not-allowed;
 }
 
 .btn-primary:focus,

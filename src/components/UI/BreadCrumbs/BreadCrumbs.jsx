@@ -15,7 +15,7 @@ const BreadCrumbs = (props) => {
                 }else{
                     crumbs.push(
                         <li className="breadcrumb-item" key={index}>
-                            <NavLink to={'/'} exact>{link.label}</NavLink>
+                            <NavLink to={link.to} exact>{link.label}</NavLink>
                         </li>
                     );
                 }

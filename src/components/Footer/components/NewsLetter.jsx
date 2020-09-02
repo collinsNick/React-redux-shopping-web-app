@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NewsLetter() {
   return (
-    <div className="newsletter-contaner">
+    <div className="newsletter-contaner mt-2">
       <h5>New To Duka?</h5>
       <p className="text-muted">
         Subscribe to our newsletter to get updates on our lates offers!

@@ -1,0 +1,123 @@
+.product-card {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.product-card-image {
+  justify-self: center;
+  align-self: center;
+  height: 300px;
+}
+
+.product-title-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-title {
+  text-transform: capitalize;
+}
+
+.product-wishlist {
+  color: #e5e5e5 !important;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+
+.wished {
+  color: #e40046 !important;
+}
+
+.product-vendor {
+  text-transform: capitalize;
+  color: #e40046;
+  font-weight: 600;
+}
+
+.product-price-container {
+  background: #f5f7fa;
+  padding: 0.5rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  color: #f17e0a;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.product-discount-price {
+  text-transform: lowercase;
+  margin-left: 0.5rem;
+  text-decoration: line-through;
+  color: #909399;
+}
+
+.product-percentage-discount {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.7rem;
+  background: #f17e0a;
+  color: #ffffff;
+  border-radius: 0.2rem;
+}
+
+.product-features {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.product-features-title {
+  text-transform: capitalize;
+  color: #333333;
+  width: 150px;
+}
+
+.feature-fulfillmemt {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-fulfillmemt .shop-card-product-features {
+  margin-bottom: 0.5rem;
+}
+
+.feature-text {
+  color: #6c757d;
+  font-weight: 400;
+}
+
+.product-features svg {
+  font-size: 1.2rem;
+  color: #e40046;
+  margin-right: 0.5rem;
+}
+
+.feature-color {
+  padding: 0.2rem 0.5rem;
+  height: 25px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.product-quantity {
+  display: flex;
+}
+
+.product-quantity .btn-secondary {
+  border-radius: 0;
+  width: 40px;
+  height: 30px !important;
+  padding: 0rem;
+  border: none;
+  background: #c0c4cc;
+}
+
+.product-quantity .form-control {
+  border-radius: 0;
+  width: 80px;
+  height: 30px !important;
+}

@@ -1,18 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-import "./ProductCard.css";
 import AddToWishList from "../AddToWishlist/AddToWishlist";
+import ProductFeatures from "../../components/ProductCard/ProductFeatures";
 import Ratings from "../Ratings/Ratings";
-import { currencyToUse } from "../../Utility/currency";
 import {
-  LocalShipping,
-  International,
-  Warehouse,
-  DukaApproved,
-} from "../UI/Icons/Icons.jsx";
+  currencyToUse,
+  productPrice,
+  productDiscountPrice,
+} from "../../Utility/currency";
+import "./ProductCard.css";
 
-const productCard = (props) => {
+const Index = (props) => {
   let currencyKeys = currencyToUse(props.currency);
   let currencyValue = currencyKeys.value;
   let currencyName = currencyKeys.name;
@@ -62,10 +61,7 @@ const productCard = (props) => {
             />
             {item.discount_price ? (
               <span className="shop-card-discount">
-                {`-${Math.round(
-                  ((item.discount_price - item.price) * 100) /
-                    item.discount_price
-                )}%`}
+                {productDiscountPrice(item.price, item.discount_price)}
               </span>
             ) : null}
           </div>
@@ -85,55 +81,28 @@ const productCard = (props) => {
             <div className="shop-card-price-container">
               <span className="shop-card-price">
                 {currencyName}
-                {Math.round(item.price * currencyValue).toLocaleString()}
+                {productPrice(item.price, currencyValue)}
               </span>
               {item.discount_price ? (
                 <span className={"shop-card-discount-price"}>
                   <span style={{ textTransform: "lowercase" }}>
                     {currencyName}
                   </span>
-                  {Math.round(
-                    item.discount_price * currencyValue
-                  ).toLocaleString()}
+                  {productPrice(item.discount_price, currencyValue)}
                 </span>
               ) : null}
             </div>
 
             <div className="shop-card-features-container">
-              {item.duka_approved ? (
-                <span
-                  className="shop-card-product-features"
-                  title="Duka Aproved"
-                >
-                  <DukaApproved />
-                </span>
-              ) : null}
-              {item.fulfilled_by_duka ? (
-                <span
-                  className="shop-card-product-features"
-                  title="Fullfiled By Duka"
-                >
-                  <Warehouse />
-                </span>
-              ) : null}
-              {item.shipped_from_abroad ? (
-                <span
-                  className="shop-card-product-features"
-                  title="International Shipping"
-                >
-                  <International />
-                </span>
-              ) : (
-                <span
-                  className="shop-card-product-features"
-                  title="Local Shipping"
-                >
-                  <LocalShipping />
-                </span>
-              )}
+              <ProductFeatures product={item} />
             </div>
-
-            {generateButton()}
+            <NavLink
+              className="btn shop-btn-primary btn-block"
+              to={`/product/${item.slug}`}
+              exact
+            >
+              View Item
+            </NavLink>
           </div>
         </div>
       </div>
@@ -141,9 +110,9 @@ const productCard = (props) => {
   );
 };
 
-productCard.propTypes = {
+Index.propTypes = {
   product: PropTypes.object.isRequired,
   currency: PropTypes.object.isRequired,
 };
 
-export default productCard;
+export default Index;
