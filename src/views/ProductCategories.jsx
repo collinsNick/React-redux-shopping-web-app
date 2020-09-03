@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addToCart } from "../store/actions/shop";
 import ProductCard from "../components/ProductCard/Index";
 import SecondaryLayout from "../Layouts/SecondaryLayout";
 import EmptyCategoryPageContent from "../components/EmptyCategoryPageContent";
@@ -21,7 +20,6 @@ class ProductCategories extends Component {
             key={product.id}
             product={product}
             currency={this.props.usedCurrencyProp}
-            addToCart={() => this.props.addProductToCartProp(product.id)}
           />
         );
       });
@@ -51,15 +49,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addProductToCartProp: (productId) => dispatch(addToCart(productId)),
-  };
-};
-
 ProductCategories.propTypes = {
   productsProps: PropTypes.array.isRequired,
   usedCurrencyProp: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCategories);
+export default connect(mapStateToProps)(ProductCategories);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import SelloutCards from "./components/SelloutCards";
 import ItemBanners from "./components/ItemBanners";
 import Deal from "./components/Deal";

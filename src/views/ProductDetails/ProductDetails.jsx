@@ -15,7 +15,6 @@ import "./ProductDetails.css";
 
 class ProductDetails extends Component {
   state = {
-    product: null,
     productDetails: {
       product_id: null,
       product_size: "",
@@ -24,13 +23,14 @@ class ProductDetails extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      productDetails: {
-        ...this.state.productDetails,
-        ["product_id"]: this.props.productProp.id,
-      },
-      product: this.props.productProp,
-    });
+    if (this.props.productProp) {
+      this.setState((prevState) => ({
+        productDetails: {
+          ...prevState.productDetails,
+          product_id: this.props.productProp.id,
+        },
+      }));
+    }
   }
 
   product = this.props.productProp;
@@ -45,14 +45,14 @@ class ProductDetails extends Component {
 
   disableAddToCartButton() {
     let prodDetails = this.state.productDetails;
-    if (!this.product.sizes) {
-      return !prodDetails.product_id || !prodDetails.product_quantity;
-    }
-    return (
+    let generalValidations =
       !prodDetails.product_id ||
-      !prodDetails.product_size ||
-      !prodDetails.product_quantity
-    );
+      !prodDetails.product_quantity ||
+      prodDetails.product_quantity < 1;
+    if (!this.product.sizes) {
+      return generalValidations;
+    }
+    return generalValidations || !prodDetails.product_size;
   }
 
   handleSubtract = (event) => {
@@ -60,22 +60,22 @@ class ProductDetails extends Component {
     if (stateData.product_quantity < 1) {
       return;
     }
-    this.setState({
+    this.setState((prevState) => ({
       productDetails: {
-        ...this.state.productDetails,
-        ["product_quantity"]: stateData.product_quantity - 1,
+        ...prevState.productDetails,
+        product_quantity: stateData.product_quantity - 1,
       },
-    });
+    }));
   };
 
   handleAdd = (event) => {
     let stateData = this.state.productDetails;
-    this.setState({
+    this.setState((prevState) => ({
       productDetails: {
-        ...this.state.productDetails,
-        ["product_quantity"]: stateData.product_quantity + 1,
+        ...prevState.productDetails,
+        product_quantity: stateData.product_quantity + 1,
       },
-    });
+    }));
   };
 
   handleInputChange = (event) => {
@@ -88,178 +88,198 @@ class ProductDetails extends Component {
     });
   };
 
-  handleAddToCart = (event) => {
-    // this.props.addProductToCartProp(this.product.id);
+  handleAddToCart = () => {
     this.props.addProductToCartProp(this.state.productDetails);
   };
 
   render() {
     return (
       <React.Fragment>
-        <div className="container mt-2 mb-4">
-          <BreadCrumbs
-            breadCrumbLinks={[
-              {
-                label: this.product.category,
-                to: `/category/${this.product.category}`,
-              },
-              {
-                label: this.truncateProductName(),
-                to: null,
-              },
-            ]}
-          />
-          <div className="product-card bg-white">
-            <img
-              className="product-card-image"
-              src={require(`../../assets/images/shop_images/${this.product.img}`)}
-              alt={this.product.name}
-            />
-            <div className="product-card-details">
-              <div className="product-title-container">
-                <h3 className="product-title">{this.product.name}</h3>
-                <AddToWishList
-                  productId={this.product.id}
-                  title={"add to wishlist"}
-                  classStyleName={"product-wishlist"}
-                />
-              </div>
-              <div>
-                {this.product.vendor.name ? (
-                  <span>
-                    <span className="text-muted">Sold By : </span>
-                    <span className="product-vendor">
-                      {this.product.vendor.name}
-                    </span>
-                  </span>
-                ) : null}
-              </div>
-              <div>
-                <span>
-                  <Ratings
-                    ratings={this.product.ratings}
-                    containerClassName={"product-rating"}
-                    fullStarIcon={"full-star-icon"}
-                    halfStarIcon={"half-star-icon"}
-                    emptyStarIcon={"empty-star-icon"}
-                  />
-                </span>
-              </div>
-              <div className="product-price-container">
-                <span className="product-price">
-                  {this.currencyKeys.name}
-                  {productPrice(this.product.price, this.currencyKeys.value)}
-                </span>
-                {this.product.discount_price ? (
-                  <span className="product-discount-price">
-                    {this.currencyKeys.name}
-                    {productPrice(
-                      this.product.discount_price,
-                      this.currencyKeys.value
-                    )}
-                  </span>
-                ) : null}
-                {this.product.discount_price ? (
-                  <span className="product-percentage-discount">
-                    {productDiscountPrice(
-                      this.product.price,
-                      this.product.discount_price
-                    )}
-                  </span>
-                ) : null}
-              </div>
-
-              <div className="product-features-container">
-                <div className="product-features">
-                  <p className="product-features-title text-muted">Features:</p>
-                  <div className="feature-fulfillmemt">
-                    <ProductFeatures product={this.product} showText />
-                  </div>
-                </div>
-                {this.product.color ? (
-                  <div className="product-features">
-                    <p className="product-features-title text-muted">colors:</p>
-                    <span
-                      className="feature-text feature-color"
-                      style={{
-                        backgroundColor:
-                          this.product.color == "White"
-                            ? "black"
-                            : this.product.color,
-                      }}
-                    >
-                      {this.product.color}
-                    </span>
-                  </div>
-                ) : null}
-                {this.product.sizes ? (
-                  <div className="product-features">
-                    <p className="product-features-title text-muted">Size:</p>
-                    <span className="feature-text">
-                      <select
-                        className="custom-select custom-select-sm"
-                        name="product_size"
-                        value={this.state.productDetails.product_size}
-                        onChange={(event) => this.handleInputChange(event)}
-                      >
-                        <option value="" disabled>
-                          Select Size
-                        </option>
-                        {this.product.sizes.map((size, index) => (
-                          <option key={index} value={size}>
-                            {size}
-                          </option>
-                        ))}
-                      </select>
-                    </span>
-                  </div>
-                ) : null}
-                <div className="product-features">
-                  <p className="product-features-title text-muted">quantity:</p>
-                  <div className="product-quantity">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      disabled={this.product.quantity <= 0}
-                      onClick={this.handleSubtract}
-                    >
-                      -
-                    </button>
-                    <input
-                      name="product_quantity"
-                      type="number"
-                      className="form-control"
-                      placeholder="Qty"
-                      value={this.state.productDetails.product_quantity}
-                      onChange={(event) => this.handleInputChange(event)}
-                    ></input>
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      disabled={this.product.quantity <= 0}
-                      onClick={this.handleAdd}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4">
-                <button
-                  type="button"
-                  className="btn btn-primary btn-block btn-lg"
-                  disabled={this.disableAddToCartButton()}
-                  onClick={this.handleAddToCart}
-                >
-                  Add To Cart
-                </button>
-              </div>
+        {!this.product ? (
+          <div className="container py-4">
+            <div className={"shop-div p-4 text-center w-100"}>
+              <h5>Product Not Found</h5>
             </div>
           </div>
-        </div>
+        ) : (
+          <span>
+            <div className="container mt-2 mb-4">
+              <BreadCrumbs
+                breadCrumbLinks={[
+                  {
+                    label: this.product.category,
+                    to: `/category/${this.product.category}`,
+                  },
+                  {
+                    label: this.truncateProductName(),
+                    to: null,
+                  },
+                ]}
+              />
+              <div className="product-card bg-white">
+                <img
+                  className="product-card-image"
+                  src={require(`../../assets/images/shop_images/${this.product.img}`)}
+                  alt={this.product.name}
+                />
+                <div className="product-card-details">
+                  <div className="product-title-container">
+                    <h3 className="product-title">{this.product.name}</h3>
+                    <AddToWishList
+                      productId={this.product.id}
+                      title={"add to wishlist"}
+                      classStyleName={"product-wishlist"}
+                    />
+                  </div>
+                  <div>
+                    {this.product.vendor.name ? (
+                      <span>
+                        <span className="text-muted">Sold By : </span>
+                        <span className="product-vendor">
+                          {this.product.vendor.name}
+                        </span>
+                      </span>
+                    ) : null}
+                  </div>
+                  <div>
+                    <span>
+                      <Ratings
+                        ratings={this.product.ratings}
+                        containerClassName={"product-rating"}
+                        fullStarIcon={"full-star-icon"}
+                        halfStarIcon={"half-star-icon"}
+                        emptyStarIcon={"empty-star-icon"}
+                      />
+                    </span>
+                  </div>
+                  <div className="product-price-container">
+                    <span className="product-price">
+                      {this.currencyKeys.name}
+                      {productPrice(
+                        this.product.price,
+                        this.currencyKeys.value
+                      )}
+                    </span>
+                    {this.product.discount_price ? (
+                      <span className="product-discount-price">
+                        {this.currencyKeys.name}
+                        {productPrice(
+                          this.product.discount_price,
+                          this.currencyKeys.value
+                        )}
+                      </span>
+                    ) : null}
+                    {this.product.discount_price ? (
+                      <span className="product-percentage-discount">
+                        {productDiscountPrice(
+                          this.product.price,
+                          this.product.discount_price
+                        )}
+                      </span>
+                    ) : null}
+                  </div>
 
-        <HomeSale />
+                  <div className="product-features-container">
+                    <div className="product-features">
+                      <p className="product-features-title text-muted">
+                        Features:
+                      </p>
+                      <div className="feature-fulfillmemt">
+                        <ProductFeatures product={this.product} showText />
+                      </div>
+                    </div>
+                    {this.product.color ? (
+                      <div className="product-features">
+                        <p className="product-features-title text-muted">
+                          colors:
+                        </p>
+                        <span
+                          className="feature-text feature-color"
+                          style={{
+                            backgroundColor:
+                              this.product.color === "White"
+                                ? "black"
+                                : this.product.color,
+                          }}
+                        >
+                          {this.product.color}
+                        </span>
+                      </div>
+                    ) : null}
+                    {this.product.sizes ? (
+                      <div className="product-features">
+                        <p className="product-features-title text-muted">
+                          Size:
+                        </p>
+                        <span className="feature-text">
+                          <select
+                            className="custom-select custom-select-sm"
+                            name="product_size"
+                            value={this.state.productDetails.product_size}
+                            onChange={(event) => this.handleInputChange(event)}
+                          >
+                            <option value="" disabled>
+                              Select Size
+                            </option>
+                            {this.product.sizes.map((size, index) => (
+                              <option key={index} value={size}>
+                                {size}
+                              </option>
+                            ))}
+                          </select>
+                        </span>
+                      </div>
+                    ) : null}
+                    <div className="product-features">
+                      <p className="product-features-title text-muted">
+                        quantity:
+                      </p>
+                      <div className="product-quantity">
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          disabled={this.product.quantity <= 0}
+                          onClick={this.handleSubtract}
+                        >
+                          -
+                        </button>
+                        <input
+                          name="product_quantity"
+                          type="text"
+                          className="form-control"
+                          placeholder="Qty"
+                          value={this.state.productDetails.product_quantity}
+                          onChange={(event) => this.handleInputChange(event)}
+                        ></input>
+                        <button
+                          type="button"
+                          className="btn btn-secondary"
+                          disabled={this.product.quantity <= 0}
+                          onClick={this.handleAdd}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-block btn-lg"
+                      disabled={this.disableAddToCartButton()}
+                      onClick={this.handleAddToCart}
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <HomeSale />
+          </span>
+        )}
       </React.Fragment>
     );
   }
@@ -275,7 +295,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addProductToCartProp: (productId) => dispatch(addToCart(productId)),
+    addProductToCartProp: (productDetails) =>
+      dispatch(addToCart(productDetails)),
   };
 };
 

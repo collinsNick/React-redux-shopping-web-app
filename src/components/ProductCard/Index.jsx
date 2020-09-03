@@ -17,31 +17,6 @@ const Index = (props) => {
   let currencyName = currencyKeys.name;
   let item = props.product;
 
-  function generateButton() {
-    if (item.options && item.options.length && item.quantity > 0) {
-      return (
-        <NavLink
-          className="btn shop-btn-primary btn-block"
-          to={`/product/${item.slug}`}
-          exact
-        >
-          Choose Options
-        </NavLink>
-      );
-    } else {
-      return (
-        <button
-          type="button"
-          className="btn shop-btn-primary btn-block"
-          disabled={item.quantity <= 0}
-          onClick={props.addToCart}
-        >
-          {item.quantity > 0 ? " Add To Cart" : "Out Of Stock"}
-        </button>
-      );
-    }
-  }
-
   return (
     <React.Fragment>
       <div className={"col-sm-6 col-md-6 col-lg-4 mb-4"}>

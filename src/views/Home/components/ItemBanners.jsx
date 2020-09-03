@@ -34,7 +34,7 @@ export default function ItemBanners() {
           <img
             className="banner-image"
             src={require(`../../../assets/images/${item.image}`)}
-            alt="image"
+            alt="banner"
           />
         </div>
       );

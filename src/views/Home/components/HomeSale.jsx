@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToCart } from "../../../store/actions/shop";
 import { NavLink } from "react-router-dom";
 import { currencyToUse } from "../../../Utility/currency";
 
@@ -14,7 +13,7 @@ class HomeSale extends Component {
           <img
             className="card-img-top"
             src={require(`../../../assets/images/shop_images/${product.img}`)}
-            alt=""
+            alt="product"
           />
           <h5 className="card-title">{product.name}</h5>
           <p className="card-text">
@@ -55,15 +54,10 @@ const mapStateToProps = (state) => {
       if (index < 6 && product.sale === true) {
         return true;
       }
+      return false;
     }),
     usedCurrencyProp: state.usedCurrency,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addProductToCartProp: (productId) => dispatch(addToCart(productId)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeSale);
+export default connect(mapStateToProps)(HomeSale);

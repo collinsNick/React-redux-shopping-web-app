@@ -24,7 +24,7 @@ export default function Banner() {
         <img
           className="main-banner-image"
           src={require(`../../../assets/images/${banner.image}`)}
-          alt="Image"
+          alt="banner"
         />
       </div>
     </div>

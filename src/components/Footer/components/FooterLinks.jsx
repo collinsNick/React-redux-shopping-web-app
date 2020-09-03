@@ -8,18 +8,16 @@ export default function FooterLinks() {
         <h5>About</h5>
         <ul className="list-unstyled text-small">
           <li>
-            <NavLink to="#">Company</NavLink>
+            <NavLink to="/">Company</NavLink>
           </li>
           <li>
-            <a href="#">Location</a>
-            <NavLink to="#">Location</NavLink>
+            <NavLink to="/">Location</NavLink>
           </li>
           <li>
-            <a href="#">Contacts</a>
-            <NavLink to="#">Contacts</NavLink>
+            <NavLink to="/">Contacts</NavLink>
           </li>
           <li>
-            <NavLink to="#">Opening Hours</NavLink>
+            <NavLink to="/">Opening Hours</NavLink>
           </li>
         </ul>
       </div>
@@ -27,16 +25,16 @@ export default function FooterLinks() {
         <h5>Useful links</h5>
         <ul className="list-unstyled text-small">
           <li>
-            <NavLink to="#">Help</NavLink>
+            <NavLink to="/">Help</NavLink>
           </li>
           <li>
-            <NavLink to="#">Privacy Ploicy</NavLink>
+            <NavLink to="/">Privacy Ploicy</NavLink>
           </li>
           <li>
-            <NavLink to="#">Terms and Conditions</NavLink>
+            <NavLink to="/">Terms and Conditions</NavLink>
           </li>
           <li>
-            <NavLink to="#">FAQ</NavLink>
+            <NavLink to="/">FAQ</NavLink>
           </li>
         </ul>
       </div>
@@ -44,16 +42,16 @@ export default function FooterLinks() {
         <h5>Customer Servie</h5>
         <ul className="list-unstyled text-small">
           <li>
-            <NavLink to="#">Payment Methods</NavLink>
+            <NavLink to="/">Payment Methods</NavLink>
           </li>
           <li>
-            <NavLink to="#">Money-back</NavLink>
+            <NavLink to="/">Money-back</NavLink>
           </li>
           <li>
-            <NavLink to="#">Returns</NavLink>
+            <NavLink to="/">Returns</NavLink>
           </li>
           <li>
-            <NavLink to="#">Shipping</NavLink>
+            <NavLink to="/">Shipping</NavLink>
           </li>
         </ul>
       </div>
@@ -61,16 +59,16 @@ export default function FooterLinks() {
         <h5>Join Us</h5>
         <ul className="list-unstyled text-small">
           <li>
-            <NavLink to="#">Twitter</NavLink>
+            <NavLink to="/">Twitter</NavLink>
           </li>
           <li>
-            <NavLink to="#">Facebook</NavLink>
+            <NavLink to="/">Facebook</NavLink>
           </li>
           <li>
-            <NavLink to="#">Instagram</NavLink>
+            <NavLink to="/">Instagram</NavLink>
           </li>
           <li>
-            <NavLink to="#">Linkedin</NavLink>
+            <NavLink to="/">Linkedin</NavLink>
           </li>
         </ul>
       </div>
