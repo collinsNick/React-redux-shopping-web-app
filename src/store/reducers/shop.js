@@ -1,5 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import Data from "../data";
+import Data from "../../static/data";
 
 const initialState = Data;
 
