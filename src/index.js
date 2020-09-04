@@ -23,7 +23,7 @@ const app = (
   <Provider store={store}>
     <BrowserRouter>
       {/* StripeProvider initializes the stripe and passes in the publishable key */}
-      <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_KEY}>
         <Elements>
           <App />
         </Elements>
