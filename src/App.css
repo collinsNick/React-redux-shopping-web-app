@@ -211,6 +211,12 @@ input.success {
   font-size: 0.95rem;
 }
 
+.wishlist-container > .product-wishlist {
+  position: absolute;
+  right: 1.5rem;
+  top: -0.3rem;
+}
+
 .shop-cart-name {
   font-size: 1rem;
   font-weight: 500;

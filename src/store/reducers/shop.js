@@ -15,36 +15,34 @@ const reducer = (state = initialState, action) => {
       let cart = state.cart;
 
       var filteredCartItems = cart.filter(
-        (product) => product.product_id === toAddProduct.product_id
+        (product) => product.id === toAddProduct.id
       );
 
-      let quantityToAdd = parseInt(toAddProduct.product_quantity);
+      let quantityToAdd = parseInt(toAddProduct.quantity);
       if (filteredCartItems.length) {
-        if (toAddProduct.product_size) {
+        if (toAddProduct.size) {
           let prodIndex = cart.findIndex(
             (product) =>
-              product.product_id === toAddProduct.product_id &&
-              product.product_size === toAddProduct.product_size
+              product.id === toAddProduct.id &&
+              product.size === toAddProduct.size
           );
           if (prodIndex > -1) {
             let itemToModify = newCart[prodIndex];
             newCart[prodIndex] = {
               ...itemToModify,
-              product_quantity:
-                parseInt(itemToModify.product_quantity) + quantityToAdd,
+              quantity: parseInt(itemToModify.quantity) + quantityToAdd,
             };
           } else {
             newCart = cart.concat(toAddProduct);
           }
         } else {
           let prodIndex = cart.findIndex(
-            (product) => product.product_id === toAddProduct.product_id
+            (product) => product.id === toAddProduct.id
           );
           let itemToModify = newCart[prodIndex];
           newCart[prodIndex] = {
             ...itemToModify,
-            product_quantity:
-              parseInt(itemToModify.product_quantity) + quantityToAdd,
+            quantity: parseInt(itemToModify.quantity) + quantityToAdd,
           };
         }
         newCartTotal = state.cartTotal + quantityToAdd;
@@ -62,11 +60,28 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.REMOVE_FROM_CART:
-      newCart = state.cart.filter((product) => product.id !== action.productId);
+      let toRemoveProduct = action.productDetails;
+      let removeIndex = null;
+      let cartToRemove = [...state.cart];
+
+      if (toRemoveProduct.size) {
+        removeIndex = cartToRemove.findIndex(
+          (product) =>
+            product.id === toRemoveProduct.id &&
+            product.size === toRemoveProduct.size
+        );
+      } else {
+        removeIndex = cartToRemove.findIndex(
+          (product) => product.id === toRemoveProduct.id
+        );
+      }
+
+      cartToRemove.splice(removeIndex, 1);
+
       return {
         ...state,
-        cart: newCart,
-        cartTotal: state.cartTotal - action.productCount,
+        cart: cartToRemove,
+        cartTotal: state.cartTotal - toRemoveProduct.quantity,
       };
 
     case actionTypes.CLEAR_CART:
@@ -77,23 +92,34 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.UPDATE_CART_PRODUCT_COUNT:
-      let product = state.cart.find(
-        (product) => product.id === action.productId
-      );
-      let cartTotal = state.cartTotal;
-      newCart = state.cart;
-      if (product) {
-        cartTotal = state.cartTotal - (product.count - action.newCountValue);
-        newCart = state.cart.map((product) =>
-          product.id === action.productId
-            ? { ...product, count: action.newCountValue }
-            : product
+      let cartToUpdate = [...state.cart];
+      let prodToUpdate = action.productDetails;
+      let updateIndex = null;
+      if (prodToUpdate.size) {
+        updateIndex = state.cart.findIndex(
+          (product) =>
+            product.id === prodToUpdate.id && product.size === prodToUpdate.size
         );
+      } else {
+        updateIndex = state.cart.findIndex(
+          (product) => product.id === prodToUpdate.id
+        );
+      }
+
+      console.log(updateIndex);
+      let cartTotal = state.cartTotal;
+      if (updateIndex > -1) {
+        let itemToModify = cartToUpdate[updateIndex];
+        cartToUpdate[updateIndex] = {
+          ...itemToModify,
+          quantity: parseInt(action.newCountValue),
+        };
+        cartTotal -= itemToModify.quantity - action.newCountValue;
       }
 
       return {
         ...state,
-        cart: newCart,
+        cart: cartToUpdate,
         cartTotal: cartTotal,
       };
 

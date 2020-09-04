@@ -16,9 +16,9 @@ import "./ProductDetails.css";
 class ProductDetails extends Component {
   state = {
     productDetails: {
-      product_id: null,
-      product_size: "",
-      product_quantity: 1,
+      id: null,
+      size: "",
+      quantity: 1,
     },
   };
 
@@ -27,7 +27,7 @@ class ProductDetails extends Component {
       this.setState((prevState) => ({
         productDetails: {
           ...prevState.productDetails,
-          product_id: this.props.productProp.id,
+          id: this.props.productProp.id,
         },
       }));
     }
@@ -46,42 +46,43 @@ class ProductDetails extends Component {
   disableAddToCartButton() {
     let prodDetails = this.state.productDetails;
     let generalValidations =
-      !prodDetails.product_id ||
-      !prodDetails.product_quantity ||
-      prodDetails.product_quantity < 1;
+      !prodDetails.id ||
+      !prodDetails.quantity ||
+      prodDetails.quantity < 1 ||
+      prodDetails.quantity > this.product.quantity;
     if (!this.product.sizes) {
       return generalValidations;
     }
-    return generalValidations || !prodDetails.product_size;
+    return generalValidations || !prodDetails.size;
   }
 
-  handleSubtract = (event) => {
+  handleAdditionSubtraction(action) {
     let stateData = this.state.productDetails;
-    if (stateData.product_quantity < 1) {
+    if (action === "subtract" && stateData.quantity < 1) {
       return;
     }
-    this.setState((prevState) => ({
-      productDetails: {
-        ...prevState.productDetails,
-        product_quantity: stateData.product_quantity - 1,
-      },
-    }));
-  };
 
-  handleAdd = (event) => {
-    let stateData = this.state.productDetails;
+    let quantity = parseInt(stateData.quantity);
+    let newValue = action === "subtract" ? quantity - 1 : quantity + 1;
+
     this.setState((prevState) => ({
       productDetails: {
         ...prevState.productDetails,
-        product_quantity: stateData.product_quantity + 1,
+        quantity: newValue,
       },
     }));
-  };
+  }
 
   handleInputChange = (event) => {
     const target = event.target;
-    const value = target.value;
+    let value = target.value;
     const name = target.name;
+
+    if (name === "quantity") {
+      if (!value.match(/^[0-9]+$/)) {
+        value = 1;
+      }
+    }
 
     this.setState({
       productDetails: { ...this.state.productDetails, [name]: value },
@@ -214,8 +215,8 @@ class ProductDetails extends Component {
                         <span className="feature-text">
                           <select
                             className="custom-select custom-select-sm"
-                            name="product_size"
-                            value={this.state.productDetails.product_size}
+                            name="size"
+                            value={this.state.productDetails.size}
                             onChange={(event) => this.handleInputChange(event)}
                           >
                             <option value="" disabled>
@@ -230,37 +231,46 @@ class ProductDetails extends Component {
                         </span>
                       </div>
                     ) : null}
-                    <div className="product-features">
-                      <p className="product-features-title text-muted">
-                        quantity:
-                      </p>
-                      <div className="product-quantity">
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          disabled={this.product.quantity <= 0}
-                          onClick={this.handleSubtract}
-                        >
-                          -
-                        </button>
-                        <input
-                          name="product_quantity"
-                          type="text"
-                          className="form-control"
-                          placeholder="Qty"
-                          value={this.state.productDetails.product_quantity}
-                          onChange={(event) => this.handleInputChange(event)}
-                        ></input>
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          disabled={this.product.quantity <= 0}
-                          onClick={this.handleAdd}
-                        >
-                          +
-                        </button>
+
+                    {this.product.quantity ? (
+                      <div className="product-features">
+                        <p className="product-features-title text-muted">
+                          quantity:
+                        </p>
+                        <div className="product-quantity">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            onClick={() =>
+                              this.handleAdditionSubtraction("subtract")
+                            }
+                          >
+                            -
+                          </button>
+                          <input
+                            name="quantity"
+                            type="text"
+                            className="form-control"
+                            placeholder="Qty"
+                            value={this.state.productDetails.quantity}
+                            onChange={(event) => this.handleInputChange(event)}
+                          ></input>
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            onClick={() =>
+                              this.handleAdditionSubtraction("add")
+                            }
+                            disabled={
+                              this.state.productDetails.quantity >=
+                              this.product.quantity
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
-                    </div>
+                    ) : null}
                   </div>
 
                   <div className="mt-4">
@@ -270,7 +280,7 @@ class ProductDetails extends Component {
                       disabled={this.disableAddToCartButton()}
                       onClick={this.handleAddToCart}
                     >
-                      Add To Cart
+                      {this.product.quantity ? "Add To Cart" : "Out of Stock"}
                     </button>
                   </div>
                 </div>
@@ -290,6 +300,8 @@ const mapStateToProps = (state, ownProps) => {
       (product) => product.slug === ownProps.match.params.productSlug
     ),
     usedCurrencyProp: state.usedCurrency,
+    showModal: state.productMaxShowModal,
+    modalmessage: state.showModal,
   };
 };
 

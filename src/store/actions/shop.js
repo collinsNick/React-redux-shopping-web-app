@@ -7,11 +7,10 @@ export const addToCart = (productDetails) => {
   };
 };
 
-export const removeFromCart = (productId, count) => {
+export const removeFromCart = (productDetails) => {
   return {
     type: actionTypes.REMOVE_FROM_CART,
-    productId: productId,
-    productCount: count,
+    productDetails: productDetails,
   };
 };
 
@@ -21,17 +20,17 @@ export const clearCart = () => {
   };
 };
 
-export const updateCartProductCount = (value, productId) => {
+export const updateCartProductCount = (value, productDetails) => {
   return {
     type: actionTypes.UPDATE_CART_PRODUCT_COUNT,
     newCountValue: value,
-    productId: productId,
+    productDetails: productDetails,
   };
 };
 
 export const confirmOrder = (order, ownProps) => {
   return (dispatch) => {
-    // send order object to an api end point of choice
+    // send order object to an end point of choice
     console.log(order);
     // todo
     //token to be used with stripe
