@@ -106,7 +106,6 @@ const reducer = (state = initialState, action) => {
         );
       }
 
-      console.log(updateIndex);
       let cartTotal = state.cartTotal;
       if (updateIndex > -1) {
         let itemToModify = cartToUpdate[updateIndex];
