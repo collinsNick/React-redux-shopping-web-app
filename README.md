@@ -1,4 +1,5 @@
 ## React-Redux Ecommerce web application
+
 this is a sample ecommerce web app made using react, redux and react router.
 
 Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
@@ -6,9 +7,8 @@ Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe
 ## Build Setup
 
 1. Run `npm install` in root directory, to install all required dependencies.
-2. Use `npm start` to start the application on you machin
+2. Rename `.env.example` file to `.env`
+3. Add your **Stripe Api Key** to the `.env` file
+4. Use `npm start` to start the application on your local machine
+5. Use `4242 4242 4242 4242` credit card number when checking out!
 
-## To do
-
-1. Finish stripe intergration
-2. <del>handle order submission errors</del>
