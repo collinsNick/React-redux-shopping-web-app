@@ -20,7 +20,7 @@ export default function Deal() {
         <div className="deals-text">
           <div className="heading-block">
             <h1 className="deals-title mb-4">{deal.title}</h1>
-            <p className="text mb-4 text-muted">{deal.text}</p>
+            <p className="text mb-4">{deal.text}</p>
             <NavLink className="btn btn-primary btn" to={deal.link} exact>
               Shop Now
             </NavLink>
