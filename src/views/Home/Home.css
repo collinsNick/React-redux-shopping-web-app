@@ -179,7 +179,7 @@
   display: grid;
   align-content: center;
   justify-content: center;
-  background: rgba(241, 126, 10, 0.5);
+  /* background: rgba(241, 126, 10, 0.5); */
 }
 
 /* newsletter section */
