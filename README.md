@@ -2,7 +2,7 @@
 
 this is a sample ecommerce web app made using react, redux and react router.
 
-Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe-brook-53624.herokuapp.com/).
+Live demo can be found at [https://blissful-ramanujan-3c108d.netlify.app/](https://blissful-ramanujan-3c108d.netlify.app/).
 
 ## Build Setup
 
@@ -11,4 +11,3 @@ Live demo can be found at [https://safe-brook-53624.herokuapp.com/](https://safe
 3. Add your **Stripe Api Key** to the `.env` file
 4. Use `npm start` to start the application on your local machine
 5. Use `4242 4242 4242 4242` credit card number when checking out!
-
