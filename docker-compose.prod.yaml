@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  react-duka-prod:
+    container_name: react-duka-prod
+    build:
+      context: .
+      dockerfile: docker/prod/Dockerfile.prod
+    ports:
+      - '8877:80'

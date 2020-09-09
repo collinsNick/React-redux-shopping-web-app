@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  react-duka:
+    container_name: react-duka
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - ".:/var/www/"
+      - "/var/www/node_nodules"
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true

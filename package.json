@@ -20,7 +20,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-run-dev" : "docker-compose up -d --build",
+    "docker-run-prod" : "docker-compose -f docker-compose.prod.yaml up -d --build",
+    "docker-stop" : "docker-compose stop"
   },
   "eslintConfig": {
     "extends": "react-app"
