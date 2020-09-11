@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { currencyToUse } from "../../../Utility/currency";
+import { VISIBILITY_FILTERS } from "../../../static/constants";
+import { getProductsByFilter } from "../../../store/selectors";
 
 class HomeSale extends Component {
   render() {
@@ -50,12 +52,7 @@ class HomeSale extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    productsProps: state.products.filter((product, index) => {
-      if (index < 6 && product.sale === true) {
-        return true;
-      }
-      return false;
-    }),
+    productsProps: getProductsByFilter(state, VISIBILITY_FILTERS.SALE, 6),
     usedCurrencyProp: state.usedCurrency,
   };
 };

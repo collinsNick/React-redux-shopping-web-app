@@ -1,5 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
+export const setProductPriceFilter = (price) => {
+  return { type: actionTypes.SET_PRODUCT_PRICE_FILTER, price: price };
+};
+
 export const addToCart = (productDetails) => {
   return {
     type: actionTypes.ADD_TO_CART,

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { closeMaxProductModal, toogleSideBar } from "./store/actions/shop";
+import { closeMaxProductModal, toogleSideBar } from "./store/actions";
 import MainLayout from "./Layouts/MainLayout";
 import * as Maincontainers from "./views";
 import "./App.css";

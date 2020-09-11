@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {changeCurrency} from '../store/actions/shop';
+import {changeCurrency} from '../store/actions';
 import PropTypes from 'prop-types';
 
 class CurrencyConverter extends Component {

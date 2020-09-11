@@ -1,0 +1,22 @@
+.price-filter {
+  background: #fff;
+}
+
+.price-filter div {
+  margin-bottom: 0.5rem;
+}
+
+.price-filter div span {
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+.price-ranges {
+  font-size: .9rem;
+  font-weight: normal;
+  display: flex;
+  justify-content: space-between;
+}

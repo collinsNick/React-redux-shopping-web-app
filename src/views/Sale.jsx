@@ -1,46 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import ProductCard from "../components/ProductCard/Index";
-import SecondaryLayout from "../Layouts/SecondaryLayout";
-import EmptyCategoryPageContent from "../components/EmptyCategoryPageContent";
+import { VISIBILITY_FILTERS } from "../static/constants";
+import { getProductsByFilter, getUsedCurrency } from "../store/selectors";
+import ProductsDisplay from "../components/ProductsDisplay/Index";
 
-class Sale extends Component {
-  render() {
-    let products = <EmptyCategoryPageContent />;
-    let productsCount = this.props.productsProps.length;
-
-    if (productsCount > 0) {
-      products = this.props.productsProps.map((product) => {
-        return (
-          <ProductCard
-            key={product.id}
-            product={product}
-            currency={this.props.usedCurrencyProp}
-          />
-        );
-      });
-    }
-    return (
-      <SecondaryLayout
-        results={`(${productsCount} products found)`}
-        breadCrumbs={[
-          {
-            label: "sale",
-            to: "/sale",
-          },
-        ]}
-      >
-        {products}
-      </SecondaryLayout>
-    );
-  }
-}
+const Sale = (props) => {
+  return (
+    <ProductsDisplay
+      products={props.productsProps}
+      usedCurrency={props.usedCurrencyProp}
+      breadCrumbs={[
+        {
+          label: "sale",
+          to: "/sale",
+        },
+      ]}
+    />
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
-    productsProps: state.products.filter((product) => product.sale === true),
-    usedCurrencyProp: state.usedCurrency,
+    productsProps: getProductsByFilter(state, VISIBILITY_FILTERS.SALE),
+    usedCurrencyProp: getUsedCurrency(state),
   };
 };
 

@@ -5,6 +5,17 @@ const initialState = Data;
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.SET_PRODUCT_PRICE_FILTER:
+      let productPriceFilter = state.priceFilter;
+      productPriceFilter = {
+        ...productPriceFilter,
+        pricerange: parseInt(action.price),
+      };
+      console.log(productPriceFilter);
+      return {
+        ...state,
+        priceFilter: productPriceFilter,
+      };
     case actionTypes.ADD_TO_CART:
       let newCart = [...state.cart];
       let newCartTotal = state.cartTotal;

@@ -60,6 +60,11 @@ let data = {
     NGN: "₦",
     INR: "₹",
   },
+  priceFilter: {
+    min: 0,
+    max: 3700,
+    pricerange: 3700,
+  },
   products: [
     {
       id: 1,

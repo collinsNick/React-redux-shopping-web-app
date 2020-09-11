@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { confirmOrder, setPromoCode } from "../store/actions/shop";
+import { confirmOrder, setPromoCode } from "../store/actions";
 import CheckoutCartProduct from "../components/Checkout/CheckoutCartProduct";
 import PromoCodeForm from "../components/Checkout/PromoCodeForm";
 import PromoCodeValue from "../components/Checkout/PromoCodeValue";
