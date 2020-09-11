@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function GitLink() {
+const GitLink = () => {
   return (
     <div className=" shop-footer text-center p-3">
       This project is made and open sourced by
@@ -22,4 +22,6 @@ export default function GitLink() {
       to get the source code
     </div>
   );
-}
+};
+
+export default GitLink;

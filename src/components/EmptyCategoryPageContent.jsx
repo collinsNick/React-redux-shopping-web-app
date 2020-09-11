@@ -1,6 +1,6 @@
 import React from 'react';
 
-const emptyCategoryPageContent = () => {
+const EmptyCategoryPageContent = () => {
     return (
         <div className={'shop-div p-4 w-100'}>
             <h5>There are currently no products. Please check back later</h5>
@@ -8,4 +8,4 @@ const emptyCategoryPageContent = () => {
     )
 };
 
-export default emptyCategoryPageContent;
+export default EmptyCategoryPageContent;

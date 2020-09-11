@@ -1,16 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const menu = (props) => {
-    return (
-        <ul className={props.menuClasses}>
-            {props.children}
-        </ul>
-    )
+const Menu = (props) => {
+  return <ul className={props.menuClasses}>{props.children}</ul>;
 };
 
-menu.propTypes = {
-    menuClasses: PropTypes.string.isRequired
+Menu.propTypes = {
+  menuClasses: PropTypes.string.isRequired,
 };
 
-export default menu;
+export default Menu;

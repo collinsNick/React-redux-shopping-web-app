@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Deal() {
+const Deal = () => {
   const deal = {
     image: "flare_dress.png",
     title: "Latest In Ladies Fashion",
@@ -29,4 +29,6 @@ export default function Deal() {
       </div>
     </div>
   );
-}
+};
+
+export default Deal;

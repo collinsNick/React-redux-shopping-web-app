@@ -1,48 +1,50 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {toogleItemInWishList} from '../../store/actions';
-import { Heart } from '../UI/Icons/Icons.jsx';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { toogleItemInWishList } from "../../store/actions";
+import { Heart } from "../UI/Icons/Icons.jsx";
+import { getWishlist } from "../../store/selectors";
 
-class AddToWishlist extends Component {
+const AddToWishlist = (props) => {
+  function toogleWishlistItem() {
+    props.addRemoveItemInWishlist(props.productId);
+  }
 
-    toogleWishlistItem = (event) => {
-        this.props.addRemoveItemInWishlist(this.props.productId);
-    };
+  function wished() {
+    return props.wishlistItems.find(
+      (productId) => productId === props.productId
+    )
+      ? "wished"
+      : null;
+  }
+  return (
+    <span
+      className={`${props.classStyleName} ${wished()}`}
+      title={props.title}
+      onClick={toogleWishlistItem}
+    >
+      <Heart />
+    </span>
+  );
+};
 
-    wished = () => {
-        return this.props.wishlistItems.find(productId => productId === this.props.productId ) ? 'wished' : null
-    };
-
-    render() {
-        return (
-            <span
-                className={`${this.props.classStyleName} ${this.wished()}`}
-                title={this.props.title}
-                onClick={this.toogleWishlistItem}
-                >
-                <Heart/>
-            </span>
-        )
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        wishlistItems: state.wishlist,
-    }
+const mapStateToProps = (state) => {
+  return {
+    wishlistItems: getWishlist(state),
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        addRemoveItemInWishlist: (productId) => dispatch(toogleItemInWishList(productId)),
-    }
+  return {
+    addRemoveItemInWishlist: (productId) =>
+      dispatch(toogleItemInWishList(productId)),
+  };
 };
 
 AddToWishlist.prototypes = {
-    productId: PropTypes.number.isRequired,
-    classStyleName: PropTypes.string,
-    title: PropTypes.string,
-}
+  productId: PropTypes.number.isRequired,
+  classStyleName: PropTypes.string,
+  title: PropTypes.string,
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddToWishlist);
+export default connect(mapStateToProps, mapDispatchToProps)(AddToWishlist);

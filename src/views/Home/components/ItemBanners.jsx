@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function ItemBanners() {
+const ItemBanners = () => {
   let itemData = [
     {
       image: "baby_dress.jpg",
@@ -43,4 +43,6 @@ export default function ItemBanners() {
   return (
     <div className="container item-banners mb-4">{generateItemBanners()}</div>
   );
-}
+};
+
+export default ItemBanners;

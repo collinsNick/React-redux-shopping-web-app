@@ -4,11 +4,24 @@ import ItemBanners from "./components/ItemBanners";
 import Deal from "./components/Deal";
 import Banner from "./components/Banner";
 import HomeSale from "./components/HomeSale";
+import Loader from "../../components/Loader/Index";
 import "./Home.css";
 
-export default class Home extends Component {
+class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: true,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ loading: false });
+  }
   render() {
-    return (
+    return this.state.loading ? (
+      <Loader />
+    ) : (
       <React.Fragment>
         <Banner />
         <SelloutCards />
@@ -19,3 +32,5 @@ export default class Home extends Component {
     );
   }
 }
+
+export default Home;

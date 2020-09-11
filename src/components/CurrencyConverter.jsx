@@ -1,52 +1,53 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {changeCurrency} from '../store/actions';
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import { changeCurrency } from "../store/actions";
+import PropTypes from "prop-types";
 
-class CurrencyConverter extends Component {
+const CurrencyConverter = (props) => {
+  const currencyChangeHandler = (event) => {
+    props.changeCurrencyProp(event.target.value);
+  };
 
-    currencyChangeHandler = (event) => {
-        this.props.changeCurrencyProp(event.target.value)
-    };
-
-    render() {
-
-        return (
-            <div className="form-group">
-                {this.props.showLabel ? <label><h5>Convert Currency</h5></label> : null}
-                <select className="form-control"
-                        value={Object.keys(this.props.usedCurrencyProp)[0]}
-                        onChange={this.currencyChangeHandler}>
-                    {Object.keys(this.props.exchangeRatesProps.rates).map((rateName, index) => (
-                        <option
-                            key={index}
-                            value={this.props.exchangeRatesProps.rates[index]}>
-                            {rateName}
-                        </option>
-                    ))}
-                </select>
-            </div>
-        )
-    }
-}
+  return (
+    <div className="form-group">
+      {props.showLabel ? (
+        <label>
+          <h5>Convert Currency</h5>
+        </label>
+      ) : null}
+      <select
+        className="form-control"
+        value={Object.keys(props.usedCurrencyProp)[0]}
+        onChange={currencyChangeHandler}
+      >
+        {Object.keys(props.exchangeRatesProps.rates).map((rateName, index) => (
+          <option key={index} value={props.exchangeRatesProps.rates[index]}>
+            {rateName}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
 CurrencyConverter.propType = {
-    usedCurrencyProp: PropTypes.object.isRequired,
-    exchangeRatesProps: PropTypes.object.isRequired,
-    showLabel: PropTypes.bool
+  usedCurrencyProp: PropTypes.object.isRequired,
+  exchangeRatesProps: PropTypes.object.isRequired,
+  showLabel: PropTypes.bool,
 };
 
-const mapStateToProps = state => {
-    return {
-        exchangeRatesProps: state.exchangeRates,
-        usedCurrencyProp:state.usedCurrency
-    }
+const mapStateToProps = (state) => {
+  return {
+    exchangeRatesProps: state.exchangeRates,
+    usedCurrencyProp: state.usedCurrency,
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        changeCurrencyProp: (currencyName) => dispatch(changeCurrency(currencyName))
-    }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeCurrencyProp: (currencyName) =>
+      dispatch(changeCurrency(currencyName)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrencyConverter);

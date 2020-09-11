@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Banner() {
+const Banner = () => {
   const banner = {
     image: "fila_black.jpg",
     title: "Awsome Collection",
@@ -29,4 +29,6 @@ export default function Banner() {
       </div>
     </div>
   );
-}
+};
+
+export default Banner;

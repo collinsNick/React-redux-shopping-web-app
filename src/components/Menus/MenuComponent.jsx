@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from "../UI/MenuItem/MenuItem";
 import PropTypes from 'prop-types';
 
-const menuComponent = (props) => {
+const MenuComponent = (props) => {
     return (
         <React.Fragment>
             <MenuItem linkTo={'/all'}>All</MenuItem>
@@ -17,8 +17,8 @@ const menuComponent = (props) => {
     )
 };
 
-menuComponent.propTypes = {
+MenuComponent.propTypes = {
     cartCount: PropTypes.number
 };
 
-export default menuComponent;
+export default MenuComponent;

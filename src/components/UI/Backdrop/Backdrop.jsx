@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const backDrop = (props) => {
-    return (
-        props.showBackDrop ? <div className={'shop-backdrop'} onClick={props.closeSomething}></div> : null
-    )
+const BackDrop = (props) => {
+  return props.showB ? (
+    <div className={"shop-backdrop"} onClick={props.closeSomething}></div>
+  ) : null;
 };
 
-backDrop.propTypes = {
-    showBackDrop : PropTypes.bool.isRequired,
-    closeSomething : PropTypes.func,
+BackDrop.propTypes = {
+  showBackDrop: PropTypes.bool.isRequired,
+  closeSomething: PropTypes.func,
 };
 
-export default backDrop;
+export default BackDrop;

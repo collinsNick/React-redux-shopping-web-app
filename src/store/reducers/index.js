@@ -3,7 +3,7 @@ import Data from "../../static/data";
 
 const initialState = Data;
 
-const reducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_PRODUCT_PRICE_FILTER:
       let productPriceFilter = state.priceFilter;
@@ -11,7 +11,6 @@ const reducer = (state = initialState, action) => {
         ...productPriceFilter,
         pricerange: parseInt(action.price),
       };
-      console.log(productPriceFilter);
       return {
         ...state,
         priceFilter: productPriceFilter,
@@ -220,4 +219,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default appReducer;

@@ -6,7 +6,7 @@ import {
   DukaApproved,
 } from "../UI/Icons/Icons";
 
-export default function ProductFeatures(props) {
+const ProductFeatures = (props) => {
   return (
     <React.Fragment>
       {props.product.duka_approved ? (
@@ -45,4 +45,6 @@ export default function ProductFeatures(props) {
       )}
     </React.Fragment>
   );
-}
+};
+
+export default ProductFeatures;

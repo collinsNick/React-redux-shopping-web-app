@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const mainPageWrapper = (props) => {
-    return(
-            <div className="main-wrapper">
-                {props.children}
-            </div>
-    )
-}
+const MainPageWrapper = (props) => {
+  return <div className="main-wrapper">{props.children}</div>;
+};
 
-export default mainPageWrapper;
+export default MainPageWrapper;

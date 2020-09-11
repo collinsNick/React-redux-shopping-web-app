@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function FooterLinks() {
+const FooterLinks = () => {
   return (
     <div className="footer-contaner">
       <div>
@@ -74,4 +74,6 @@ export default function FooterLinks() {
       </div>
     </div>
   );
-}
+};
+
+export default FooterLinks;

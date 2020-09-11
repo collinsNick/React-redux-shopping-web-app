@@ -4,7 +4,7 @@ import FooterLinks from "./components/FooterLinks";
 import GitLinks from "./components/GitLink";
 import "./Footer.css";
 
-const footer = () => {
+const Index = () => {
   return (
     <React.Fragment>
       <NewsLetter />
@@ -14,4 +14,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Index;

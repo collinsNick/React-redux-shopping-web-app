@@ -4,7 +4,7 @@ import MenuComponent from '../Menus/MenuComponent';
 import PropTypes from 'prop-types';
 import mainMenu from "./MainMenu";
 
-const sideMenu = (props) => {
+const SideMenu = (props) => {
     return (
         <React.Fragment>
             <Menu menuClasses="nav flex-column">
@@ -19,4 +19,4 @@ mainMenu.propTypes = {
     cartItemNumber: PropTypes.number.isRequired
 };
 
-export default sideMenu;
+export default SideMenu;

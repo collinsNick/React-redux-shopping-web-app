@@ -4,7 +4,7 @@ import { EmptyStar, FullStar,HalfStar } from '../UI/Icons/Icons.jsx';
 
 const Ratings = (props) => {
 
-    function createStars(){
+    const createStars = () =>{
 
         let stars = [];
         let ratingsValue = props.ratings.star_ratings;

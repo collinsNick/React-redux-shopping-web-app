@@ -3,7 +3,7 @@ import PromoCodes from "./PromoCodes";
 import CurrencyConverter from "./CurrencyConverter";
 import ProductFilter from "../components/ProductFilter/Index";
 
-const leftColumn = () => {
+const LeftColumn = () => {
   return (
     <React.Fragment>
       <div className={"container shop-left-column py-2"}>
@@ -26,4 +26,4 @@ const leftColumn = () => {
   );
 };
 
-export default leftColumn;
+export default LeftColumn;

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NewsLetter() {
+const NewsLetter = () => {
   return (
     <div className="newsletter-contaner mt-2">
       <h5>New To Duka?</h5>
@@ -27,4 +27,6 @@ export default function NewsLetter() {
       </div>
     </div>
   );
-}
+};
+
+export default NewsLetter;

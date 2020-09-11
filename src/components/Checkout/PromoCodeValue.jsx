@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { currencyToUse } from "../../Utility/currency";
 
 const promoCodeFormValue = (props) => {
-  let currencyKeys = Object.keys(props.currency);
-  let currencyName = props.currency[currencyKeys[1]];
+  let currencyKeys = currencyToUse(props.currency);
+  let currencyName = currencyKeys.name;
 
   return (
     <React.Fragment>

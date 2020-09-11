@@ -179,7 +179,8 @@
   display: grid;
   align-content: center;
   justify-content: center;
-  /* background: rgba(241, 126, 10, 0.5); */
+  background: rgba(241, 126, 10, 0.5);
+  background: #eee8aa;
 }
 
 /* newsletter section */
@@ -202,7 +203,7 @@
   }
 
   .deals-text {
-    padding: 0 2rem 0 2rem;
+    padding: 1rem 2rem;
   }
 
   /* newsletter section */
@@ -231,7 +232,7 @@
   }
 
   .deals-text {
-    padding: 0 1rem;
+    padding: 1rem 1rem;
     text-align: center;
   }
 
@@ -283,7 +284,6 @@
   /* deals section */
   .deals-content {
     height: auto;
-    padding: 2rem 0;
   }
 
   .deals-title {

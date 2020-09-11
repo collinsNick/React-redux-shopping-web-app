@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SelloutCards() {
+const SelloutCards = () => {
   let cardsData = [
     {
       image: "money.png",
@@ -44,4 +44,6 @@ export default function SelloutCards() {
       {generateSelloutCards()}
     </div>
   );
-}
+};
+
+export default SelloutCards;
