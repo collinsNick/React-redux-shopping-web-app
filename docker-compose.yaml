@@ -5,7 +5,7 @@ services:
     container_name: react-duka
     build:
       context: .
-      dockerfile: docker/dev/Dockerfile
+      dockerfile: docker/Dockerfile
     volumes:
       - ".:/var/www/"
       - "/var/www/node_nodules"

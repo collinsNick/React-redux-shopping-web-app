@@ -5,6 +5,7 @@ services:
     container_name: react-duka-prod
     build:
       context: .
-      dockerfile: docker/prod/Dockerfile.prod
+      dockerfile: docker/Dockerfile.prod
     ports:
-      - '8877:80'
+      - "8877:80"
+    stdin_open: true
